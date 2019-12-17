@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import {StyleSheet, View} from 'react-native';
 
 import MapIntegration from './components/mapintegration';
-import ViewMap from './components/map/map-view';
+import Login from './components/Login';
+import CurrentLocationMap from './components/map/map';
 
 export default class App extends Component {
   render() {
@@ -10,7 +11,8 @@ export default class App extends Component {
       <>
         <View style={styles.cont}>
           {/* <MapIntegration/> */}
-          <ViewMap/> 
+          {/* <CurrentLocationMap/> */}
+          <Login/>
         </View>
       </>
     );
