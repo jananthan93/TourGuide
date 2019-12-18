@@ -52,7 +52,7 @@ export default class Login extends Component {
       <Block flex={1} style={styles.container} center>
         <Block flex={1} row >
           <Image
-            source={require('../assets/Kitesurfing/3.png')}
+            source={require('../assets/VayuResort/3.png')}
             style={{width: 400, height: 300, marginRight: 250, zIndex: -1}}
           />
         </Block>
@@ -127,9 +127,9 @@ export default class Login extends Component {
           </Block>
         </Block>
         <Block flex={1} row>
-          <Image  source={require("../assets/Kitesurfing/2.png")} style={{width:130,height:100,marginTop:20}}/>
-          <Image  source={require("../assets/Kitesurfing/2.png")} style={{width:130,height:100,marginTop:20}}/> 
-          <Image  source={require("../assets/Kitesurfing/2.png")} style={{width:130,height:100,marginTop:20}}/> 
+          <Image  source={require("../assets/VayuResort/2.png")} style={{width:130,height:100,marginTop:20}}/>
+          <Image  source={require("../assets/VayuResort/2.png")} style={{width:130,height:100,marginTop:20}}/> 
+          <Image  source={require("../assets/VayuResort/2.png")} style={{width:130,height:100,marginTop:20}}/> 
         </Block>
       </Block>
     );
