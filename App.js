@@ -5,6 +5,7 @@ import MapIntegration from './components/mapintegration';
 import Login from './components/Login';
 import CurrentLocationMap from './components/map/map';
 
+
 export default class App extends Component {
   render() {
     return (
@@ -13,6 +14,7 @@ export default class App extends Component {
           {/* <MapIntegration/> */}
           {/* <CurrentLocationMap/> */}
           <Login/>
+          
         </View>
       </>
     );
