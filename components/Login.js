@@ -31,7 +31,7 @@ export default class Login extends Component {
           this.props.navigation.navigate('todo')
       } else {
           Alert.alert('Error', 'Username/Password mismatch', [{
-              text: 'Okay'
+              text: 'close'
           }])
       }
   }
