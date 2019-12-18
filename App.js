@@ -1,15 +1,23 @@
-import {createAppContainer} from 'react-navigation';
-import {createStackNavigator} from 'react-navigation-stack';
-import Login from './components/Login';
-import CurrentLocationMap from './components/map/map';
+import React, { Component } from 'react';
+import { View } from 'react-native';
+import Home from './components/home';
 // import ImagePalmyrah from './components/Palmyrah/Image/imagePalmyrah';
 // import ImageVayuresort from './components/VayuResort/Image/imageVayuresort';
 // import SoundPalmyrah from './components/Palmyrah/audio';
+// import CurrentLocationMap from './components/map/map';
 
-const MainNavigator = createStackNavigator({
-  login: {screen: Login},
-  location: {screen: CurrentLocationMap},
-});
-
-const App = createAppContainer(MainNavigator);
-export default App;
+export default class JustifyContentBasics extends Component {
+  render() {
+    return (
+      <>
+         {/* <MapIntegration/> */}
+          {/* <CurrentLocationMap/> */}
+          {/* <ImagePalmyrah/> */}
+          {/* <ImageVayuresort/> */}
+          {/* <SoundPalmyrah/> */}
+          {/* <Login/> */}
+          <Home/>
+      </>
+    )
+  }
+}
