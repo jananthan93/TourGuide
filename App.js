@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
 import {StyleSheet, View} from 'react-native';
 
-import MapIntegration from './components/mapintegration';
-import Login from './components/Login';
-import CurrentLocationMap from './components/map/map';
+// import MapIntegration from './components/mapintegration';
+// import Login from './components/Login';
+// import CurrentLocationMap from './components/map/map';
+import ImagePalmyrah from './components/Palmyrah/Image/imagePalmyrah';
+import ImageVayuResort from './components/Kitesurfing/Image';
 
 export default class App extends Component {
   render() {
@@ -12,7 +14,9 @@ export default class App extends Component {
         <View style={styles.cont}>
           {/* <MapIntegration/> */}
           {/* <CurrentLocationMap/> */}
-          <Login/>
+          {/* <Login/> */}
+          <ImagePalmyrah/>
+          <ImageVayuResort/>
         </View>
       </>
     );
