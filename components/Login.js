@@ -11,7 +11,7 @@ import {
   Alert,
 } from 'react-native';
 import logo from '../assets/palmyrah.png';
-import Block from './block';
+import Block from '../common/block';
 const deviceWidth = Dimensions.get('window').width;
 const deviceHeight = Dimensions.get('window').height;
 
