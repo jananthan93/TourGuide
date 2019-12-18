@@ -12,15 +12,14 @@ import SoundPalmyrah from './components/Palmyrah/audio';
 export default class App extends Component {
   render() {
     return (
-      <><View></View>
+      <>
         <View style={styles.cont}>
           {/* <MapIntegration/> */}
           {/* <CurrentLocationMap/> */}
-          {/* <Login/> */}
           {/* <ImagePalmyrah/> */}
           {/* <ImageVayuresort/> */}
-          <SoundPalmyrah/>
-          
+          {/* <SoundPalmyrah/> */}
+          <Login/>
         </View>
       </>
     );

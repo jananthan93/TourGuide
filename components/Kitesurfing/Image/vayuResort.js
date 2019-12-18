@@ -1,35 +1,18 @@
 import React, { Component } from "react";
 import {
     View,
-<<<<<<< HEAD
     StyleSheet,
     SafeAreaView,
     Platform,
-=======
-    Text,
-    StyleSheet,
-    SafeAreaView,
-    TextInput,
-    Platform,
-    StatusBar,
->>>>>>> f275aae06997e97b28d56b5ca31a7395d088b77f
     ScrollView,
     Image,
     Dimensions
 } from "react-native";
-<<<<<<< HEAD
 import Category from '../Palmyrah/Category'
-=======
-import Category from './category'
->>>>>>> f275aae06997e97b28d56b5ca31a7395d088b77f
 
 const { height, width } = Dimensions.get('window')
 
-export default class ImagePalmyrah extends Component {
-<<<<<<< HEAD
-=======
-
->>>>>>> f275aae06997e97b28d56b5ca31a7395d088b77f
+export default class ImageVayuResort extends Component {
     render() {
         return (
             <SafeAreaView style={{ flex: 1 }}>
@@ -43,12 +26,7 @@ export default class ImagePalmyrah extends Component {
                             shadowOpacity: 0.2,
                             elevation: 1,
                             marginTop: Platform.OS == 'android' ? 30 : null
-<<<<<<< HEAD
                         }}>    
-=======
-                        }}>
-                            
->>>>>>> f275aae06997e97b28d56b5ca31a7395d088b77f
                         </View>
                     </View>
                     <ScrollView
@@ -98,7 +76,7 @@ export default class ImagePalmyrah extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: 'stretch',
+        alignItems: 'center',
         justifyContent: 'center'
     }
 });
