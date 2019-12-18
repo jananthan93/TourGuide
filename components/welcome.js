@@ -9,6 +9,10 @@ import {
 } from 'react-native';
 
 export default class Welcome extends Component {
+  static navigationOptions = {
+    header: null,
+  };
+ 
   render() {
     return (
       <View style={styles.container}>
@@ -22,7 +26,7 @@ export default class Welcome extends Component {
           <TouchableHighlight
             underlayColor="transparent"
             onPress={() => {
-              Alert.alert('Info', 'Resort');
+              this.props.navigation.navigate('palmyrahhouse');
             }}>
             <Image
               source={require('../assets/resort.png')}
@@ -32,7 +36,7 @@ export default class Welcome extends Component {
           <TouchableHighlight
             underlayColor="transparent"
             onPress={() => {
-              Alert.alert('Info', 'Kitesurfing');
+              this.props.navigation.navigate('vayuresort');
             }}>
             <Image
               source={require('../assets/kitesurfing.png')}
@@ -43,7 +47,7 @@ export default class Welcome extends Component {
         <TouchableHighlight
           underlayColor="transparent"
           onPress={() => {
-            Alert.alert('Info', 'Login Page');
+            this.props.navigation.navigate('login');
           }}>
           {/* <Text style={styles.linktext1}>LOGIN</Text> */}
           <Image

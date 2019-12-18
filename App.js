@@ -17,8 +17,8 @@ export default class App extends Component {
           {/* <ImageVayuresort/> */}
           {/* <SoundPalmyrah/> */}
           {/* <Login/> */}
-          <Welcome></Welcome>
-          {/* <Home/> */}
+          {/* <Welcome/> */}
+          <Home/>
       </>
     )
   }
