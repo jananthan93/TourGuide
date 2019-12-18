@@ -7,6 +7,7 @@ import {StyleSheet, View} from 'react-native';
 import ImagePalmyrah from './components/Palmyrah/Image/imagePalmyrah';
 import ImageVayuResort from './components/Kitesurfing/Image';
 
+
 export default class App extends Component {
   render() {
     return (
@@ -14,9 +15,14 @@ export default class App extends Component {
         <View style={styles.cont}>
           {/* <MapIntegration/> */}
           {/* <CurrentLocationMap/> */}
+<<<<<<< HEAD
           {/* <Login/> */}
           <ImagePalmyrah/>
           <ImageVayuResort/>
+=======
+          <Login/>
+          
+>>>>>>> f275aae06997e97b28d56b5ca31a7395d088b77f
         </View>
       </>
     );
