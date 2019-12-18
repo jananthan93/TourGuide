@@ -86,7 +86,7 @@ export default class ImagePalmyrah extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: 'center',
+        alignItems: 'stretch',
         justifyContent: 'center'
     }
 });
