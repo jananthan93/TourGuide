@@ -1,32 +1,25 @@
-import React, {Component} from 'react';
-import {StyleSheet, View} from 'react-native';
-
-import MapIntegration from './components/mapintegration';
-import Login from './components/Login';
-import CurrentLocationMap from './components/map/map';
-import SplashScreen from './components/splashscreen'
+import React, { Component } from 'react';
+import { View } from 'react-native';
+import Home from './components/home';
+// import ImagePalmyrah from './components/Palmyrah/Image/imagePalmyrah';
+// import ImageVayuresort from './components/VayuResort/Image/imageVayuresort';
+// import SoundPalmyrah from './components/Palmyrah/audio';
+// import CurrentLocationMap from './components/map/map';
 import Welcome from "./components/welcome"
+
 export default class App extends Component {
   render() {
     return (
       <>
-        <View style={styles.cont}>
-          {/* <MapIntegration/> */}
-          {/* <SplashScreen></SplashScreen> */}
+         {/* <MapIntegration/> */}
+          {/* <CurrentLocationMap/> */}
+          {/* <ImagePalmyrah/> */}
+          {/* <ImageVayuresort/> */}
+          {/* <SoundPalmyrah/> */}
+          {/* <Login/> */}
           <Welcome></Welcome>
-          {/* <Login/>
-          <CurrentLocationMap/> */}
-        </View>
+          {/* <Home/> */}
       </>
-    );
+    )
   }
 }
-
-const styles = StyleSheet.create({
-  cont: {
-    flex: 1,
-    alignItems: 'center',
-    backgroundColor: '#fff',
-  }
-});
-

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, {Component} from 'react';
 import {
   ScrollView,
   Text,
@@ -8,170 +8,158 @@ import {
   StyleSheet,
   TextInput,
   TouchableHighlight,
-  Alert
-} from "react-native";
-import logo from "../assets/logo.png"
-const deviceWidth = Dimensions.get("window").width;
-const deviceHeight = Dimensions.get("window").height;
-
+  Alert,
+} from 'react-native';
+import logo from '../assets/palmyrah.png';
+import Block from './block';
+const deviceWidth = Dimensions.get('window').width;
+const deviceHeight = Dimensions.get('window').height;
 
 export default class Login extends Component {
   static navigationOptions = {
-    header:null
-    }
-      state = {
-      usernameInputTxt: "",
-      passwordInputTxt: ""
-    };
-  
+    header: null,
+  };
+  state = {
+    usernameInputTxt: '',
+    passwordInputTxt: '',
+  };
 
-    _checkLogin() {
-      const { usernameInputTxt, passwordInputTxt } = this.state
-      if (usernameInputTxt == "admin" && passwordInputTxt == "admin") {
-          this.props.navigation.navigate('todo')
-      } else {
-          Alert.alert('Error', 'Username/Password mismatch', [{
-              text: 'close'
-          }])
-      }
-  }
-  
-  _submit() {
-    if (this.state.usernameInputTxt === "") {
-      Alert.alert("Failed", "Username is required"), [{ text: "Okay" }];
+  checkLogin = () => {
+    const {usernameInputTxt, passwordInputTxt} = this.state;
+    if (usernameInputTxt == 'admin' && passwordInputTxt == 'admin') {
+      this.props.navigation.navigate('location');
+    } else {
+      Alert.alert('Error', 'Username/Password mismatch', [
+        {
+          text: 'Okay',
+        },
+      ]);
+    }
+  };
+
+  submit = () => {
+    if (this.state.usernameInputTxt === '') {
+      Alert.alert('Failed', 'Username is required'), [{text: 'Okay'}];
       return;
     }
-    if (this.state.passwordInputTxt === "") {
-      Alert.alert("Failed", "Password is required"), [{ text: "Okay" }];
+    if (this.state.passwordInputTxt === '') {
+      Alert.alert('Failed', 'Password is required'), [{text: 'Okay'}];
       return;
     }
-    
-  }
+  };
   render() {
     return (
-      <View style={styles.container}>
-        <ScrollView>
-          <View
-            style={{
-              height: deviceHeight,
-              width: deviceWidth,
-              alignItems: "center",
-              justifyContent: "center"
-            }}
-          >
-            <View style={styles.imageContainer}>
-              <Image
-                resizeMode="contain"
-                source={logo}
-                style={styles.image}
-              />
-            </View>
-            <View style={styles.formContainer}>
-              <TextInput
-                style={styles.textInputStyle}
-                placeholder="User Name"
-                returnKeyType={"next"}
-                autoCapitalize="none"
-                autoCorrect={false}
-                onSubmitEditing={event => {
-                  this.refs.passwordTextInputRef.focus();
-                }}
-                onChangeText={username =>
-                  this.setState({ usernameInputTxt: username })
-                }
-                value={this.state.usernameInputTxt}
-              />
-              <View style={styles.textInputBottomLine} />
-              <TextInput
-                ref="passwordTextInputRef"
-                style={[styles.textInputStyle, { marginTop: 10 }]}
-                placeholder="Password"
-                returnKeyType="go"
-                autoCapitalize="none"
-                secureTextEntry={true}
-                autoCorrect={false}
-                onChangeText={passwordInputTxt =>
-                  this.setState({ passwordInputTxt })
-                }
-                value={this.state.passwordInputTxt}
-                onSubmitEditing={event => {
-                  this._submit();
-                }}
-              />
-              <View style={styles.textInputBottomLine} />
-              <TouchableHighlight
-                style={styles.button}
-                underlayColor="transparent"
-                onPress={() => this._checkLogin()}
-              >
-                <Text style={styles.buttonText}>Login</Text>
-              </TouchableHighlight>
+      <Block flex={1} style={styles.container} center>
+        <Block flex={1} row >
+          <Image
+            source={require('../assets/VayuResort/3.png')}
+            style={{width: 400, height: 300, marginRight: 250, zIndex: -1}}
+          />
+        </Block>
+        <Block flex={3} card center color="gray" style={{marginBottom: 60}}>
+          <Block flex={1} center style={{marginTop: 50,height:150}}>
+            <Image source={logo} style={{marginLeft: 7}} />
+          </Block>
+          <Block flex={2} center>
+            <TextInput
+              style={styles.textInputStyle}
+              placeholder="User Name"
+              returnKeyType={'next'}
+              autoCapitalize="none"
+              autoCorrect={false}
+              onSubmitEditing={() => {
+                this.refs.passwordTextInputRef.focus();
+              }}
+              onChangeText={username =>
+                this.setState({usernameInputTxt: username})
+              }
+              value={this.state.usernameInputTxt}
+            />
+            <Block style={styles.textInputBottomLine} />
+            <TextInput
+              ref="passwordTextInputRef"
+              style={[styles.textInputStyle, {marginTop: 10}]}
+              placeholder="Password"
+              returnKeyType="go"
+              autoCapitalize="none"
+              secureTextEntry={true}
+              autoCorrect={false}
+              onChangeText={passwordInputTxt =>
+                this.setState({passwordInputTxt})
+              }
+              value={this.state.passwordInputTxt}
+              onSubmitEditing={event => {
+                this.submit();
+              }}
+            />
+            <Block style={styles.textInputBottomLine} />
 
-              <TouchableHighlight
-                style={styles.buttonSignup}
-                underlayColor={"transparent"}
-                onPress={() => {
-                  Alert.alert("Info", "Forgot password clicked"),
-                    [{ text: "Okay" }];
-                }}
-              >
-                <Text style={[styles.buttonTextSignup, { color: "#6D6E70" }]}>
-                  Forgot Password?
-                </Text>
-              </TouchableHighlight>
+            <TouchableHighlight
+              style={styles.button}
+              underlayColor="transparent"
+              onPress={() => this.checkLogin()}>
+              <Text style={styles.buttonText}>Login</Text>
+            </TouchableHighlight>
 
-              <TouchableHighlight
-                style={styles.buttonSignup}
-                underlayColor={"transparent"}
-                onPress={() => {
-                  Alert.alert("Info", "Don't have account clicked"),
-                    [{ text: "Okay" }];
-                }}
-              >
-                <Text style={[styles.buttonTextSignup, { color: "#6D6E70" }]}>
-                  Don't have account? Click here
-                </Text>
-              </TouchableHighlight>
-            </View>
-          </View>
-        </ScrollView>
-      </View>
+            <TouchableHighlight
+              style={styles.buttonSignup}
+              underlayColor={'transparent'}
+              onPress={() => {
+                Alert.alert('Info', 'Forgot password clicked'),
+                  [{text: 'Okay'}];
+              }}>
+              <Text style={[styles.buttonTextSignup, {color: 'primary'}]}>
+                Forgot Password?
+              </Text>
+            </TouchableHighlight>
+
+            <TouchableHighlight
+              style={styles.buttonSignup}
+              underlayColor={'transparent'}
+              onPress={() => {
+                Alert.alert('Info', "Don't have account clicked"),
+                  [{text: 'Okay'}];
+              }}>
+              <Text style={[styles.buttonTextSignup, {color: 'primary'}]}>
+                Don't have account? Click here
+              </Text>
+            </TouchableHighlight>
+          </Block>
+        </Block>
+        <Block flex={1} row>
+          <Image  source={require("../assets/VayuResort/2.png")} style={{width:130,height:100,marginTop:20}}/>
+          <Image  source={require("../assets/VayuResort/2.png")} style={{width:130,height:100,marginTop:20}}/> 
+          <Image  source={require("../assets/VayuResort/2.png")} style={{width:130,height:100,marginTop:20}}/> 
+        </Block>
+      </Block>
     );
   }
 }
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#ffffff',
+    height: deviceHeight,
+    width: deviceWidth,
+    backgroundColor: '#1e88a2',
   },
-  imageContainer: {
-    alignItems: 'center',
-  },
-  image: {
-    width: 300,
-    height: 120,
-    marginTop: 30,
-  },
-  formContainer: {
-    marginTop: 30,
-    paddingHorizontal: 30,
-  },
+
   textInputStyle: {
     height: 40,
-    fontSize: 16,
-    paddingLeft:5,
+    fontSize: 15,
     color: 'black',
   },
   textInputBottomLine: {
     height: 1,
-    backgroundColor:  '#E6E7E9',
+    marginLeft:30,
+    marginRight:30,
+    width: 150,
+    backgroundColor: 'black',
   },
   button: {
     height: 40,
-    width: 300,
+    width: 100,
+    marginTop:20,
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 60,
     borderRadius: 5,
     borderWidth: 2,
     borderColor: '#057DC1',
@@ -184,18 +172,19 @@ const styles = StyleSheet.create({
   buttonSignup: {
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 30,
+    marginTop: 10,
   },
   buttonTextSignup: {
-    fontSize: 12,
+    fontSize: 14,
+    marginTop: 10,
   },
   viewTextRights: {
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 75,
+    marginTop: 15,
   },
   textRights: {
-    fontSize: 10,
-    color: '#A3BF3A',
+    fontSize: 12,
+    color: 'black',
   },
 });
