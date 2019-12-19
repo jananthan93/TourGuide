@@ -6,7 +6,7 @@ import Home from './components/home';
 // import SoundPalmyrah from './components/Palmyrah/audio';
 // import CurrentLocationMap from './components/map/map';
 import Welcome from "./components/welcome"
-
+import SplashScreen from "./components/splashscreen"
 export default class App extends Component {
   render() {
     return (
@@ -18,6 +18,7 @@ export default class App extends Component {
           {/* <SoundPalmyrah/> */}
           {/* <Login/> */}
           <Welcome></Welcome>
+          {/* <SplashScreen></SplashScreen> */}
           {/* <Home/> */}
       </>
     )
