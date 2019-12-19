@@ -11,14 +11,12 @@ import {
   Alert,
 } from 'react-native';
 import logo from '../assets/palmyrah.png';
-import Block from './block';
+import Block from '../common/block';
 const deviceWidth = Dimensions.get('window').width;
 const deviceHeight = Dimensions.get('window').height;
 
 export default class Login extends Component {
-  static navigationOptions = {
-    header: null,
-  };
+  
   state = {
     usernameInputTxt: '',
     passwordInputTxt: '',
@@ -56,8 +54,8 @@ export default class Login extends Component {
             style={{width: 400, height: 300, marginRight: 250, zIndex: -1}}
           />
         </Block>
-        <Block flex={3} card center color="gray" style={{marginBottom: 60}}>
-          <Block flex={1} center style={{marginTop: 50,height:150}}>
+        <Block flex={3} card center color="gray" >
+          <Block flex={1} center style={{marginTop: 20,height:150}}>
             <Image source={logo} style={{marginLeft: 7}} />
           </Block>
           <Block flex={2} center>
@@ -126,11 +124,12 @@ export default class Login extends Component {
             </TouchableHighlight>
           </Block>
         </Block>
-        <Block flex={1} row>
+        <Block flex={1} row space='between'>
           <Image  source={require("../assets/VayuResort/2.png")} style={{width:130,height:100,marginTop:20}}/>
           <Image  source={require("../assets/VayuResort/2.png")} style={{width:130,height:100,marginTop:20}}/> 
           <Image  source={require("../assets/VayuResort/2.png")} style={{width:130,height:100,marginTop:20}}/> 
         </Block>
+        <Text style={styles.footer}>@2019 info@palmyrah.com</Text>
       </Block>
     );
   }
@@ -141,7 +140,11 @@ const styles = StyleSheet.create({
     width: deviceWidth,
     backgroundColor: '#1e88a2',
   },
-
+  footer: {
+    fontSize: 12,
+    color: 'white',
+    paddingBottom: 10,
+  },
   textInputStyle: {
     height: 40,
     fontSize: 15,

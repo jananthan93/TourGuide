@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
-import Home from './components/home';
+import Home from './common/home';
 // import ImagePalmyrah from './components/Palmyrah/Image/imagePalmyrah';
 // import ImageVayuresort from './components/VayuResort/Image/imageVayuresort';
 // import SoundPalmyrah from './components/Palmyrah/audio';
-// import CurrentLocationMap from './components/map/map';
+// import CurrentLocationMap from './components/map';
 import Welcome from "./components/welcome"
 import SplashScreen from "./components/splashscreen"
 export default class App extends Component {
@@ -20,6 +20,7 @@ export default class App extends Component {
           <Welcome></Welcome>
           {/* <SplashScreen></SplashScreen> */}
           {/* <Home/> */}
+          <Home/>
       </>
     )
   }
