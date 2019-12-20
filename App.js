@@ -20,7 +20,7 @@ export default class App extends Component {
           {/* <ImageVayuresort/> */}
           {/* <SoundPalmyrah/> */}
           {/* <Login/> */}
-          {/* <Welcome></Welcome> */}
+          {/* <Welcome/> */}
           {/* <SplashScreen></SplashScreen> */}
           <Home/>
           {/* <SearchMap></SearchMap> */}

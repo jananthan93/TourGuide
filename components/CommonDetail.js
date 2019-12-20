@@ -10,10 +10,10 @@ import {
 } from 'react-native';
 import Block from '../common/block';
 const array =[
-    {id:1,content:"HISTORY",imageSrc:require('../assets/map.png'), route:'history'},
-    {id:2,content:"IMAGES",imageSrc:require('../assets/map.png'),route:'image'},
-    {id:2,content:"AUDIO",imageSrc:require('../assets/map.png'),route:''},
-    {id:3,content:"VEDIOS",imageSrc:require('../assets/map.png'),route:'vedio'},
+    {id:1,content:"HISTORY",imageSrc:require('../assets/about/history.png'), route:'history'},
+    {id:2,content:"IMAGES",imageSrc:require('../assets/about/image.png'),route:'image'},
+    {id:2,content:"AUDIO",imageSrc:require('../assets/about/sound.png'),route:''},
+    {id:3,content:"VEDIOS",imageSrc:require('../assets/about/vedio.png'),route:'vedio'},
 ]
 export default class CommonDetail extends Component {
     
@@ -62,13 +62,13 @@ export default class CommonDetail extends Component {
                     fontWeight: 'bold',
                     color: 'white',
                     textAlign: 'left',
-                    marginTop: 20,
+                    marginTop: 10,
                     width: 85,
                   }}>
                   {obj.content}
                 </Text>
                 <TouchableHighlight
-                  style={{marginTop: 20}}
+                  style={{marginTop: 10}}
                   // underlayColor={'transparent'}
                   onPress={() => {this.props.navigation.navigate(obj.route)}}
                 >
