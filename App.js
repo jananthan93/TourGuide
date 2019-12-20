@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import Home from './common/home';
 // import ImagePalmyrah from './components/Palmyrah/Image/imagePalmyrah';
 // import ImageVayuresort from './components/VayuResort/Image/imageVayuresort';
-// import SoundPalmyrah from './components/Palmyrah/audio';
+// import SoundModal from './components/Palmyrah/Sound/soundModal';
 // import CurrentLocationMap from './components/map';
 import SplashScreen from "./components/splashscreen"
 import Welcome from "./components/welcome"
@@ -18,7 +18,7 @@ export default class App extends Component {
           {/* <CurrentLocationMap/> */}
           {/* <ImagePalmyrah/> */}
           {/* <ImageVayuresort/> */}
-          {/* <SoundPalmyrah/> */}
+          {/* <SoundModal/> */}
           {/* <Login/> */}
           {/* <Welcome/> */}
           {/* <SplashScreen></SplashScreen> */}
