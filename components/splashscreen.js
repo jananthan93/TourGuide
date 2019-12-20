@@ -5,7 +5,6 @@ import {
   View,
   Text,
   Image,
-  AppRegistry,
   Animated,
   Easing,
 } from 'react-native';
@@ -39,10 +38,13 @@ export default class SplashScreen extends Component {
     this.animatedValue.setValue(0);
     Animated.timing(this.animatedValue, {
       toValue: 1,
-      duration: 2000,
+      duration: 1000,
       easing: Easing.linear,
     }).start(() => this.animate());
   }
+  static navigationOptions = {
+    header: null,
+  };
 
   render() {
     // const rotateX = this.animatedValue.interpolate({
@@ -56,6 +58,7 @@ export default class SplashScreen extends Component {
 
     let Splash_Screen = (
       <View style={styles.SplashScreen_RootView}>
+        
         <View style={styles.SplashScreen_ChildView}>
         <Animated.View
             style={{
@@ -100,8 +103,9 @@ const styles = StyleSheet.create({
   SplashScreen_ChildView: {
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#00BCD4',
+    backgroundColor: '#1E88A2',
     flex: 1,
+    
   },
   headerText: {
     fontSize: 25,
