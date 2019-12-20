@@ -8,24 +8,14 @@ import {
   SafeAreaView,
 } from 'react-native';
 import Sound from 'react-native-sound';
+import Icon from "react-native-vector-icons/Ionicons";
  
-//List of the dummy sound track
 const audioList = [
   {
-    title: 'MP3',
+    title: 'Play MP3 ',
     isRequire: true,
-    url: require('../../assets/Palmyrah/Audio/mp3.mp3'),
-  },
-//   {
-//     title: 'AAC',
-//     isRequire: true,
-//     url: require('../Asset/Audio/pew2.aac'),
-//   },
-//   {
-//     title: 'WAV',
-//     isRequire: true,
-//     url: require('../Asset/Audio/frog.wav'),
-//   },
+    url: require('../../../assets/Palmyrah/Audio/mp3.mp3'),
+  }
 ];
  
 var sound1, sound2, sound3, sound4, sound5, sound6;
@@ -51,7 +41,8 @@ function playSound(item, index) {
         sound2.release();
       });
     });
-  } else if (index == 2) {
+  } 
+  else if (index == 2) {
     sound3 = new Sound(item.url, (error, sound) => {
       if (error) {
         alert('error' + error.message);
@@ -145,24 +136,30 @@ export default class SoundPalmyrah extends Component {
       <SafeAreaView style={{ flex: 1 }}>
         <View style={styles.container}>
           <Text style={styles.headerTitle}>
-            Palmarah Hotel - Mannar
+            Click here
           </Text>
           <ScrollView style={styles.container}>
             {audioList.map((item, index) => {
               return (
                 <View style={styles.feature} key={item.title}>
-                  <Text style={{ flex: 1, fontSize: 14 }}>{item.title}</Text>
+                  <Text style={{fontSize: 14 }}>{item.title}</Text>
+                  <Text>{' '}{' '}{' '}{' '}</Text>
                   <TouchableOpacity
                     onPress={() => {
                       return playSound(item, index);
                     }}>
-                    <Text style={styles.buttonPlay}>Play</Text>
+                    <Text style={styles.buttonPlay}>
+                    <Icon name="ios-play-circle" size={40} />
+                    </Text>
                   </TouchableOpacity>
+                  <Text>{' '}{' '}{' '}{' '}</Text>
                   <TouchableOpacity
                     onPress={() => {
                       return stopSound(item, index);
                     }}>
-                    <Text style={styles.buttonStop}>Stop</Text>
+                    <Text style={styles.buttonStop}>
+                    <Icon name="ios-pause" size={40}/>
+                    </Text>
                   </TouchableOpacity>
                 </View>
               );
@@ -177,43 +174,33 @@ export default class SoundPalmyrah extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    
   },
   headerTitle: {
-    fontSize: 16,
-    color: 'white',
+    fontSize: 18,
+    color: 'black',
     fontWeight: 'bold',
     paddingVertical: 20,
     textAlign: 'center',
-    backgroundColor: 'rgba(00,00,80,1)',
   },
   buttonPlay: {
-    fontSize: 16,
-    color: 'white',
-    backgroundColor: 'rgba(00,80,00,1)',
-    borderWidth: 1,
-    borderColor: 'rgba(80,80,80,0.5)',
+    fontSize: 10,
+    color: '#00203FFF',
     overflow: 'hidden',
-    paddingHorizontal: 15,
-    paddingVertical: 7,
+    
   },
   buttonStop: {
-    fontSize: 16,
-    color: 'white',
-    backgroundColor: 'rgba(80,00,00,1)',
-    borderWidth: 1,
-    borderColor: 'rgba(80,80,80,0.5)',
-    overflow: 'hidden',
-    paddingHorizontal: 15,
-    paddingVertical: 7,
+    fontSize: 10,
+    color: '#00203FFF',
   },
   feature: {
     flexDirection: 'row',
-    padding: 10,
+    padding: 1,
     alignSelf: 'stretch',
     alignItems: 'center',
     borderTopWidth: 1,
-    borderTopColor: 'rgb(180,180,180)',
-    borderBottomWidth: 1,
-    borderBottomColor: 'rgb(230,230,230)',
+    // borderTopColor: 'rgb(180,180,180)',
+    // borderBottomWidth: 1,
+    // borderBottomColor: 'rgb(230,230,230)',
   },
 });
