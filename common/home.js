@@ -6,7 +6,7 @@ import CurrentLocationMap from '../components/map';
 import Welcome from '../components/welcome';
 import VayuResort from '../components/VayuResort';
 import PalmyrahHouse from '../components/PalmyrahHouse';
-import History from '../components/History';
+import History from '../components/VayuResort/VayuResortHistory';
 import SplashScreen from '../components/splashscreen';
 import PalmyrahImage from '../components/Palmyrah/PalmyrahImage';
 
