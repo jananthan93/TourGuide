@@ -34,7 +34,6 @@ export default () => {
         />
           </View>
         <View>
-            
         <Text style={styles.headerText}>Palmyrah Tourist Guide</Text>
         </View>
       </FadeInView>

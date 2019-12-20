@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import Block from '../common/block';
 const array =[
-    {id:1,content:"HISTORY",imageSrc:require('../assets/map.png'), route:'history'},
+    {id:1,content:"HISTORY",imageSrc:require('../assets/about/history.png'), route:'history'},
     {id:2,content:"IMAGES",imageSrc:require('../assets/map.png'),route:'image'},
     {id:2,content:"AUDIO",imageSrc:require('../assets/map.png'),route:''},
     {id:3,content:"VEDIOS",imageSrc:require('../assets/map.png'),route:'vedio'},

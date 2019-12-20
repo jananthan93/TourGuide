@@ -24,7 +24,7 @@ export default class Login extends Component {
 
   checkLogin = () => {
     const {usernameInputTxt, passwordInputTxt} = this.state;
-    if (usernameInputTxt == 'admin' && passwordInputTxt == 'admin') {
+    if (usernameInputTxt == '' && passwordInputTxt == '') {
       this.props.navigation.navigate('location');
     } else {
       Alert.alert('Error', 'Username/Password mismatch', [
@@ -55,7 +55,7 @@ export default class Login extends Component {
           />
         </Block>
         <Block flex={3} card center color="gray" >
-          <Block flex={1} center style={{marginTop: 20,height:150}}>
+          <Block flex={0.7} center style={{marginTop: 20,height:100}}>
             <Image source={logo} style={{marginLeft: 7}} />
           </Block>
           <Block flex={2} center>
