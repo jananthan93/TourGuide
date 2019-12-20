@@ -9,7 +9,7 @@ import PalmyrahHouse from '../components/PalmyrahHouse';
 import History from '../components/History';
 import SplashScreen from '../components/splashscreen';
 import PalmyrahImage from '../components/Palmyrah/PalmyrahImage';
-
+import VideoStream from '../components/video/videostream'
 const MainNavigator = createStackNavigator({
   splash:{screen:SplashScreen},
   welcome:{screen:Welcome},
@@ -18,6 +18,7 @@ const MainNavigator = createStackNavigator({
   vayuresort:{screen: VayuResort},
   palmyrahhouse:{screen: PalmyrahHouse},
   history:{screen: History},
+  vedio:{screen:VideoStream},
   // vedio:{screen: VedioComponent},
   image:{screen: PalmyrahImage},
 });
