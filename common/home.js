@@ -8,6 +8,7 @@ import VayuResort from '../components/VayuResort';
 import PalmyrahHouse from '../components/PalmyrahHouse';
 import History from '../components/History';
 import SplashScreen from '../components/splashscreen';
+import PalmyrahImage from '../components/Palmyrah/PalmyrahImage';
 
 const MainNavigator = createStackNavigator({
   splash:{screen:SplashScreen},
@@ -18,7 +19,7 @@ const MainNavigator = createStackNavigator({
   palmyrahhouse:{screen: PalmyrahHouse},
   history:{screen: History},
   // vedio:{screen: VedioComponent},
-  // image:{screen: ImageContainer},
+  image:{screen: PalmyrahImage},
 });
 
 const Home = createAppContainer(MainNavigator);

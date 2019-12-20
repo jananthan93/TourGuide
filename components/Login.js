@@ -76,7 +76,7 @@ export default class Login extends Component {
             <Block style={styles.textInputBottomLine} />
             <TextInput
               ref="passwordTextInputRef"
-              style={[styles.textInputStyle, {marginTop: 10}]}
+              style={[styles.textInputStyle]}
               placeholder="Password"
               returnKeyType="go"
               autoCapitalize="none"
@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
   footer: {
     fontSize: 12,
     color: 'white',
-    paddingBottom: 10,
+    paddingBottom: 5,
   },
   textInputStyle: {
     height: 40,
@@ -175,11 +175,11 @@ const styles = StyleSheet.create({
   buttonSignup: {
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 10,
+    marginTop: 5,
   },
   buttonTextSignup: {
     fontSize: 14,
-    marginTop: 10,
+    marginTop: 5,
   },
   viewTextRights: {
     alignItems: 'center',

@@ -14,7 +14,7 @@ import CommonDetail from './CommonDetail';
 export default class PalmyrahHouse extends Component {
   render() {
     return (
-      <CommonDetail Image={PalmyrahImage} title={'Palmyra House'}>
+      <CommonDetail navigation={this.props.navigation} Image={PalmyrahImage} title={'Palmyra House'}>
          Palmyrah House provides everything guests need to stay refreshed,
        whether it be swimming pools, traditional well baths or trips to the
       beach. Enjoy our delicious local cuisine, made from the freshest

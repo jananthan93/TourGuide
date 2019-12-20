@@ -12,12 +12,12 @@ import Block from '../common/block';
 const array =[
     {id:1,content:"HISTORY",imageSrc:require('../assets/about/history.png'), route:'history'},
     {id:2,content:"IMAGES",imageSrc:require('../assets/about/image.png'),route:'image'},
-    {id:2,content:"AUDIO",imageSrc:require('../assets/about/sound.png'),route:''},
+    {id:2,content:"AUDIO",imageSrc:require('../assets/about/sound.png'),route:'sound'},
     {id:3,content:"VEDIOS",imageSrc:require('../assets/about/vedio.png'),route:'vedio'},
 ]
 export default class CommonDetail extends Component {
-    
   render() {
+    const {navigation}=this.props;
     return (
       <Block flex={1} style={{backgroundColor: '#1E88A2'}}>
         <Block flex={1}>
@@ -70,8 +70,9 @@ export default class CommonDetail extends Component {
                 <TouchableHighlight
                   style={{marginTop: 10}}
                   // underlayColor={'transparent'}
-                  onPress={() => {this.props.navigation.navigate(obj.route)}}
-                >
+                  onPress={() => {
+                    navigation.navigate(obj.route);
+                  }}>
                   <Image
                     source={obj.imageSrc}
                     style={{width: 30, height: 30}}
