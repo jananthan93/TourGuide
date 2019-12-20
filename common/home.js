@@ -7,8 +7,10 @@ import Welcome from '../components/welcome';
 import VayuResort from '../components/VayuResort';
 import PalmyrahHouse from '../components/PalmyrahHouse';
 import History from '../components/History';
+import SplashScreen from '../components/splashscreen';
 
 const MainNavigator = createStackNavigator({
+  splash:{screen:SplashScreen},
   welcome:{screen:Welcome},
   login: {screen: Login},
   location: {screen: CurrentLocationMap},

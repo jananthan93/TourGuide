@@ -5,8 +5,11 @@ import Home from './common/home';
 // import ImageVayuresort from './components/VayuResort/Image/imageVayuresort';
 // import SoundPalmyrah from './components/Palmyrah/audio';
 // import CurrentLocationMap from './components/map';
-import Welcome from "./components/welcome"
 import SplashScreen from "./components/splashscreen"
+import Welcome from "./components/welcome"
+import SearchMap from "./components/searchmap"
+import ModalWindow from "./common/modalwindow"
+
 export default class App extends Component {
   render() {
     return (
@@ -17,10 +20,11 @@ export default class App extends Component {
           {/* <ImageVayuresort/> */}
           {/* <SoundPalmyrah/> */}
           {/* <Login/> */}
-          <Welcome></Welcome>
+          {/* <Welcome></Welcome> */}
           {/* <SplashScreen></SplashScreen> */}
-          {/* <Home/> */}
           <Home/>
+          {/* <SearchMap></SearchMap> */}
+          {/* <ModalWindow></ModalWindow> */}
       </>
     )
   }
