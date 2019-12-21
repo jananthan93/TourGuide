@@ -9,6 +9,7 @@ import {
   Alert,
 } from 'react-native';
 import Block from '../common/block';
+import Footer from '../common/footer';
 const array = [
   {
     id: 1,
@@ -85,6 +86,9 @@ export default class CommonDetail extends Component {
                 color: 'white',
                 textAlign: 'center',
                 marginTop: 20,
+                textShadowColor: 'blue',
+                textShadowOffset: {width: 5, height: 4},
+                textShadowRadius: 5,
               }}>
               {this.props.title}
             </Text>
@@ -98,6 +102,8 @@ export default class CommonDetail extends Component {
               color: 'white',
               textAlign: 'left',
               margin: 20,
+              textShadowColor: 'black',
+              textShadowRadius: 5,
             }}>
             {this.props.children}
           </Text>
@@ -118,6 +124,9 @@ export default class CommonDetail extends Component {
                       textAlign: 'left',
                       marginTop: 10,
                       width: 85,
+                      textShadowColor: 'blue',
+                      textShadowOffset: {width: 5, height: 4},
+                      textShadowRadius: 5,
                     }}>
                     {obj.content}
                   </Text>
@@ -136,6 +145,9 @@ export default class CommonDetail extends Component {
               ))}
             </Block>
           </ImageBackground>
+        </Block>
+        <Block center>
+          <Footer />
         </Block>
       </Block>
     );

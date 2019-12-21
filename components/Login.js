@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import logo from '../assets/palmyrah.png';
 import Block from '../common/block';
+import Footer from '../common/footer';
 const deviceWidth = Dimensions.get('window').width;
 const deviceHeight = Dimensions.get('window').height;
 
@@ -129,7 +130,8 @@ export default class Login extends Component {
           <Image  source={require("../assets/VayuResort/2.png")} style={{width:130,height:100,marginTop:20}}/> 
           <Image  source={require("../assets/VayuResort/2.png")} style={{width:130,height:100,marginTop:20}}/> 
         </Block>
-        <Text style={styles.footer}>@2019 info@palmyrah.com</Text>
+        {/* <Text style={styles.footer}>@2019 info@palmyrah.com</Text> */}
+        <Footer/>
       </Block>
     );
   }
@@ -140,11 +142,11 @@ const styles = StyleSheet.create({
     width: deviceWidth,
     backgroundColor: '#1e88a2',
   },
-  footer: {
-    fontSize: 12,
-    color: 'white',
-    paddingBottom: 5,
-  },
+  // footer: {
+  //   fontSize: 12,
+  //   color: 'white',
+  //   paddingBottom: 5,
+  // },
   textInputStyle: {
     height: 40,
     fontSize: 15,

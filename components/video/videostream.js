@@ -26,6 +26,7 @@ export default class VideoStream extends Component {
           // onEnd={() => { Alert.alert('onEnd!') }}
           repeat={false}
           controls={true}
+      
         />
       </View>
     );
@@ -41,5 +42,7 @@ const styles = StyleSheet.create({
     left: 0,
     bottom: 0,
     right: 0,
+    borderWidth:2,
+    backgroundColor:"#1E88A2"
   },
 });
