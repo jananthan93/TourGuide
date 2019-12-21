@@ -67,7 +67,7 @@ export default class CommonDetail extends Component {
         if (this.props.title === 'Palmyra House') {
           this.props.navigation.navigate(route, {vedioSrc:require('../assets/Palmyrah/Video/palmyrah.mp4') });
         } else {
-          this.props.navigation.navigate(route, {vedioSrc:require('../assets/video/kite.mp4') });
+          this.props.navigation.navigate(route, {vedioSrc:require('../assets/VayuResort/video/vayu.mp4') });
         }
       }
     }
