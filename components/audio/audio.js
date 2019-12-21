@@ -8,7 +8,7 @@ import {
   SafeAreaView,
 } from 'react-native';
 import Sound from 'react-native-sound';
-import Icon from "react-native-vector-icons/Ionicons";
+import Icon from "react-native-ionicons";
  
 const audioList = [
   {
@@ -18,109 +18,7 @@ const audioList = [
   }
 ];
  
-var sound1, sound2, sound3, sound4, sound5, sound6;
- 
-function playSound(item, index) {
-  if (index == 0) {
-    sound1 = new Sound(item.url, (error, sound) => {
-      if (error) {
-        alert('error' + error.message);
-        return;
-      }
-      sound1.play(() => {
-        sound1.release();
-      });
-    });
-  } else if (index == 1) {
-    sound2 = new Sound(item.url, '', (error, sound) => {
-      if (error) {
-        alert('error' + error.message);
-        return;
-      }
-      sound2.play(() => {
-        sound2.release();
-      });
-    });
-  } 
-  else if (index == 2) {
-    sound3 = new Sound(item.url, (error, sound) => {
-      if (error) {
-        alert('error' + error.message);
-        return;
-      }
-      sound3.play(() => {
-        sound3.release();
-      });
-    });
-  } else if (index == 3) {
-    sound4 = new Sound(item.url, '', (error, sound) => {
-      if (error) {
-        alert('error' + error.message);
-        return;
-      }
-      sound4.play(() => {
-        sound4.release();
-      });
-    });
-  } else if (index == 4) {
-    sound5 = new Sound(item.url, (error, sound) => {
-      if (error) {
-        alert('error' + error.message);
-        return;
-      }
-      sound5.play(() => {
-        sound5.release();
-      });
-    });
-  } else if (index == 5) {
-    sound6 = new Sound(item.url, '', (error, sound) => {
-      if (error) {
-        alert('error' + error.message);
-        return;
-      }
-      sound6.play(() => {
-        sound6.release();
-      });
-    });
-  }
-}
- 
-function stopSound(item, index) {
-  if (index == 0 && sound1) {
-    sound1.stop(() => {
-      console.log('Stop');
-    });
-  } else if (index == 1 && sound2) {
-    sound2.stop(() => {
-      console.log('Stop');
-    });
-  } else if (index == 2 && sound3) {
-    sound3.stop(() => {
-      console.log('Stop');
-    });
-  } else if (index == 3 && sound4) {
-    sound4.stop(() => {
-      console.log('Stop');
-    });
-  } else if (index == 4 && sound5) {
-    sound5.stop(() => {
-      console.log('Stop');
-    });
-  } else if (index == 5 && sound6) {
-    sound6.stop(() => {
-      console.log('Stop');
-    });
-  }
-}
- 
-function componentWillUnmount() {
-  sound1.release();
-  sound2.release();
-  sound3.release();
-  sound4.release();
-  sound5.release();
-  sound6.release();
-}
+let sound1;
  
 export default class SoundPalmyrah extends Component {
   constructor(props) {
@@ -130,13 +28,37 @@ export default class SoundPalmyrah extends Component {
       tests: {},
     };
   }
- 
+  
+    playSound=(item, index)=> {
+      if (index == 0) {
+        sound1 = new Sound(item.url, (error, sound) => {
+          if (error) {
+            alert('error' + error.message);
+            return;
+          }
+          sound1.play(() => {
+            sound1.release();
+          });
+        });
+      } 
+    }
+      
+    stopSound=(item, index)=> {
+      if (index == 0 && sound1) {
+        sound1.stop(() => {
+          console.log('Stop');
+        });
+    }
+    }
+    componentWillUnmount() {
+      sound1.release();
+    }
   render() {
     return (
       <SafeAreaView style={{ flex: 1 }}>
         <View style={styles.container}>
           <Text style={styles.headerTitle}>
-            Click here
+            History of Palmyrah
           </Text>
           <ScrollView style={styles.container}>
             {audioList.map((item, index) => {
@@ -146,10 +68,10 @@ export default class SoundPalmyrah extends Component {
                   <Text>{' '}{' '}{' '}{' '}</Text>
                   <TouchableOpacity
                     onPress={() => {
-                      return playSound(item, index);
+                      return this.playSound(item, index);
                     }}>
                     <Text style={styles.buttonPlay}>
-                    <Icon name="ios-play-circle" size={40} />
+                    <Icon name="play" size={40} />
                     </Text>
                   </TouchableOpacity>
                   <Text>{' '}{' '}{' '}{' '}</Text>
@@ -158,7 +80,7 @@ export default class SoundPalmyrah extends Component {
                       return stopSound(item, index);
                     }}>
                     <Text style={styles.buttonStop}>
-                    <Icon name="ios-pause" size={40}/>
+                    <Icon name="pause" size={40}/>
                     </Text>
                   </TouchableOpacity>
                 </View>
@@ -174,7 +96,6 @@ export default class SoundPalmyrah extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    
   },
   headerTitle: {
     fontSize: 18,
@@ -203,4 +124,4 @@ const styles = StyleSheet.create({
     // borderBottomWidth: 1,
     // borderBottomColor: 'rgb(230,230,230)',
   },
-});
+})
