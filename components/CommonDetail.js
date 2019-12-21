@@ -81,7 +81,7 @@ export default class CommonDetail extends Component {
           });
         } else {
           this.props.navigation.navigate(route, {
-            vedioSrc: require('../assets/VayuResort/video/vayu.mp4'),
+            vedioSrc: require('../assets/video/kite.mp4'),
           });
         }
       }
@@ -165,14 +165,13 @@ export default class CommonDetail extends Component {
               </Block>
             </Block>
             <Block flex={3}>
-              <Modal
+              {/* <Modal
                 animationType={'fade'}
                 transparent={true}
                 visible={this.state.isVisible}
                 onRequestClose={() => {
                   console.log('Modal has been closed.');
                 }}>
-                {/*All views of Modal*/}
                 <Block flex={false} style={styles.modal}>
                   <SoundPalmyrah />
                   <Button
@@ -182,7 +181,7 @@ export default class CommonDetail extends Component {
                     }}
                   />
                 </Block>
-              </Modal>
+              </Modal> */}
             </Block>
           </ImageBackground>
         </Block>
