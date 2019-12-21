@@ -7,12 +7,13 @@ import {
   TouchableHighlight,
   Alert,
 } from 'react-native';
+import Footer from '../common/footer';
 
 export default class Welcome extends Component {
   static navigationOptions = {
     header: null,
   };
- 
+
   render() {
     return (
       <View style={styles.container}>
@@ -20,7 +21,8 @@ export default class Welcome extends Component {
           <Image
             source={require('../assets/logo.png')}
             style={{height: 90, width: 160}}></Image>
-          <Text style={styles.headerText}>Palmyrah Tourist Guide</Text>
+          <Text style={styles.headerText}>WELCOME TO</Text>
+          <Text style={styles.headerText}>PALMYRAH TOURIST GUIDE</Text>
         </View>
         <View style={{flex: 1, justifyContent: 'flex-end', marginTop: 10}}>
           <TouchableHighlight
@@ -32,6 +34,18 @@ export default class Welcome extends Component {
               source={require('../assets/resort.png')}
               style={{height: 60, width: 150}}
             />
+            {/* <Text
+              style={{
+                textDecorationLine: 'underline',
+                fontSize: 30,
+                color: 'white',
+                textShadowColor: 'red',
+                textShadowOffset: {width: 5, height: 4},
+                textShadowRadius: 5,
+                borderStyle: 'solid',
+              }}>
+              Resort
+            </Text> */}
           </TouchableHighlight>
           <TouchableHighlight
             underlayColor="transparent"
@@ -42,6 +56,18 @@ export default class Welcome extends Component {
               source={require('../assets/kitesurfing.png')}
               style={{height: 55, width: 150}}
             />
+            {/* <Text
+              style={{
+                textDecorationLine: 'underline',
+                fontSize: 30,
+                color: 'white',
+                textShadowColor: 'red',
+                textShadowOffset: {width: 5, height: 4},
+                textShadowRadius: 5,
+                borderStyle: 'solid',
+              }}>
+              Kitesurfing
+            </Text> */}
           </TouchableHighlight>
         </View>
         <TouchableHighlight
@@ -51,9 +77,9 @@ export default class Welcome extends Component {
           }}>
           {/* <Text style={styles.linktext1}>LOGIN</Text> */}
           <Image
-              source={require('../assets/login.png')}
-              style={{height: 60, width: 150}}
-            />
+            source={require('../assets/login.png')}
+            style={{height: 60, width: 150}}
+          />
         </TouchableHighlight>
         <View style={{flex: 1, height: 50, width: 50}}>
           <TouchableHighlight
@@ -66,7 +92,8 @@ export default class Welcome extends Component {
               style={{height: 50, width: 50, marginTop: 20}}></Image>
           </TouchableHighlight>
         </View>
-        <Text style={styles.footer}>@2019 info@palmyrah.com</Text>
+        {/* <Text style={styles.footer}>@2019 info@palmyrah.com</Text> */}
+        <Footer />
       </View>
     );
   }
@@ -81,7 +108,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   headerText: {
-    fontSize: 25,
+    fontSize: 20,
     marginTop: 15,
     textAlign: 'center',
     color: 'white',
