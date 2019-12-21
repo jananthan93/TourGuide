@@ -12,9 +12,14 @@ import {
 export default class History extends Component {
   render() {
     return (
+      <>
       <View style={styles.container}>
-        <Text>Here About History of {this.props.navigation.getParam('about','default value')}</Text>
+        <Text>{this.props.navigation.getParam('about','default value')}</Text>
+     
+      
+        {this.props.navigation.getParam('history','error')}
       </View>
+      </>
     );
   }
 }

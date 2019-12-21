@@ -54,7 +54,11 @@ export default class CommonDetail extends Component {
   handleNavigationParams = route => {
     switch (route) {
       case 'history': {
-        this.props.navigation.navigate(route, {about: this.props.title});
+        if (this.props.title === 'Palmyra House') {
+          this.props.navigation.navigate(route, {about: this.props.palmyrahhead,history:this.props.palmyrahhistory});
+        } else {
+          this.props.navigation.navigate(route, {about: this.props.vayuhead,history:this.props.vayuhistory});
+      }
       }
       case 'image': {
         if (this.props.title === 'Palmyra House') {
