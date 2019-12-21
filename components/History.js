@@ -9,11 +9,11 @@ import {
   Alert,
 } from 'react-native';
 
-export default class PalmyrahHistory extends Component {
+export default class History extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Here About History of Palmyrah House</Text>
+        <Text>Here About History of {this.props.navigation.getParam('about','default value')}</Text>
       </View>
     );
   }

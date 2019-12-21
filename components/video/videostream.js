@@ -4,6 +4,7 @@ import Video from 'react-native-video';
 
 export default class VideoStream extends Component {
   render() {
+    const source = this.props.navigation.getParam('vedioSrc','')
     return (
       <View style={styles.container}>
         <Video
@@ -11,7 +12,7 @@ export default class VideoStream extends Component {
           fullscreenOrientation="all"
           onBuffer={this.onBuffer} // Callback function
           onError={this.videoError}
-          source={require('../../assets/video/1.mp4')}
+          source={source}
           resizeMode="contain"
           rate={1}
           volume={1}

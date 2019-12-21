@@ -19,6 +19,7 @@ const {height, width} = Dimensions.get('window');
 export default class ImageContainer extends Component {
   state = {
     index: 0,
+
   };
   renderItem = ({item}) => {
     return (
@@ -36,6 +37,7 @@ export default class ImageContainer extends Component {
     );
   };
   render() {
+    const images=this.props.navigation.getParam('images',[])
     return (
       <SafeAreaView style={{flex: 1, backgroundColor: '#1E88A2'}}>
         <Block flex={1} />
@@ -50,7 +52,7 @@ export default class ImageContainer extends Component {
               borderWidth: 1,
               borderColor: '#dddddd',
             }}
-            source={this.props.images[this.state.index].src}
+            source={images[this.state.index].src}
           />
         </Block>
         <Block flex={1} style={{justifyContent: 'flex-end'}}>
@@ -60,7 +62,7 @@ export default class ImageContainer extends Component {
                 this._carousel = c;
               }}
               containerCustomStyle={{position: 'absolute'}}
-              data={this.props.images}
+              data={images}
               renderItem={this.renderItem}
               sliderWidth={width}
               itemWidth={200}
