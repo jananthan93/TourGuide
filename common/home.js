@@ -8,7 +8,6 @@ import VayuResort from '../components/VayuResort';
 import PalmyrahHouse from '../components/PalmyrahHouse';
 import History from '../components/History';
 import SplashScreen from '../components/splashscreen';
-import PalmyrahImage from '../components/Palmyrah/PalmyrahImage';
 import VideoStream from '../components/video/videostream'
 import ImageContainer from '../components/ImageContainer';
 const MainNavigator = createStackNavigator({
