@@ -8,7 +8,8 @@ import {
   SafeAreaView,
 } from 'react-native';
 import Sound from 'react-native-sound';
-import Icon from "react-native-ionicons";
+import Block from '../../common/block';
+// import Icon from "react-native-vector-icons/Ionicons";
  
 const audioList = [
   {
@@ -20,7 +21,7 @@ const audioList = [
  
 let sound1;
  
-export default class SoundPalmyrah extends Component {
+export default class AudioPlayer extends Component {
   constructor(props) {
     super(props);
     Sound.setCategory('Playback', true); // true = mixWithOthers
@@ -55,15 +56,15 @@ export default class SoundPalmyrah extends Component {
     }
   render() {
     return (
-      <SafeAreaView style={{ flex: 1 }}>
-        <View style={styles.container}>
+      <SafeAreaView>
+        <Block >
           <Text style={styles.headerTitle}>
             History of Palmyrah
           </Text>
-          <ScrollView style={styles.container}>
+          <ScrollView>
             {audioList.map((item, index) => {
               return (
-                <View style={styles.feature} key={item.title}>
+                <Block style={styles.feature} key={item.title}>
                   <Text style={{fontSize: 14 }}>{item.title}</Text>
                   <Text>{' '}{' '}{' '}{' '}</Text>
                   <TouchableOpacity
@@ -71,7 +72,8 @@ export default class SoundPalmyrah extends Component {
                       return this.playSound(item, index);
                     }}>
                     <Text style={styles.buttonPlay}>
-                    <Icon name="play" size={40} />
+                      play
+                    {/* <Icon name="ios-play-circle" size={40} /> */}
                     </Text>
                   </TouchableOpacity>
                   <Text>{' '}{' '}{' '}{' '}</Text>
@@ -80,14 +82,15 @@ export default class SoundPalmyrah extends Component {
                       return stopSound(item, index);
                     }}>
                     <Text style={styles.buttonStop}>
-                    <Icon name="pause" size={40}/>
+                      pause
+                    {/* <Icon name="ios-pause" size={40}/> */}
                     </Text>
                   </TouchableOpacity>
-                </View>
+                </Block>
               );
             })}
           </ScrollView>
-        </View>
+        </Block>
       </SafeAreaView>
     );
   }

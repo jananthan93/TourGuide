@@ -12,7 +12,7 @@ export default class SoundModal extends Component{
         <Modal            
           animationType = {"fade"}  
           transparent = {false}  
-          visible = {this.state.isVisible}  
+          visible = {true}  
           onRequestClose = {() =>{ console.log("Modal has been closed.") } }>  
           {/*All views of Modal*/}  
               <View style = {styles.modal}>  

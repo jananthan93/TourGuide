@@ -7,9 +7,12 @@ import {
   TouchableHighlight,
   ImageBackground,
   Alert,
+  Modal,
+  Button,
 } from 'react-native';
 import Block from '../common/block';
 import Footer from '../common/footer';
+import SoundPalmyrah from './audio/audio';
 const array = [
   {
     id: 1,
@@ -51,6 +54,10 @@ const vayuResortImages = [
   {name: '', src: require('../assets/VayuResort/Image/5.jpg')},
 ];
 export default class CommonDetail extends Component {
+  state = {
+    isVisible: false, //state of modal default false
+  };
+
   handleNavigationParams = route => {
     switch (route) {
       case 'history': {
@@ -63,12 +70,19 @@ export default class CommonDetail extends Component {
           this.props.navigation.navigate(route, {images: vayuResortImages});
         }
       }
-      case 'vedio':{
+      case 'vedio': {
         if (this.props.title === 'Palmyra House') {
-          this.props.navigation.navigate(route, {vedioSrc:require('../assets/Palmyrah/Video/palmyrah.mp4') });
+          this.props.navigation.navigate(route, {
+            vedioSrc: require('../assets/Palmyrah/Video/palmyrah.mp4'),
+          });
         } else {
-          this.props.navigation.navigate(route, {vedioSrc:require('../assets/VayuResort/video/vayu.mp4') });
+          this.props.navigation.navigate(route, {
+            vedioSrc: require('../assets/VayuResort/video/vayu.mp4'),
+          });
         }
+      }
+      case 'sound': {
+        this.setState({isVisible: true});
       }
     }
   };
@@ -108,44 +122,67 @@ export default class CommonDetail extends Component {
             {this.props.children}
           </Text>
         </Block>
-        <Block flex={1}>
+        <Block flex={1} row>
           <ImageBackground
             source={this.props.Image}
             style={{width: '100%', height: '100%'}}
             opacity={0.25}>
-            <Block flex={false} column style={{marginLeft: 20}}>
-              {array.map(obj => (
-                <Block flex={false} row>
-                  <Text
-                    style={{
-                      fontSize: 20,
-                      fontWeight: 'bold',
-                      color: 'white',
-                      textAlign: 'left',
-                      marginTop: 10,
-                      width: 85,
-                      textShadowColor: 'blue',
-                      textShadowOffset: {width: 5, height: 4},
-                      textShadowRadius: 5,
-                    }}>
-                    {obj.content}
-                  </Text>
-                  <TouchableHighlight
-                    style={{marginTop: 10}}
-                    // underlayColor={'transparent'}
+            <Block flex={2}>
+              <Block flex={false} column style={{marginLeft: 20}}>
+                {array.map(obj => (
+                  <Block flex={false} row>
+                    <Text
+                      style={{
+                        fontSize: 20,
+                        fontWeight: 'bold',
+                        color: 'white',
+                        textAlign: 'left',
+                        marginTop: 10,
+                        width: 85,
+                        textShadowColor: 'blue',
+                        textShadowOffset: {width: 5, height: 4},
+                        textShadowRadius: 5,
+                      }}>
+                      {obj.content}
+                    </Text>
+                    <TouchableHighlight
+                      style={{marginTop: 10}}
+                      // underlayColor={'transparent'}
+                      onPress={() => {
+                        this.handleNavigationParams(obj.route);
+                      }}>
+                      <Image
+                        source={obj.imageSrc}
+                        style={{width: 30, height: 30}}
+                      />
+                    </TouchableHighlight>
+                  </Block>
+                ))}
+              </Block>
+            </Block>
+            <Block flex={3}>
+              <Modal
+                animationType={'fade'}
+                transparent={true}
+                visible={this.state.isVisible}
+                onRequestClose={() => {
+                  console.log('Modal has been closed.');
+                }}>
+                {/*All views of Modal*/}
+                <Block flex={false} style={styles.modal}>
+                  <SoundPalmyrah />
+                  <Button
+                    title="X"
                     onPress={() => {
-                      this.handleNavigationParams(obj.route);
-                    }}>
-                    <Image
-                      source={obj.imageSrc}
-                      style={{width: 30, height: 30}}
-                    />
-                  </TouchableHighlight>
+                      this.setState({isVisible: !this.state.isVisible});
+                    }}
+                  />
                 </Block>
-              ))}
+              </Modal>
             </Block>
           </ImageBackground>
         </Block>
+
         <Block center>
           <Footer />
         </Block>
@@ -160,5 +197,19 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     alignItems: 'center',
+  },
+  modal: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#ADEFD1FF',
+    height: 150,
+    width: '90%',
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: '#fff',
+  },
+  text: {
+    color: '#3f2949',
+    marginTop: 10,
   },
 });
