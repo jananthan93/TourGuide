@@ -85,7 +85,7 @@ export default class Welcome extends Component {
           <TouchableHighlight
             underlayColor="transparent"
             onPress={() => {
-              Alert.alert('Info', 'Map view');
+              this.props.navigation.navigate('location');
             }}>
             <Image
               source={require('../assets/map.png')}

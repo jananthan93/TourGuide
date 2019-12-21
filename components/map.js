@@ -15,10 +15,10 @@ const styles = StyleSheet.create({
 export default class CurrentLocationMap extends Component {
   state = {
     isCurrent: false,
-    lastLat: 9.749997,
-    lastLong: 80.083333,
-    latitudeDelta:  0.5,
-    longitudeDelta: 0.5, 
+    lastLat:9.096140, 
+    lastLong: 79.737247,
+    latitudeDelta:  0.3,
+    longitudeDelta: 0.3, 
   };
   requestLocationPermission = async () => {
     try {

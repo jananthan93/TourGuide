@@ -8,15 +8,13 @@ import {
   ImageBackground,
   Alert,
 } from 'react-native';
-import PalmyrahImage from '../assets/Palmyrah/Image/2.jpg';
-import CommonDetail from './CommonDetail';
 
-export default class History extends Component {
+export default class PalmyrahHistory extends Component {
   render() {
     return (
-      <CommonDetail Image={PalmyrahImage} title={'Vayu'}>
-        
-      </CommonDetail>
+      <View style={styles.container}>
+        <Text>Here About History of Palmyrah House</Text>
+      </View>
     );
   }
 }
