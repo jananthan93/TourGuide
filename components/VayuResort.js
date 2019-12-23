@@ -2,7 +2,7 @@ import React, {Component, Children} from 'react';
 import {
   Text,
   View,
-  Image,
+  Image,ScrollView,
   StyleSheet,
   TouchableHighlight,
   ImageBackground,
@@ -10,20 +10,37 @@ import {
 } from 'react-native';
 import VayuResortImage from '../assets/VayuResort/Image/1.jpg';
 import CommonDetail from './CommonDetail';
-import {ScrollView} from 'react-native-gesture-handler';
+// import {ScrollView} from 'react-native-gesture-handler';
+import Block from '../common/block';
+import Footer from '../common/footer';
 
 export default class VayuResort extends Component {
+  static navigationOptions = {
+    // header: null,
+    headerTitle: ()=><Text
+    style={{
+      textShadowColor: 'blue',
+      fontSize: 30,
+      textShadowOffset: {width: 4, height: 2},
+      textShadowRadius: 5,
+      fontWeight: 'bold',
+      color: 'white',
+    }}>
+    Vayu Resort
+  </Text>,
+headerStyle:{backgroundColor:"#1E88A2"}  
+
+  };
   render() {
-    let hed=(
-      // <View>
-        <Text style={{
-          textShadowColor: 'blue',fontSize:30,
-          textShadowOffset: {width: 5, height: 4},
-          textShadowRadius: 5,
-          fontWeight: 'bold',
-          color: 'white',}}>Kitesurfing Mannar</Text>
-      // </View>
-    )
+    // let hed=(
+    //     <Text style={{
+    //       textShadowColor: 'blue',fontSize:30,
+    //       textShadowOffset: {width: 5, height: 4},
+    //       textShadowRadius: 5,
+    //       fontWeight: 'bold',
+    //       color: 'white',}}>Kitesurfing Mannar</Text>
+    
+    // )
     let parag = (
       <View >
           {/* <Image source={require('../assets/VayuResort/Image/2.jpg')} style={{}}></Image> */}
@@ -66,14 +83,18 @@ export default class VayuResort extends Component {
             verandah!{'\n'}{'\n'}
           </Text>
         </ScrollView>
+        <Block center style={{backgroundColor:"#1E88A2",paddingBottom:10,paddingTop:10,border:1}}>
+          <Footer/>
+        </Block>
       </View>
     );
     return (
-      <CommonDetail
-        vayuhistory={parag} vayuhead={hed}
+      <CommonDetail 
+        vayuhistory={parag} 
+        // vayuhead={hed}
         Image={VayuResortImage}
         navigation={this.props.navigation}
-        title={'Vayu Resort'}>
+        name={'Vayu Resort'}>
         It is a dream location for us Kitesurfers: Pristine Conditions,
         virtually the first kiters on the scene, 16 KM of flat water conditions
         and the most stable, consistent winds Sri Lanka has to offer ! Did we

@@ -10,27 +10,30 @@ import {
 } from 'react-native';
 import PalmyrahImage from '../assets/Palmyrah/Image/2.jpg';
 import CommonDetail from './CommonDetail';
+import Block from '../common/block';
+import Footer from '../common/footer';
+
 
 export default class PalmyrahHouse extends Component {
+  static navigationOptions = {
+    // header: null,
+    headerTitle: ()=><Text
+    style={{
+      textShadowColor: 'blue',
+      fontSize: 30,
+      textShadowOffset: {width: 4, height: 2},
+      textShadowRadius: 5,
+      fontWeight: 'bold',
+      color: 'white',
+    }}>
+    Palmyrah House
+  </Text>,
+headerStyle:{backgroundColor:"#1E88A2"}  
+
+  };
   render() {
-    ///
-    let hed = (
-      // <View>
-      <Text
-        style={{
-          textShadowColor: 'blue',
-          fontSize: 30,
-          textShadowOffset: {width: 5, height: 4},
-          textShadowRadius: 5,
-          fontWeight: 'bold',
-          color: 'white',
-        }}>
-        Palmyrah House
-      </Text>
-      // </View>
-    );
     let parag = (
-      <View>
+      <View >
         {/* <Image source={require('../assets/VayuResort/Image/2.jpg')} style={{}}></Image> */}
         <ScrollView>
           <Text
@@ -82,11 +85,13 @@ export default class PalmyrahHouse extends Component {
             {'\n'}{'\n'}
           </Text>
         </ScrollView>
+        <Block center style={{backgroundColor:"#1E88A2",paddingBottom:10,paddingTop:10,border:1}}>
+          <Footer/>
+        </Block>
       </View>
     );
-    ///
     return (
-      <CommonDetail palmyrahhistory={parag} palmyrahhead={hed} navigation={this.props.navigation} Image={PalmyrahImage} title={'Palmyra House'}>
+      <CommonDetail palmyrahhistory={parag} navigation={this.props.navigation} Image={PalmyrahImage} name={'Palmyra House'}>
          Palmyrah House provides everything guests need to stay refreshed,
        whether it be swimming pools, traditional well baths or trips to the
       beach. Enjoy our delicious local cuisine, made from the freshest

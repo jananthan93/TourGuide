@@ -61,27 +61,27 @@ export default class CommonDetail extends Component {
   handleNavigationParams = route => {
     switch (route) {
       case 'history': {
-        if (this.props.title === 'Palmyra House') {
-          this.props.navigation.navigate(route, {about: this.props.palmyrahhead,history:this.props.palmyrahhistory});
+        if (this.props.name === 'Palmyra House') {
+          this.props.navigation.navigate(route, {history:this.props.palmyrahhistory,titleHistory:'Palmyrah House'});
         } else {
-          this.props.navigation.navigate(route, {about: this.props.vayuhead,history:this.props.vayuhistory});
+          this.props.navigation.navigate(route, {history:this.props.vayuhistory,titleHistory:'Vayu Resort'});
       }
       }
       case 'image': {
-        if (this.props.title === 'Palmyra House') {
-          this.props.navigation.navigate(route, {images: PalmyrahImages});
+        if (this.props.name === 'Palmyra House') {
+          this.props.navigation.navigate(route, {titleImage:'Palmyrah House',images: PalmyrahImages});
         } else {
-          this.props.navigation.navigate(route, {images: vayuResortImages});
+          this.props.navigation.navigate(route, {titleImage:'Vayu Resort',images: vayuResortImages});
         }
       }
       case 'vedio': {
-        if (this.props.title === 'Palmyra House') {
-          this.props.navigation.navigate(route, {
+        if (this.props.name === 'Palmyra House') {
+          this.props.navigation.navigate(route, {titleVideo:'Palmyrah House',
             vedioSrc: require('../assets/Palmyrah/Video/palmyrah.mp4'),
           });
         } else {
-          this.props.navigation.navigate(route, {
-            vedioSrc: require('../assets/video/kite.mp4'),
+          this.props.navigation.navigate(route, {titleVideo:'Vayu Resort',
+            vedioSrc: require('../assets/VayuResort/video/vayu.mp4'),
           });
         }
       }
@@ -105,7 +105,7 @@ export default class CommonDetail extends Component {
                 textAlign: 'center',
                 marginTop: 20,
                 textShadowColor: 'blue',
-                textShadowOffset: {width: 5, height: 4},
+                textShadowOffset: {width: 5, height: 2},
                 textShadowRadius: 5,
               }}>
               {this.props.title}
@@ -144,7 +144,7 @@ export default class CommonDetail extends Component {
                         marginTop: 10,
                         width: 85,
                         textShadowColor: 'blue',
-                        textShadowOffset: {width: 5, height: 4},
+                        textShadowOffset: {width: 5, height: 2},
                         textShadowRadius: 5,
                       }}>
                       {obj.content}
