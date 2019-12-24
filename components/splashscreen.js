@@ -38,7 +38,7 @@ export default class SplashScreen extends Component {
     this.animatedValue.setValue(0);
     Animated.timing(this.animatedValue, {
       toValue: 1,
-      duration: 1000,
+      duration: 2000,
       easing: Easing.linear,
     }).start(() => this.animate());
   }

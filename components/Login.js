@@ -9,6 +9,7 @@ import {
   TextInput,
   TouchableHighlight,
   Alert,
+  Slider
 } from 'react-native';
 import logo from '../assets/palmyrah.png';
 import Block from '../common/block';
@@ -60,7 +61,7 @@ export default class Login extends Component {
             style={{width: 400, height: 300, marginRight: 250, zIndex: -1}}
           />
         </Block>
-        <Block flex={3} card center color="gray" >
+        <Block flex={3} card center color="gray" style={{height:500,width:200}}>
           <Block flex={0.7} center style={{marginTop: 20,height:100}}>
             <Image source={logo} style={{marginLeft: 7}} />
           </Block>
