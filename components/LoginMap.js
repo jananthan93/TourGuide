@@ -40,17 +40,15 @@ export default class LoginMap extends Component {
     headerStyle: {backgroundColor: '#1E88A2'},
   };
   state = {
-    value: 500,
+    range: 500,
     isCurrent: true,
     searchInput: '',
     lastLat: 9.09614,
     lastLong: 79.737247,
     latitudeDelta: 0.3,
     longitudeDelta: 0.3,
+    places: null,
   };
-  componentDidMount() {
-    this.requestLocationPermission();
-  }
   requestLocationPermission = async () => {
     try {
       const granted = await PermissionsAndroid.request(
@@ -157,14 +155,14 @@ export default class LoginMap extends Component {
       </Block>
     );
   };
-  change = value => {
+  change = range => {
     this.setState(() => {
-        
       return {
-        value: parseFloat(value),
-        isRange:false
+        range: parseFloat(range),
+        isRange: false,
       };
     });
+    this.getPlaces();
   };
   renderItem = ({item}) => {
     return (
@@ -181,6 +179,61 @@ export default class LoginMap extends Component {
       </Block>
     );
   };
+  getUrlWithParameter = (lat, lng, radius, type, API) => {
+    // //https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=1500&type=restaurant&keyword=cruise&key=API_Key
+    const url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?';
+    const location = `location=${lat},${lng}&radius=${radius}`;
+    const dataType = `&type=${type}`;
+    const key = `&key=${API}`;
+    return `${url}${location}${dataType}${key}`;
+  };
+  getPlaces = () => {
+    const url = this.getUrlWithParameter(
+      this.state.lastLat,
+      this.state.lastLong,
+      this.state.range,
+      this.state.searchInput,
+      'AIzaSyDUqBfawG19eYuhCDntWQKosKy_Xxvlnzk',
+    );
+    fetch(url)
+      .then(data => data.json())
+      .then(res => {
+        console.log(res);
+        const arrayMarkers = [];
+        res.results.map((element,i)=>{
+          arrayMarkers.push(
+            <Marker 
+            key={i}
+            coordinate={{
+              latitude:element.geometry.location.lat,
+              longitude:element.geometry.location.lng
+            }}
+            >
+
+            </Marker>
+          )
+        })
+        this.setState({places:arrayMarkers});
+      });
+  };
+
+  componentWillMount() {
+    // this.requestLocationPermission();
+    Geolocation.getCurrentPosition(position => {
+      const currentLongitude = position.coords.longitude;
+      const currentLatitude = position.coords.latitude;
+
+      this.setState({
+        lastLong: currentLongitude,
+        lastLat: currentLatitude,
+        latitudeDelta: 0.0922,
+        longitudeDelta: 0.0421,
+      });
+    });
+  }
+  componentDidMount() {
+    this.getPlaces();
+  }
   render() {
     console.log(
       'lt : ' + this.state.latitudeDelta + ' lg : ' + this.state.longitudeDelta,
@@ -203,7 +256,7 @@ export default class LoginMap extends Component {
             secureTextEntry={false}
             autoCorrect={false}
             onChangeText={searchInput => this.setState({searchInput})}
-            value={this.state.searchInput}
+            range={this.state.searchInput}
             onSubmitEditing={event => {
               // this.submit();
             }}
@@ -232,19 +285,20 @@ export default class LoginMap extends Component {
               latitudeDelta: this.state.latitudeDelta,
               longitudeDelta: this.state.longitudeDelta,
             }}>
+              {this.state.places}
             <Circle
               center={{
                 latitude: this.state.lastLat,
                 longitude: this.state.lastLong,
               }}
-              radius={this.state.value}
+              radius={this.state.range}
               strokeColor={'blue'}
               style={{backgroundColor: '#5086de'}}></Circle>
           </MapView>
           <Block flex={false} style={{marginTop: 300, width: 40, height: 30}}>
-            {/* <TouchableOpacity onPress={() => this.handleMap(this.state.isCurrent)}>
-            <Icon name="locate" size={48} color="#444" />
-          </TouchableOpacity> */}
+            <TouchableOpacity onPress={() => this.getPlaces()}>
+              <Icon name="locate" size={48} color="#444" />
+            </TouchableOpacity>
             <TouchableOpacity
               style={styles.zoomIn}
               onPress={() => {
@@ -262,33 +316,50 @@ export default class LoginMap extends Component {
           </Block>
         </Block>
         <Block flex={1}>
-        <Block flex={0.5} style={{marginTop:-30}}>
-
-          {!this.state.isRange ? (
-              
-              <Block flex={false} center style={{height:25,width:150,borderRadious:15,backgroundColor:'#2a0b7d'}}>
-            <Text
-              style={styles.text,{fontWeight:'bold',paddingTop:2,color: '#bfaded',textAlign:'left'}}
-              
-              onPress={() => this.setState({isRange: true})}>
-             Range : {String(this.state.value)} m
-            </Text>
-             </Block>
-          ) : (
-              <Block style={{height:25,borderRadious:15,backgroundColor:'#2a0b7d'}}>
-            <Slider
-              step={500}
-              style={{color: 'black',marginTop:3}}
-              thumbTintColor={'#bfaded'}
-              minimumTrackTintColor={'#bfaded'}
-              maximumValue={3000}
-              onValueChange={this.change}
-              value={this.state.value}
-            />
-            </Block>
-          )}
-           
-            </Block>
+          <Block flex={0.5} style={{marginTop: -30}}>
+            {!this.state.isRange ? (
+              <Block
+                flex={false}
+                center
+                style={{
+                  height: 25,
+                  width: 150,
+                  borderRadious: 15,
+                  backgroundColor: '#2a0b7d',
+                }}>
+                <Text
+                  style={
+                    (styles.text,
+                    {
+                      fontWeight: 'bold',
+                      paddingTop: 2,
+                      color: '#bfaded',
+                      textAlign: 'left',
+                    })
+                  }
+                  onPress={() => this.setState({isRange: true})}>
+                  Range : {String(this.state.range)} m
+                </Text>
+              </Block>
+            ) : (
+              <Block
+                style={{
+                  height: 25,
+                  borderRadious: 15,
+                  backgroundColor: '#2a0b7d',
+                }}>
+                <Slider
+                  step={500}
+                  style={{color: 'black', marginTop: 3}}
+                  thumbTintColor={'#bfaded'}
+                  minimumTrackTintColor={'#bfaded'}
+                  maximumValue={3000}
+                  onValueChange={this.change}
+                  value={this.state.range}
+                />
+              </Block>
+            )}
+          </Block>
 
           <Block flex={0.5}>
             <Carousel
@@ -319,7 +390,6 @@ export default class LoginMap extends Component {
               onSnapToItem={index => this.setState({index})}
             />
           </Block>
-         
         </Block>
       </Block>
     );
