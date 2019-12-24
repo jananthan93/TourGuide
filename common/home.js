@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 import Login from '../components/Login';
-import CurrentLocationMap from '../components/map';
+import CurrentLocationMap from '../components/LocationMap';
 import Welcome from '../components/welcome';
 import VayuResort from '../components/VayuResort';
 import PalmyrahHouse from '../components/PalmyrahHouse';
@@ -10,6 +10,7 @@ import History from '../components/History';
 import SplashScreen from '../components/splashscreen';
 import VideoStream from '../components/videostream'
 import ImageContainer from '../components/ImageContainer';
+import LoginMap from '../components/LoginMap';
 const MainNavigator = createStackNavigator({
   splash:{screen:SplashScreen},
   welcome:{screen:Welcome},
@@ -19,8 +20,8 @@ const MainNavigator = createStackNavigator({
   palmyrahhouse:{screen: PalmyrahHouse},
   history:{screen: History},
   vedio:{screen:VideoStream},
-  // vedio:{screen: VedioComponent},
   image:{screen: ImageContainer},
+  nearby:{screen: LoginMap},
 });
 
 const Home = createAppContainer(MainNavigator);

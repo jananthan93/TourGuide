@@ -24,32 +24,18 @@ export default class ImageContainer extends Component {
     return (
       <Block>
         <Image
-          source={item.src}
+         source={item.src}
           style={{
             height: 180,
             width: 200,
-            borderColor: 'black',
+            borderColor: 'dark-blue',
             borderWidth: 0.8,
             borderRadius: 10,
           }}></Image>
       </Block>
     );
   };
-  renderImage =({item})=>{
-    return (
-      <Block>
-        <Image
-          source={item.src}
-          style={{
-            height: 250,
-            width: width,
-            borderColor: 'black',
-            borderWidth: 0.8,
-            borderRadius: 10,
-          }}></Image>
-      </Block>
-    );
-  }
+  
   componentWillMount() {
     title = this.props.navigation.getParam('titleImage', 'error');
   }
@@ -67,16 +53,15 @@ export default class ImageContainer extends Component {
         {title}
       </Text>
     ),
-    headerStyle: {backgroundColor: '#1E88A2'},
-    // header: null,
+    headerStyle: {backgroundColor: '#1E88A2'}
   };
-
   render() {
     const images = this.props.navigation.getParam('images', []);
-    return (
+    
+      return (
       <SafeAreaView style={{flex: 1, backgroundColor: '#1E88A2'}}>
         <Block flex={1} />
-        {/* <Block flex={2}>
+        <Block flex={2.5}>
           <Image
             style={{
               flex: 1,
@@ -89,7 +74,7 @@ export default class ImageContainer extends Component {
             }}
             source={images[this.state.index].src}
           />
-        </Block> */}
+        </Block>
         <Block flex={2}>
             <Carousel
               ref={c => {
@@ -104,7 +89,7 @@ export default class ImageContainer extends Component {
             />
           </Block>
         <Block flex={1} style={{justifyContent: 'flex-end', paddingBottom: 32}}>
-          <Block flex={0.5}>
+          <Block flex={1}>
             <Carousel
               ref={c => {
                 this._carousel = c;

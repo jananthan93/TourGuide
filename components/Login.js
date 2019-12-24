@@ -17,23 +17,28 @@ const deviceWidth = Dimensions.get('window').width;
 const deviceHeight = Dimensions.get('window').height;
 
 export default class Login extends Component {
-  
+  static navigationOptions = {
+    // header: null,
+  headerStyle:{backgroundColor:"#1E88A2"}  
+
+  };
   state = {
     usernameInputTxt: '',
     passwordInputTxt: '',
   };
 
   checkLogin = () => {
-    const {usernameInputTxt, passwordInputTxt} = this.state;
-    if (usernameInputTxt == '' && passwordInputTxt == '') {
-      this.props.navigation.navigate('location');
-    } else {
-      Alert.alert('Error', 'Username/Password mismatch', [
-        {
-          text: 'Okay',
-        },
-      ]);
-    }
+    this.props.navigation.navigate('nearby');
+    // const {usernameInputTxt, passwordInputTxt} = this.state;
+    // if (usernameInputTxt == '' && passwordInputTxt == '') {
+    //   this.props.navigation.navigate('location');
+    // } else {
+    //   Alert.alert('Error', 'Username/Password mismatch', [
+    //     {
+    //       text: 'Okay',
+    //     },
+    //   ]);
+    // }
   };
 
   submit = () => {
