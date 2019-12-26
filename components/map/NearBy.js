@@ -1,0 +1,155 @@
+import React, {Component} from 'react';
+import Carousel from 'react-native-snap-carousel';
+import {
+  View,
+  TextInput,
+  StyleSheet,
+  Image,
+  Slider,
+  TouchableOpacity,
+  PermissionsAndroid,
+  Dimensions,
+  Text,
+} from 'react-native';
+import Block from '../../common/block';
+
+const {height, width} = Dimensions.get('window');
+const searchOptions = ['Historic', 'Restorants', 'Atm', 'Temples', 'Hotels'];
+
+export default class NearBy extends Component {
+  
+  state = {
+    isRange:false,
+    range:0,
+  };
+  renderSearch = ({item}) => {
+    return (
+      <Block
+        center
+        style={{height: 30,width:100, borderRadius:15,borderColor:'#2a0b7d',borderWidth:1}}>
+        <Text style={{fontSize: 18, fontWeight: 'bold', color: '#2a0b7d'}}>
+          {item}
+        </Text>
+      </Block>
+    );
+  };
+  sliderChange = range => {
+    this.setState(() => {
+      return {
+        range: parseFloat(range),
+        isRange: false,
+      };
+    });
+    this.props.changeRange(range)
+  };
+  renderItem = ({item}) => {
+    return (
+      <Block>
+        <Image
+          source={{uri:item.url}}
+          style={{
+            height: 130,
+            width: 200,
+            borderColor: 'dark-blue',
+            borderWidth: 0.8,
+            borderRadius: 10,
+          }}></Image>
+      </Block>
+    );
+  };
+componentDidMount(){
+    this.setState({
+        range:this.props.radius
+    })
+}
+  render() {
+    return (
+        <Block flex={1}>
+          <Block flex={0.5} >
+            {!this.state.isRange ? (
+              <Block
+                flex={false}
+                center
+                style={{
+                  height: 25,
+                  width: 150,
+                  borderRadius: 15,
+                  backgroundColor: '#2a0b7d',
+                }}>
+                <Text
+                  style={
+                    (styles.text,
+                    {
+                      fontWeight: 'bold',
+                      paddingTop: 2,
+                      color: '#bfaded',
+                      textAlign: 'left',
+                    })
+                  }
+                  onPress={() => this.setState({isRange: true})}>
+                  Range : {String(this.state.range)} m
+                </Text>
+              </Block>
+            ) : (
+              <Block
+                style={{
+                  height: 25,
+                  borderRadius: 15,
+                  borderWidth:1,
+                  backgroundColor: '#2a0b7d',
+                }}>
+                <Slider
+                  step={500}
+                  style={{color: 'black', marginTop: 3}}
+                  thumbTintColor={'#bfaded'}
+                  minimumTrackTintColor={'#bfaded'}
+                  maximumValue={3000}
+                  onValueChange={this.sliderChange}
+                  value={this.state.range}
+                />
+              </Block>
+            )}
+          </Block>
+
+          <Block flex={0.5}>
+            <Carousel
+              ref={c => {
+                this._carousel = c;
+              }}
+              containerCustomStyle={{position: 'absolute', padding: 5}}
+              data={searchOptions}
+              renderItem={this.renderSearch}
+              sliderWidth={width}
+              itemWidth={100}
+              onSnapToItem={index =>
+               this.props.changeType(searchOptions[index])
+              }
+            />
+          </Block>
+
+          <Block flex={3} style={{marginTop: 15, marginBottom: 5}}>
+            <Carousel
+              ref={c => {
+                this._carousel = c;
+              }}
+              containerCustomStyle={{position: 'absolute'}}
+              data={this.props.gallery}
+              renderItem={this.renderItem}
+              sliderWidth={width}
+              itemWidth={200}
+            //   onSnapToItem={index => this.setState({index})}
+            />
+          </Block>
+          </Block>
+    );
+  }
+}
+const styles = StyleSheet.create({
+    container: {
+      ...StyleSheet.absoluteFillObject,
+      backgroundColor: '#1E88A2',
+    },
+    map: {
+      ...StyleSheet.absoluteFillObject,
+    },
+  });
