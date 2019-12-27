@@ -12,17 +12,20 @@ import React, {Component} from 'react';
 import Block from '../common/block';
 
 export default class HomeScreen extends Component {
+  static navigationOptions = {
+    header: null,
+  };
   render() {
     return (
       <Block flex={1} style={{backgroundColor: '#fcf4d4'}}>
-        <Block flex={2.3}>
+        <Block flex={2.2}>
           <Image
             source={require('../assets/img/lakecropped.jpg')}
             style={Styles.lakecropped}
           />
           <Image
             source={require('../assets/img/palmyrah.png')}
-            style={Styles.logoImg}></Image>
+            style={Styles.logoImg}/>
           <Block style={Styles.logoView}>
             <Text style={Styles.logoText}>PALMYRAH HOUSE</Text>
             <Text style={Styles.logoTextSub}>Tourist Guide</Text>
@@ -30,7 +33,11 @@ export default class HomeScreen extends Component {
         </Block>
         <Block flex={2}>
           <Block flex={1}>
-            <TouchableOpacity style={Styles.touchView}>
+          <TouchableOpacity style={Styles.touchView}
+            onPress={() => {
+               this.props.navigation.navigate('login');
+             }}
+            >
               <Image
                 source={require('../assets/img/loginbtn1x.png')}
                 style={Styles.btnView}
@@ -38,7 +45,11 @@ export default class HomeScreen extends Component {
             </TouchableOpacity>
           </Block>
           <Block flex={1}>
-            <TouchableOpacity style={Styles.touchView}>
+            <TouchableOpacity style={Styles.touchView}
+            // onPress={() => {
+            //    this.props.navigation.navigate('palmyrahhouse');
+            //  }}
+            >
               <Image
                 source={require('../assets/img/registerbtn1x.png')}
                 style={Styles.btnView}
@@ -46,7 +57,11 @@ export default class HomeScreen extends Component {
             </TouchableOpacity>
           </Block>
           <Block flex={1}>
-            <TouchableOpacity style={Styles.touchView}>
+          <TouchableOpacity style={Styles.touchView}
+            onPress={() => {
+               this.props.navigation.navigate('palmyrahhouse');
+             }}
+            >
               <Image
                 source={require('../assets/img/resortbtn1x.png')}
                 style={Styles.btnView}
@@ -54,7 +69,11 @@ export default class HomeScreen extends Component {
             </TouchableOpacity>
           </Block>
           <Block flex={1}>
-            <TouchableOpacity style={Styles.touchView}>
+          <TouchableOpacity style={Styles.touchView}
+            onPress={() => {
+               this.props.navigation.navigate('vayuresort');
+             }}
+            >
               <Image
                 source={require('../assets/img/kitesurfingbtn1x.png')}
                 style={Styles.btnView}
@@ -64,7 +83,11 @@ export default class HomeScreen extends Component {
         </Block>
         <Block flex={0.2} />
         <Block flex={0.25} center style={Styles.footerView}>
-          <TouchableOpacity style={{backgroundColor:'red'}}>
+        <TouchableOpacity
+            onPress={() => {
+               this.props.navigation.navigate('location');
+             }}
+            >
             <Image
               title=""
               source={require('../assets/img/mapbtn.png')}
@@ -142,7 +165,7 @@ const Styles = StyleSheet.create({
   },
   
   footerMapBtn: {
-    bottom: 28,
+    bottom: 26,
     width: 80,
     height: 50,
   },

@@ -11,10 +11,12 @@ import SplashScreen from '../components/splashscreen';
 import VideoStream from '../components/videostream'
 import ImageContainer from '../components/ImageContainer';
 import LoginMap from '../components/LoginMap';
+import HomeScreen from '../components/HomeScreen';
+import LoginScreen from '../components/LoginScreen';
 const MainNavigator = createStackNavigator({
-  splash:{screen:SplashScreen},
-  welcome:{screen:Welcome},
-  login: {screen: Login},
+  // splash:{screen:SplashScreen},
+  welcome:{screen:HomeScreen},
+  login: {screen: LoginScreen},
   location: {screen: CurrentLocationMap},
   vayuresort:{screen: VayuResort},
   palmyrahhouse:{screen: PalmyrahHouse},
