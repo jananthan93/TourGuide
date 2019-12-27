@@ -1,320 +1,198 @@
-import { View,Text, StyleSheet, Image, Dimensions, TouchableOpacity, TextInput, Button, TouchableHighlight } from 'react-native';
+import React, {Component} from 'react';
+import {
+  View,
+  StyleSheet,
+  Dimensions,
+  Image,
+  Text,
+  Alert,
+  TouchableHighlight,
+  TextInput,
+} from 'react-native';
 
-
-
-import React, { Component } from 'react';
-import { shadow } from 'react-native-paper';
+const deviceWidth = Dimensions.get('window').width;
+const deviceHeight = Dimensions.get('window').height;
 
 export default class LoginScreen extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {text: ''};
+  }
+
   render() {
-   
     return (
-   <View style={{flex: 1, backgroundColor: "#fcf4d4"}}>
-            <View style={Styles.imageView}>
-                <Image source={require("../assets/img/login_bg.jpg")} style={Styles.lakecropped}/>
-              
-              
-            </View>
-            <View style={Styles.loginView}>
-               <View>
-                   <Image source={require("../assets/img/sun-bath.png")}
-                   style={Styles.loginImg}
-                   />
-               </View>
-               <View style={Styles.formView}>
-                   <Text style={Styles.labelText}>Username</Text>
-               <TextInput
-                    style={Styles.textInput}
-                    placeholder=" Any User Name"
-                    placeholderTextColor="#877570"
-
-                />
-                 <Text style={Styles.labelText1}>Password</Text>
-                 <TextInput
-                    style={Styles.passwordInput}
-                    placeholder=" ***********"
-                    placeholderTextColor="#877570"
-                    
-                />
-                <TouchableOpacity style={Styles.forgotPasswordTouch}>
-                    <Text style={Styles.forgotPasswordText}>forgot password ?</Text>
-                </TouchableOpacity>
-                <View style={Styles.buttonArea}>
-                <TouchableOpacity style={Styles.loginButton} >
-                    <Text style={Styles.loginButtonText}>Login</Text>
-                </TouchableOpacity>
-                </View>
-               
-               </View>
-               <View style={Styles.bottomTextView}>
-                      <Text style={Styles.BottomText1}>Don't Have an account?</Text>
-                        <TouchableOpacity style={Styles.SignUpTouch}>
-                            <Text style={Styles.SignUp}>Sign Up</Text>
-                        </TouchableOpacity>
-                </View>
-            </View>
-
-        
-
-          
- 
-   </View>
-    
-     
-      
+      <View style={styles.container}>
+        {/* Header image goes here */}
+        <View
+          style={{flex: 1, alignItems: 'center', justifyContent: 'flex-start'}}>
+          <Image
+            source={require('../assets/img/login_bg.jpg')}
+            style={{
+              height: 250,
+              width: 405,
+              alignItems: 'center',
+              justifyContent: 'center',
+              borderBottomLeftRadius: 50,
+              borderBottomRightRadius: 50,
+            }}
+          />
+        </View>
+        <View
+          style={{
+            flex: 1.6,
+            alignItems: 'center',
+            justifyContent: 'flex-start',
+          }}>
+          <Image
+            source={require('../assets/img/sun-bath.png')}
+            style={{
+              height: 100,
+              width: 100,
+              justifyContent: 'flex-start',
+              zIndex: 99999,
+            }}
+          />
+          <Text style={styles.title}>Username</Text>
+          <TextInput
+            style={styles.textInput}
+            placeholder="John"
+            onChangeText={text => this.setState({text})}
+            value={this.state.text}
+          />
+          <Text style={styles.title}>Password</Text>
+          <TextInput
+            style={styles.textInput}
+            placeholder="**********"
+            onChangeText={text => this.setState({text})}
+            value={this.state.text}
+          />
+          <Text
+            style={{
+              fontStyle: 'normal',
+              fontSize: 15,
+              textAlign: 'right',
+              color: '#A13D2D',
+              marginLeft: 100,
+              marginTop: 8,
+              textDecorationLine: 'underline',
+            }}>
+            forget password?
+          </Text>
+          <TouchableHighlight
+            style={styles.button}
+            underlayColor="transparent"
+            onPress={() => {
+              Alert.alert('Welcome Palmarah', 'Log in'), [{text: 'Okay'}];
+            }}>
+            <Text style={styles.buttonText}>Login</Text>
+          </TouchableHighlight>
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              marginTop: -10,
+              justifyContent: 'center',
+            }}>
+            <Text
+              style={{
+                fontSize: 16,
+                marginTop: 15,
+                fontFamily: 'Georgia',
+                color: '#A13D2D',
+                textShadowRadius: 2,
+              }}>
+              Don't have account?
+            </Text>
+            <TouchableHighlight
+              style={styles.buttonSignup}
+              underlayColor={'transparent'}
+              onPress={() => {
+                Alert.alert('Sign Up', 'Please Sign Up'), [{text: 'Okay'}];
+              }}>
+              <Text style={[styles.buttonTextSignup]}> Sign Up</Text>
+            </TouchableHighlight>
+          </View>
+        </View>
+      </View>
     );
   }
 }
 
-
-const width = Dimensions.get('window').width;
-
-
-var Styles = StyleSheet.create({
-    
-    lakecropped: {
-        width: "100%",
-        height: "100%",
-        borderBottomLeftRadius: 50,
-        borderBottomRightRadius: 50,
-        opacity: 0.89,
-        backgroundColor: "#fcf4d4",
-        backgroundColor: "yellow",
-        backgroundColor: "#b4816f",
-        
-     },
-    
-     loginImg: {
-        alignSelf: "center",
-        top: 15
-     },
-
-     textInput: {
-      height: 40,
-      width: 174,
-      shadowColor:"rgba(0, 0, 0, 0.16)",
-      shadowRadius: 1.1,
-      shadowOffset: {
-          height: 10.5,
-          width: 0.5
-      },
-      elevation: 3,
-      shadowOpacity: 0.3,
-      borderRadius: 8,
-      backgroundColor: "#ffff",
-      textShadowColor: "black",
-      textAlignVertical: "center",
-      textShadowRadius: 4,
-      textShadowOffset: {
-          height: 5,
-          width: 2.5
-      },
-      textShadowRadius: 4,
-      includeFontPadding: true,
-      fontFamily: 'Georgia',
-      fontWeight: "100",
-      letterSpacing: 1,
-      zIndex: 500,
-      
-      
-      
-     },
-
-     
-     passwordInput: {
-        height: 40,
-        width: 174,
-        top: 20,
-        shadowColor:"rgba(0, 0, 0, 0.16)",
-        shadowRadius: 1.1,
-        shadowOffset: {
-            height: 10.5,
-            width: 0.5
-        },
-        elevation: 3,
-        shadowOpacity: 0.3,
-        borderRadius: 8,
-        backgroundColor: "#ffff",
-        textShadowColor: "black",
-        textAlignVertical: "center",
-        textShadowRadius: 4,
-        textShadowOffset: {
-            height: 5,
-            width: 2.5
-        },
-        textShadowRadius: 4,
-        includeFontPadding: true,
-        fontFamily: 'Georgia',
-        fontWeight: "100",
-        letterSpacing:1.6,
-        padding: 2,
-        zIndex: 500,
-       
-        
-        
-       },
-
-       labelText: {
-        color: "#ab7362",
-        fontFamily: 'Georgia',
-        fontSize: 14,
-        fontWeight: "600",
-        textShadowColor: "rgba(0, 0, 0, 0.16)",
-        textShadowOffset: {
-            width:0.5,
-            height:0.5
-        },
-        textShadowRadius:2
-        
-
-
-       },
-
-       labelText1: {
-           top: 20,
-        color: "#ab7362",
-        fontFamily: 'Georgia',
-        fontSize: 14,
-        fontWeight: "600",
-        textShadowColor: "rgba(0, 0, 0, 0.16)",
-        textShadowOffset: {
-            width:0.5,
-            height:0.5
-        },
-        textShadowRadius:2
-        
-
-
-       },
-
-       forgotPasswordTouch: {
-           top: 22,
-           width: 100,
-           alignSelf: "flex-end",
-           
-        
-       },
-
-       forgotPasswordText: {
-        color: "#ab7362",
-        fontFamily: 'Georgia',
-        fontSize: 12,
-        fontWeight: "600",
-        textShadowColor: "rgba(0, 0, 0, 0.16)",
-        textShadowOffset: {
-            width:0.5,
-            height:0.5
-        },
-        textShadowRadius:2,
-        alignSelf: "flex-end",
-        textDecorationLine: "underline"
-
-       },
-
-       buttonArea: {
-        top: 45,
-        width: 120,
-        alignSelf: "center",
-       
-       },
-
-       loginButton: {
-            width: 120,
-            height: 40,
-            backgroundColor: "#b4816f",
-            borderRadius: 20,
-            elevation: 4
-       },
-       loginButtonText: {
-           alignSelf:"center",
-           textAlignVertical: "center",
-           top: 5,
-        color: "white",
-        fontFamily: 'Georgia',
-        fontSize: 18,
-        fontWeight: "bold",
-        textShadowColor: "rgba(0, 0, 0, 0.16)",
-        textShadowOffset: {
-            width:1,
-            height:1
-        },
-        textShadowRadius:4,
-       },
-
-       bottomTextView: {
-           top: 90,
-           left: 80
-       },
-
-       BottomText1: {
-        color: "#ab7362",
-        fontFamily: 'Georgia',
-        fontSize: 15,
-        fontWeight: "600",
-        textShadowColor: "rgba(0, 0, 0, 0.16)",
-        textShadowOffset: {
-            width:1,
-            height:1
-        },
-        textShadowRadius:2,
-        alignSelf: "flex-start"
-       },
-
-       SignUpTouch: {
-        top:-20,
-        left: 180,
-        width: 60,
-       },
-
-       SignUp:{
-        color: "#636363",
-        fontFamily: 'Georgia',
-        fontSize: 15,
-        fontWeight: "400",
-        textShadowColor: "rgba(0, 0, 0, 0.16)",
-        textShadowOffset: {
-            width:0.5,
-            height:0.5
-        },
-        textShadowRadius:2,
-        textDecorationLine: "underline"
-       },
-
-
-
-
-     //sub views
-     formView: {
-         top: 35,
-         alignSelf: "center",
-     },
-    
-  
-
-    //  main views
-    imageView: {
-        flex:1.9
-    },
-    loginView: {
-        flex: 3
-    }
-
-
-
-  
-  });
-
-
-// const styles = StyleSheet.create({
-//     container: {
-//         margin: 0,
-//         padding: 0,
-//     },
-//     lakecropped: {
-//         width: "360px",
-//         height: "263px",
-//         objectFit: "contain",
-//         opacity: 0.8,
-//         boxShadow:"5px 10px 6px 0 rgba(0, 0, 0, 0.16)",
-//       }
-// })
+const styles = StyleSheet.create({
+  container: {
+    height: deviceHeight,
+    width: deviceWidth,
+    backgroundColor: '#FCF4D4',
+  },
+  button: {
+    height: 35,
+    width: 150,
+    marginTop: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 15,
+    borderWidth: 2,
+    borderColor: '#AB7362',
+    backgroundColor: '#AB7362',
+  },
+  buttonText: {
+    fontSize: 25,
+    fontFamily: 'Georgia',
+    textAlign: 'center',
+    color: 'white',
+    alignItems: 'flex-start',
+    textShadowRadius: 5,
+  },
+  headerText1: {
+    fontSize: 20,
+    marginTop: 15,
+    fontFamily: 'Georgia',
+    textAlign: 'center',
+    color: '#A13D2D',
+    textShadowRadius: 2,
+  },
+  title: {
+    fontSize: 18,
+    marginTop: 15,
+    fontFamily: 'Georgia',
+    color: '#AB7362',
+    marginTop: 5,
+    marginRight: 150,
+    textShadowRadius: 2,
+  },
+  headerText2: {
+    fontSize: 16,
+    marginTop: 15,
+    fontFamily: 'Georgia',
+    textAlign: 'center',
+    color: 'white',
+    textShadowRadius: 5,
+  },
+  headerText3: {
+    fontSize: 25,
+    marginTop: 15,
+    fontFamily: 'Georgia',
+    textAlign: 'center',
+    color: 'white',
+    textShadowRadius: 5,
+  },
+  buttonSignup: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 5,
+  },
+  buttonTextSignup: {
+    fontSize: 12,
+    marginTop: 5,
+    color: 'black',
+    fontSize: 18,
+    textDecorationLine: 'underline',
+  },
+  textInput: {
+    height: 35,
+    borderColor: 'white',
+    width: 250,
+    backgroundColor: 'white',
+    borderRadius: 15,
+  },
+});
