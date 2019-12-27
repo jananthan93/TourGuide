@@ -11,6 +11,7 @@ import Geolocation from '@react-native-community/geolocation';
 import MapView, {Marker} from 'react-native-maps';
 import _ from 'lodash';
 
+let YOUR_API_KEY = 'AIzaSyAf3iVpPkVee180_v_HL4XoWV18O0471Pc';
 export default class MapSearch extends Component {
   constructor(props) {
     super(props);
@@ -20,7 +21,9 @@ export default class MapSearch extends Component {
       longitude: 0,
       // destination: '',
       locationPredictions: [],
-      locationCoordinate:[]
+      locationCoordinate: [],
+      markerPlaces: null,
+      searchPlace: null,
     };
     this.onChangeDestinationDebounced = _.debounce(
       this.onChangeDestination,
@@ -39,36 +42,69 @@ export default class MapSearch extends Component {
       {enableHighAccuracy: true, maximumAge: 2000, timeout: 20000},
     );
   }
+
   async onChangeDestination(destination) {
     this.setState({destination});
-    const apiURL = `https://maps.googleapis.com/maps/api/place/autocomplete/json?key=AIzaSyAf3iVpPkVee180_v_HL4XoWV18O0471Pc&input=${destination}&location=${this.state.latitude},${this.state.longitude}&radius=2000`;
+    const apiURL = `https://maps.googleapis.com/maps/api/place/autocomplete/json?key=${YOUR_API_KEY}&input=${destination}&location=${this.state.latitude},${this.state.longitude}&radius=2000`;
 
     const result = await fetch(apiURL);
     const jsonResult = await result.json();
     this.setState({locationPredictions: jsonResult.predictions});
-    // console.log(jsonResult);
+
+    // jsonResult.predictions.map(out=>{
+    //   console.log(out.id);
+    //   return out.id;
+    // })
+    // console.log(this.state.locationPredictions);
+    this.getLocCoordinates();
+this.searchTextLocation()
+    // return jsonResult;
   }
 
-  async getLocCoordinates(destination,placeid){
-      const coordUrl=`https://maps.googleapis.com/maps/api/place/details/json?input=${destination}&place_id=${placeid}&key=AIzaSyAf3iVpPkVee180_v_HL4XoWV18O0471Pc`;
-      const result=await fetch(coordUrl);
-      const jsonResult= result.json();
-    //   this.setState({locationCoordinate:jsonResult.prediction})
-    console.log(jsonResult);
+  async getLocCoordinates() {
+    let collectMarker = [];
+    const coordUrl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${this.state.latitude},${this.state.longitude}&radius=5000&type=restaurant&key=${YOUR_API_KEY}`;
+    const result = await fetch(coordUrl);
+    const jsonResult = await result.json();
+    // jsonResult.results.map(out=>{
+    //   console.log(out.place_id,out.name,out.geometry.location);
+    //   return out.id;
+    // })
+    jsonResult.results.map((out, i) => {
+      collectMarker.push(
+        <Marker
+          key={i}
+          coordinate={{
+            latitude: out.geometry.location.lat,
+            longitude: out.geometry.location.lng,
+          }}
+          title={`${out.name}`}
+          icon={`${out.icon}`}></Marker>,
+      );
+    });
+    this.setState({markerPlaces: collectMarker});
+  }
 
+  async searchTextLocation() {
+    // console.log(this.state.searchPlace);
+
+    const searchUrl = `https://maps.googleapis.com/maps/api/place/textsearch/output?${this.state.searchPlace}&key=${YOUR_API_KEY}`;
+    const result = await fetch(searchUrl);
+    const jsonResult = await result.json();
+    console.log(jsonResult);
   }
 
   pressedPrediction(prediction) {
-    // console.log(prediction);
     Keyboard.dismiss();
     this.setState({
       locationPredictions: [],
       destination: prediction.description,
     });
-    // console.log(prediction.place_id);
-    // console.log(prediction.description);
-    this.getLocCoordinates(prediction.destination,prediction.place_id);
+    console.log(prediction.place_id);
+    console.log(prediction.description);
+    this.setState({searchPlace:prediction.description})
     Keyboard;
+    Keyboard.dismiss();
   }
 
   render() {
@@ -96,11 +132,12 @@ export default class MapSearch extends Component {
           zoomEnabled={true}
           zoomControlEnabled={true}
           showsUserLocation={true}>
-          <Marker
+          {this.state.markerPlaces}
+          {/* <Marker
             coordinate={{latitude: 9.6863, longitude: 80.022}}
             title={'title'}
             description={'description'}
-          />
+          /> */}
         </MapView>
         <TextInput
           placeholder="Enter Your Destination"
