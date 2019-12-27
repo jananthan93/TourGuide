@@ -2,7 +2,7 @@ import MapView, {
   PROVIDER_GOOGLE,
   Marker,
   Circle,
-  Callout,
+  Callout
 } from 'react-native-maps'; // remove PROVIDER_GOOGLE import if not using Google Maps
 import React, {Component} from 'react';
 import {
@@ -20,7 +20,7 @@ import Block from '../../common/block';
 import NearBy from './NearBy';
 import {getUrlWithParameter, getPhotoPlace,API_Key} from './functions';
 const {height, width} = Dimensions.get('window');
-
+let photosArray=[];
 export default class ViewMap extends Component {
   state = {
     places: [],
@@ -56,6 +56,7 @@ export default class ViewMap extends Component {
             photoPlaceGallery:[]
         })
         arrayMarkers = [];
+         photosArray=[];
         res.results.map((element, i) => {
           arrayMarkers.push(
             <Marker
@@ -69,22 +70,29 @@ export default class ViewMap extends Component {
               </Callout>
             </Marker>,
           );
-          this.getPhotoPlace(element.photos);
+          if(element.photos){
+            this.getPhotoPlace(element.photos); 
+          }
         });
-        this.setState({
+
+        setTimeout(()=>{ this.setState({
           places: arrayMarkers,
         });
+      },2000)
+       setTimeout(()=>{
+        this.setState({
+          photoPlaceGallery:photosArray
+      });
+       },2000) 
       });
   };
-  getPhotoPlace = (photos)=>{
-   const photosArray=this.state.photoPlaceGallery;
+  getPhotoPlace = (photos,placeName)=>{
     ////https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=CnRtAAAATLZNl354RwP_9UKbQ_5Psy40texXePv4oAlgP4qNEkdIrkyse7rPXYGd9D_Uj1rVsQdWT4oRz4QrYAJNpFX7rzqqMlZw2h2E2y5IKMUZ7ouD_SlcHxYq1yL4KbKUv3qtWgTK0A6QbGh87GB3sscrHRIQiG2RrmU_jF4tENr9wGS_YxoUSSDrYjWmrNfeEHSGSc3FyhNLlBU&key=YOUR_API_KEY
      fetch(`https://maps.googleapis.com/maps/api/place/photo?maxwidth=600&photoreference=${photos[0].photo_reference}&key=${API_Key}`)
     .then(res=>{
+      if(res.status==200){
         photosArray.push({url:res.url})
-        this.setState({
-            photoPlaceGallery:photosArray
-        });
+      }
     })
   }
   componentDidMount() {
