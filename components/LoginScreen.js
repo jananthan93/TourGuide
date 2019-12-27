@@ -96,7 +96,7 @@ export default class LoginScreen extends Component {
             <Text
               style={{
                 fontSize: 16,
-                marginTop: 15,
+                marginTop: 35,
                 fontFamily: 'Georgia',
                 color: '#A13D2D',
                 textShadowRadius: 2,
@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
   button: {
     height: 35,
     width: 150,
-    marginTop: 10,
+    marginTop: 20,
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 15,
@@ -179,7 +179,7 @@ const styles = StyleSheet.create({
   buttonSignup: {
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 5,
+    marginTop: 25,
   },
   buttonTextSignup: {
     fontSize: 12,
@@ -194,5 +194,6 @@ const styles = StyleSheet.create({
     width: 250,
     backgroundColor: 'white',
     borderRadius: 15,
+    marginTop:10
   },
 });
