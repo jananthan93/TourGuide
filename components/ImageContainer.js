@@ -26,9 +26,9 @@ export default class ImageContainer extends Component {
         <Image
          source={item.src}
           style={{
-            height: 180,
+            height: 150,
             width: 200,
-            borderColor: 'dark-blue',
+            borderColor: '#b4816f',
             borderWidth: 0.8,
             borderRadius: 10,
           }}></Image>
@@ -42,26 +42,24 @@ export default class ImageContainer extends Component {
   static navigationOptions = {
     headerTitle: () => (
       <Text
-        style={{
-          textShadowColor: 'blue',
-          fontSize: 30,
-          textShadowOffset: {width: 4, height: 2},
-          textShadowRadius: 5,
-          fontWeight: 'bold',
-          color: 'white',
-        }}>
+      style={{
+        fontSize: 30,
+        textShadowOffset: {width: 4, height: 2},
+        fontWeight: 'bold',
+        color: '#fcf4d4',
+      }}>
         {title}
       </Text>
     ),
-    headerStyle: {backgroundColor: '#1E88A2'}
+    headerStyle:{backgroundColor:"#b4816f"}  
   };
   render() {
     const images = this.props.navigation.getParam('images', []);
     
       return (
-      <SafeAreaView style={{flex: 1, backgroundColor: '#1E88A2'}}>
-        <Block flex={1} />
-        <Block flex={2.5}>
+      <SafeAreaView style={{flex: 1, backgroundColor: '#fcf4d4'}}>
+        <Block flex={0.8} />
+        <Block flex={2} style={{marginBottom:50}}>
           <Image
             style={{
               flex: 1,
@@ -75,21 +73,8 @@ export default class ImageContainer extends Component {
             source={images[this.state.index].src}
           />
         </Block>
-        <Block flex={2}>
-            <Carousel
-              ref={c => {
-                this._carousel = c;
-              }}
-              containerCustomStyle={{position: 'absolute'}}
-              data={images}
-              renderItem={this.renderImage}
-              sliderWidth={width}
-              itemWidth={width}
-              onSnapToItem={index => this.setState({index})}
-            />
-          </Block>
-        <Block flex={1} style={{justifyContent: 'flex-end', paddingBottom: 32}}>
-          <Block flex={1}>
+
+          <Block flex={1} style={{margintop:50}}>
             <Carousel
               ref={c => {
                 this._carousel = c;
@@ -102,21 +87,8 @@ export default class ImageContainer extends Component {
               onSnapToItem={index => this.setState({index})}
             />
           </Block>
-        </Block>
-        <Block
-          center
-          style={{
-            backgroundColor: '#1E88A2',
-            paddingBottom: 5,
-            paddingTop: 5,
-            border: 1,
-            shadowColor: '#000',
-            shadowOffset: {width: 0, height: 2},
-            shadowOpacity: 0.8,
-            shadowRadius: 2,
-          }}>
-          <Footer />
-        </Block>
+       <Block flex={0.2}/>
+       
       </SafeAreaView>
     );
   }

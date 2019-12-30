@@ -92,36 +92,23 @@ export default class CommonDetail extends Component {
   };
   render() {
     return (
-      <Block flex={1} style={{backgroundColor: '#1E88A2'}}>
+      <Block flex={1} style={{backgroundColor: '#fcf4d4'}}>
         <Block flex={1}>
-          <ImageBackground
+          <Image
             source={this.props.Image}
-            style={{width: '100%', height: '100%'}}>
-            <Text
-              style={{
-                fontSize: 36,
-                fontWeight: 'bold',
-                color: 'white',
-                textAlign: 'center',
-                marginTop: 20,
-                textShadowColor: 'blue',
-                textShadowOffset: {width: 5, height: 2},
-                textShadowRadius: 5,
-              }}>
-              {this.props.title}
-            </Text>
-          </ImageBackground>
+            style={styles.lakecropped}>
+          </Image>
         </Block>
         <Block flex={1}>
           <Text
             style={{
               fontSize: 18,
+              fontFamily: 'Georgia',
               fontWeight: 'bold',
-              color: 'white',
+              color: '#b4816f',
               textAlign: 'left',
               margin: 20,
-              textShadowColor: 'black',
-              textShadowRadius: 5,
+              textShadowRadius: 2,
             }}>
             {this.props.children}
           </Text>
@@ -138,13 +125,12 @@ export default class CommonDetail extends Component {
                     <Text
                       style={{
                         fontSize: 20,
+                        fontFamily: 'Georgia',
                         fontWeight: 'bold',
-                        color: 'white',
+                        color: '#b4816f',
                         textAlign: 'left',
                         marginTop: 10,
                         width: 85,
-                        textShadowColor: 'blue',
-                        textShadowOffset: {width: 5, height: 2},
                         textShadowRadius: 5,
                       }}>
                       {obj.content}
@@ -185,34 +171,19 @@ export default class CommonDetail extends Component {
             </Block>
           </ImageBackground>
         </Block>
-
-        <Block center>
-          <Footer />
-        </Block>
       </Block>
     );
   }
 }
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#1E88A2',
+  
+  lakecropped: {
     width: '100%',
     height: '100%',
-    alignItems: 'center',
+    borderBottomLeftRadius: 50,
+    borderBottomRightRadius: 50,
+    opacity: 0.89,
+    backgroundColor: '#b4816f',
   },
-  modal: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#ADEFD1FF',
-    height: 150,
-    width: '90%',
-    borderRadius: 10,
-    borderWidth: 1,
-    borderColor: '#fff',
-  },
-  text: {
-    color: '#3f2949',
-    marginTop: 10,
-  },
+
 });

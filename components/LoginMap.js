@@ -27,7 +27,7 @@ const {height, width} = Dimensions.get('window');
 
 export default class LoginMap extends Component {
   static navigationOptions = {
-    header: null,
+    // header: null,
     headerStyle: {backgroundColor: '#1E88A2'},
   };
   state = {

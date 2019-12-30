@@ -9,20 +9,19 @@ export default class History extends Component {
   componentWillMount(){
     title=this.props.navigation.getParam('titleHistory','error');
   }
-  static navigationOptions =  {
-      headerTitle: ()=><Text
+  static navigationOptions = {
+    headerTitle: () => (
+      <Text
       style={{
-        textShadowColor: 'blue',
         fontSize: 30,
         textShadowOffset: {width: 4, height: 2},
-        textShadowRadius: 5,
         fontWeight: 'bold',
-        color: 'white',
+        color: '#fcf4d4',
       }}>
-      {title}
-    </Text>,
-    headerStyle:{backgroundColor:"#1E88A2"} 
-    // header: null,
+        {title}
+      </Text>
+    ),
+    headerStyle:{backgroundColor:"#b4816f"}  
   };
   render() {
     // console.log(this.props.navigation.getParam('title','error'))
@@ -38,7 +37,7 @@ export default class History extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#1E88A2',
+    backgroundColor: '#fcf4d4',
     width: '100%',
     height: '100%',
     alignItems: 'center',

@@ -19,16 +19,14 @@ export default class PalmyrahHouse extends Component {
     // header: null,
     headerTitle: ()=><Text
     style={{
-      textShadowColor: 'blue',
       fontSize: 30,
       textShadowOffset: {width: 4, height: 2},
-      textShadowRadius: 5,
       fontWeight: 'bold',
-      color: 'white',
+      color: '#fcf4d4',
     }}>
     Palmyrah House
   </Text>,
-headerStyle:{backgroundColor:"#1E88A2"}  
+headerStyle:{backgroundColor:"#b4816f"}  
 
   };
   render() {
@@ -38,7 +36,8 @@ headerStyle:{backgroundColor:"#1E88A2"}
         <ScrollView>
           <Text
             style={{
-              color: 'white',
+              color: '#b4816f',
+              fontFamily: 'Georgia',
               textAlign: 'justify',
               margin: 15,
               fontSize: 18,textShadowColor: 'black',textShadowRadius: 5,
@@ -85,9 +84,7 @@ headerStyle:{backgroundColor:"#1E88A2"}
             {'\n'}{'\n'}
           </Text>
         </ScrollView>
-        <Block center style={{backgroundColor:"#1E88A2",paddingBottom:10,paddingTop:10,border:1}}>
-          <Footer/>
-        </Block>
+       
       </View>
     );
     return (
@@ -103,7 +100,7 @@ headerStyle:{backgroundColor:"#1E88A2"}
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#1E88A2',
+    backgroundColor: '#fcf4d4',
     width: '100%',
     height: '100%',
     alignItems: 'center',

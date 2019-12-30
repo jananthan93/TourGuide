@@ -19,16 +19,14 @@ export default class VayuResort extends Component {
     // header: null,
     headerTitle: ()=><Text
     style={{
-      textShadowColor: 'blue',
       fontSize: 30,
       textShadowOffset: {width: 4, height: 2},
-      textShadowRadius: 5,
       fontWeight: 'bold',
-      color: 'white',
+      color: '#fcf4d4',
     }}>
     Vayu Resort
   </Text>,
-headerStyle:{backgroundColor:"#1E88A2"}  
+  headerStyle:{backgroundColor:"#b4816f"}  
 
   };
   render() {
@@ -45,7 +43,7 @@ headerStyle:{backgroundColor:"#1E88A2"}
       <View >
           {/* <Image source={require('../assets/VayuResort/Image/2.jpg')} style={{}}></Image> */}
         <ScrollView>
-          <Text style={{color:"white", textAlign:"justify",margin:15,fontSize: 18,textShadowColor: 'black',textShadowRadius: 5,}}>
+          <Text style={{color:"#b4816f", textAlign:"justify",margin:15,fontSize: 18,textShadowColor: 'black',textShadowRadius: 5,}}>
           {'\t'}
             Dil, Leo and the team welcome you to the Vayu Resort and Vayu
             Kiteschool.{'\n'}{'\n'}{'\t'} It is a dream location for us Kitesurfers: Pristine
@@ -83,9 +81,7 @@ headerStyle:{backgroundColor:"#1E88A2"}
             verandah!{'\n'}{'\n'}
           </Text>
         </ScrollView>
-        <Block center style={{backgroundColor:"#1E88A2",paddingBottom:10,paddingTop:10,border:1}}>
-          <Footer/>
-        </Block>
+        
       </View>
     );
     return (
