@@ -27,6 +27,7 @@ export default class ViewMap extends Component {
     radius: 500,
     placeType: 'Restorants',
     photoPlaceGallery: [],
+    key:null
   };
   changeType = t => {
     this.setState({
@@ -58,6 +59,7 @@ export default class ViewMap extends Component {
         arrayMarkers = [];
          photosArray=[];
         res.results.map((element, i) => {
+          
           arrayMarkers.push(
             <Marker
               key={i}
@@ -71,7 +73,7 @@ export default class ViewMap extends Component {
             </Marker>,
           );
           if(element.photos){
-            this.getPhotoPlace(element.photos); 
+            this.getPhotoPlace(element.photos,i); 
           }
         });
 
@@ -86,12 +88,12 @@ export default class ViewMap extends Component {
        },2000) 
       });
   };
-  getPhotoPlace = (photos,placeName)=>{
+  getPhotoPlace = (photos,i)=>{
     ////https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=CnRtAAAATLZNl354RwP_9UKbQ_5Psy40texXePv4oAlgP4qNEkdIrkyse7rPXYGd9D_Uj1rVsQdWT4oRz4QrYAJNpFX7rzqqMlZw2h2E2y5IKMUZ7ouD_SlcHxYq1yL4KbKUv3qtWgTK0A6QbGh87GB3sscrHRIQiG2RrmU_jF4tENr9wGS_YxoUSSDrYjWmrNfeEHSGSc3FyhNLlBU&key=YOUR_API_KEY
      fetch(`https://maps.googleapis.com/maps/api/place/photo?maxwidth=600&photoreference=${photos[0].photo_reference}&key=${API_Key}`)
     .then(res=>{
       if(res.status==200){
-        photosArray.push({url:res.url})
+        photosArray.push({url:res.url,key:i})
       }
     })
   }
@@ -125,7 +127,7 @@ export default class ViewMap extends Component {
               }}
               radius={this.state.radius}
               strokeColor={'blue'}
-              style={{backgroundColor: '#5086de'}}></Circle>
+             />
           </MapView>
         </Block>
         {/* <Block

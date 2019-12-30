@@ -16,13 +16,16 @@ export default class HomeScreen extends Component {
   static navigationOptions = {
     header: null,
   };
+
   render() {
     return (
       <Block flex={1} style={{backgroundColor: '#fcf4d4'}}>
-        <Block flex={1.3}>
+        <Block flex={1.3} >
           <ImageBackground 
             source={require('../assets/img/lakecropped.jpg')}
             style={Styles.lakecropped}
+            imageStyle={{borderBottomLeftRadius: 50,borderColor:'blue',
+            borderBottomRightRadius: 50}}
           >
             <Block flex={2} >
           <Image
@@ -37,6 +40,7 @@ export default class HomeScreen extends Component {
         </Block>
         <Block flex={2}>
           <Block flex={1}>
+            <Block flex={0.5}/>
           <TouchableOpacity style={Styles.touchView}
             onPress={() => {
                this.props.navigation.navigate('login');
@@ -51,7 +55,7 @@ export default class HomeScreen extends Component {
           <Block flex={1}>
             <TouchableOpacity style={Styles.touchView}
             // onPress={() => {
-            //    this.props.navigation.navigate('palmyrahhouse');
+            //    this.props.navigation.navigate('register');
             //  }}
             >
               <Image
@@ -151,11 +155,6 @@ const Styles = StyleSheet.create({
     },
     fontFamily: 'Georgia',
   },
-  // logoView: {
-  //   justifyContent:'flex-end',
-  //   // position: 'absolute',
-  //   // height: '100%',
-  // },
   touchView: {
     width: '50%',
     left: 100,

@@ -111,12 +111,14 @@ componentDidMount(){
             )}
           </Block>
 
-          <Block flex={0.5}>
+          <Block flex={0.5}  style={{ marginBottom: 5}}>
             <Carousel
+            loop={true}
               ref={c => {
                 this._carousel = c;
               }}
               containerCustomStyle={{position: 'absolute', padding: 5}}
+              firstItem={1}
               data={searchOptions}
               renderItem={this.renderSearch}
               sliderWidth={width}
@@ -127,16 +129,17 @@ componentDidMount(){
             />
           </Block>
 
-          <Block flex={3} style={{marginTop: 15, marginBottom: 5}}>
+          <Block flex={2} style={{marginTop: 15, marginBottom: 5}}>
             <Carousel
               ref={c => {
                 this._carousel = c;
               }}
-              containerCustomStyle={{position: 'absolute'}}
+              // containerCustomStyle={{}}
               data={this.props.gallery}
               renderItem={this.renderItem}
               sliderWidth={width}
               itemWidth={200}
+
             //   onSnapToItem={index => this.setState({index})}
             />
           </Block>

@@ -28,7 +28,7 @@ const {height, width} = Dimensions.get('window');
 export default class LoginMap extends Component {
   static navigationOptions = {
     // header: null,
-    headerStyle: {backgroundColor: '#1E88A2'},
+    headerStyle: {backgroundColor: '#fcf4d4'},
   };
   state = {
     lat: 0,
@@ -59,17 +59,20 @@ export default class LoginMap extends Component {
     }
     
   };
+  handleCurrentPosition=(position)=>{
+    this.setState({
+      lng: position.coords.longitude,
+      lat: position.coords.latitude,
+      latitudeDelta: 0.0922,
+      longitudeDelta: 0.0421,
+    });
+  }
   callLocation() {
     // alert("callLocation Called");
     Geolocation.getCurrentPosition(
       // Will give you the current location
       position => {
-        this.setState({
-          lng: position.coords.longitude,
-          lat: position.coords.latitude,
-          latitudeDelta: 0.0922,
-          longitudeDelta: 0.0421,
-        });
+       this.handleCurrentPosition(position)
       },
       error => alert(error.message),
       {enableHighAccuracy: true, timeout: 1000000, maximumAge: 1000},
