@@ -3,6 +3,7 @@ import {
   Text,
   StyleSheet,
   Image,
+  ImageBackground,
   Dimensions,
   Button,
   TouchableOpacity,
@@ -18,18 +19,21 @@ export default class HomeScreen extends Component {
   render() {
     return (
       <Block flex={1} style={{backgroundColor: '#fcf4d4'}}>
-        <Block flex={2.2}>
-          <Image
+        <Block flex={1.3}>
+          <ImageBackground 
             source={require('../assets/img/lakecropped.jpg')}
             style={Styles.lakecropped}
-          />
+          >
+            <Block flex={2} >
           <Image
             source={require('../assets/img/palmyrah.png')}
             style={Styles.logoImg}/>
-          <Block style={Styles.logoView}>
+            </Block>
+          <Block flex={1} center>
             <Text style={Styles.logoText}>PALMYRAH HOUSE</Text>
             <Text style={Styles.logoTextSub}>Tourist Guide</Text>
           </Block>
+          </ImageBackground>
         </Block>
         <Block flex={2}>
           <Block flex={1}>
@@ -136,7 +140,6 @@ const Styles = StyleSheet.create({
   logoTextSub: {
     color: 'white',
     top: -2,
-    left: 50,
     fontWeight: '200',
     letterSpacing: 2.5,
     fontSize: 18,
@@ -148,12 +151,11 @@ const Styles = StyleSheet.create({
     },
     fontFamily: 'Georgia',
   },
-  logoView: {
-    position: 'absolute',
-    height: '100%',
-    top: 230,
-    left: 70,
-  },
+  // logoView: {
+  //   justifyContent:'flex-end',
+  //   // position: 'absolute',
+  //   // height: '100%',
+  // },
   touchView: {
     width: '50%',
     left: 100,

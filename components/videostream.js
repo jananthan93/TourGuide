@@ -11,19 +11,16 @@ export default class VideoStream extends Component {
   static navigationOptions = {
     headerTitle: () => (
       <Text
-        style={{
-          textShadowColor: 'blue',
-          fontSize: 30,
-          textShadowOffset: {width: 4, height: 2},
-          textShadowRadius: 5,
-          fontWeight: 'bold',
-          color: 'white',
-        }}>
+      style={{
+        fontSize: 30,
+        textShadowOffset: {width: 4, height: 2},
+        fontWeight: 'bold',
+        color: '#fcf4d4',
+      }}>
         {title}
       </Text>
     ),
-    headerStyle: {backgroundColor: '#1E88A2'},
-    // header: null,
+    headerStyle:{backgroundColor:"#b4816f"}  
   };
 
   render() {
@@ -51,21 +48,7 @@ export default class VideoStream extends Component {
           controls={true}
         />
         </Block>
-        <Block 
-          flex={1}
-          center
-          style={{ justifyContent:"flex-end",
-            backgroundColor: '#1E88A2',
-            // paddingBottom: 0,
-            // paddingTop: 5,
-            border: 1,
-            // shadowColor: '#000',
-            // shadowOffset: {width: 0, height: 2},
-            // shadowOpacity: 0.8,
-            // shadowRadius: 2,
-          }}>
-          <Footer />
-        </Block>
+       
       </Block>
     );
   }
@@ -79,12 +62,12 @@ const styles = StyleSheet.create({
     bottom: 0,
     right: 0,
     // borderWidth: 2,
-    backgroundColor: '#1E88A2',
+    backgroundColor: '#fcf4d4',
   },
   fooetrstyle:{
     position: 'absolute',
     bottom: 0,
     borderWidth: 2,
-    backgroundColor: '#1E88A2',
+    backgroundColor: '#fcf4d4',
   }
 });

@@ -24,7 +24,7 @@ export default class LoginScreen extends Component {
     return (
       <>
       <Block flex={1}>
-      <Block flex={0.8}>
+      <Block flex={0.5}>
       <Image
             source={require('../assets/img/login_bg.jpg')}
             style={Styles.lakecropped}
@@ -32,7 +32,7 @@ export default class LoginScreen extends Component {
       </Block>
       <Block>
         <ScrollView>
-        <Block flex={0.6}>
+        <Block flex={1}>
         <Image
               source={require('../assets/img/sun-bath.png')}
               style={Styles.loginImg}

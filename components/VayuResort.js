@@ -43,7 +43,7 @@ export default class VayuResort extends Component {
       <View >
           {/* <Image source={require('../assets/VayuResort/Image/2.jpg')} style={{}}></Image> */}
         <ScrollView>
-          <Text style={{color:"white", textAlign:"justify",margin:15,fontSize: 18,textShadowColor: 'black',textShadowRadius: 5,}}>
+          <Text style={{color:"#b4816f", textAlign:"justify",margin:15,fontSize: 18,textShadowColor: 'black',textShadowRadius: 5,}}>
           {'\t'}
             Dil, Leo and the team welcome you to the Vayu Resort and Vayu
             Kiteschool.{'\n'}{'\n'}{'\t'} It is a dream location for us Kitesurfers: Pristine

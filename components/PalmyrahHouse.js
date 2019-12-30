@@ -36,7 +36,7 @@ headerStyle:{backgroundColor:"#b4816f"}
         <ScrollView>
           <Text
             style={{
-              color: 'white',
+              color: '#b4816f',
               fontFamily: 'Georgia',
               textAlign: 'justify',
               margin: 15,
