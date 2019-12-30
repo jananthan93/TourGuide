@@ -41,6 +41,7 @@ export default class MapSearch extends Component {
       error => this.setState({error: error.message}),
       {enableHighAccuracy: true, maximumAge: 2000, timeout: 20000},
     );
+    
   }
 
   async onChangeDestination(destination) {
@@ -57,7 +58,6 @@ export default class MapSearch extends Component {
     // })
     // console.log(this.state.locationPredictions);
     this.getLocCoordinates();
-this.searchTextLocation()
     // return jsonResult;
   }
 
@@ -85,15 +85,6 @@ this.searchTextLocation()
     this.setState({markerPlaces: collectMarker});
   }
 
-  async searchTextLocation() {
-    // console.log(this.state.searchPlace);
-
-    const searchUrl = `https://maps.googleapis.com/maps/api/place/textsearch/output?${this.state.searchPlace}&key=${YOUR_API_KEY}`;
-    const result = await fetch(searchUrl);
-    const jsonResult = await result.json();
-    console.log(jsonResult);
-  }
-
   pressedPrediction(prediction) {
     Keyboard.dismiss();
     this.setState({
@@ -102,9 +93,28 @@ this.searchTextLocation()
     });
     console.log(prediction.place_id);
     console.log(prediction.description);
-    this.setState({searchPlace:prediction.description})
+    this.setState({searchPlace: prediction.description});
     Keyboard;
     Keyboard.dismiss();
+
+    this.searchTextLocation();
+  }
+
+  async searchTextLocation() {
+    let searchUrl;
+    // setTimeout(() => {
+      // console.log(this.state.searchPlace);
+
+      // searchUrl = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${this.state.searchPlace}&key=${YOUR_API_KEY}`;
+      // console.log(searchUrl);
+       await fetch('https://maps.googleapis.com/maps/api/place/textsearch/json?query=Jaffna Airport, Palaly Road, Palali, Sri Lanka&key=AIzaSyAf3iVpPkVee180_v_HL4XoWV18O0471Pc')
+       .then(res=>res.json())
+       .then(data=>console.log(data))
+      // setTimeout(() => {
+      //   // const jsonResult = result.json();
+      //   console.log(out.results);
+      // }, 2000);
+    // }, 2000);
   }
 
   render() {
