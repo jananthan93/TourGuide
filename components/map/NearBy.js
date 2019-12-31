@@ -26,8 +26,9 @@ export default class NearBy extends Component {
     return (
       <Block
         center
-        style={{height: 30,width:100, borderRadius:15,borderColor:'#2a0b7d',borderWidth:1}}>
-        <Text style={{fontSize: 18, fontWeight: 'bold', color: '#2a0b7d'}}>
+        style={{height: 30,width:100, borderRadius:15 ,backgroundColor: '#fcf4d4',
+        borderColor:'#b4816f',borderWidth:1}}>
+        <Text style={{fontSize: 18, fontWeight: 'bold', color: '#ad1032'}}>
           {item}
         </Text>
       </Block>
@@ -57,6 +58,10 @@ export default class NearBy extends Component {
       </Block>
     );
   };
+  changeMarkerIcon=(i)=>{
+    // console.log(i)
+    this.props.changeMarkerIcon(this.props.gallery[i].key)
+  }
 componentDidMount(){
     this.setState({
         range:this.props.radius
@@ -74,7 +79,9 @@ componentDidMount(){
                   height: 25,
                   width: 150,
                   borderRadius: 15,
-                  backgroundColor: '#2a0b7d',
+                  backgroundColor: '#fcf4d4',
+                  borderColor:'#b4816f',
+                  borderWidth:1
                 }}>
                 <Text
                   style={
@@ -82,7 +89,7 @@ componentDidMount(){
                     {
                       fontWeight: 'bold',
                       paddingTop: 2,
-                      color: '#bfaded',
+                      color: '#ad1032',
                       textAlign: 'left',
                     })
                   }
@@ -96,13 +103,13 @@ componentDidMount(){
                   height: 25,
                   borderRadius: 15,
                   borderWidth:1,
-                  backgroundColor: '#2a0b7d',
+                  backgroundColor: '#fcf4d4',
                 }}>
                 <Slider
                   step={500}
                   style={{color: 'black', marginTop: 3}}
-                  thumbTintColor={'#bfaded'}
-                  minimumTrackTintColor={'#bfaded'}
+                  thumbTintColor={'#b4816f'}
+                  minimumTrackTintColor={'#b4816f'}
                   maximumValue={3000}
                   onValueChange={this.sliderChange}
                   value={this.state.range}
@@ -140,7 +147,7 @@ componentDidMount(){
               sliderWidth={width}
               itemWidth={200}
 
-            //   onSnapToItem={index => this.setState({index})}
+              // onSnapToItem={index =>this.changeMarkerIcon(index) }
             />
           </Block>
           </Block>

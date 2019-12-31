@@ -23,7 +23,7 @@ export default class LoginScreen extends Component {
   render() {
     return (
       <>
-      <Block flex={1}>
+      <Block flex={1} style={{backgroundColor:'#fcf4d4'}}>
       <Block flex={1}>
       <Image
             source={require('../assets/img/login_bg.jpg')}

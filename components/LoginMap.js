@@ -12,12 +12,10 @@ import {
   Text,
 } from 'react-native';
 import Block from '../common/block';
-import NearBy from './map/NearBy';
 import ViewMap from './map/ViewMap'
 const styles = StyleSheet.create({
   container: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: '#1E88A2',
   },
   map: {
     ...StyleSheet.absoluteFillObject,

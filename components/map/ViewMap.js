@@ -18,7 +18,7 @@ import {
 } from 'react-native';
 import Block from '../../common/block';
 import NearBy from './NearBy';
-import {getUrlWithParameter, getPhotoPlace,API_Key} from './functions';
+import {getUrlWithParameter, getPhotoPlace,API_Key, getPhoto} from './functions';
 const {height, width} = Dimensions.get('window');
 let photosArray=[];
 export default class ViewMap extends Component {
@@ -27,8 +27,14 @@ export default class ViewMap extends Component {
     radius: 500,
     placeType: 'Restorants',
     photoPlaceGallery: [],
-    key:null
+    key:null,
+    isSetting:false,
   };
+  changeMarkerIcon=(k)=>{
+    this.setState({
+      key:k
+    })
+  }
   changeType = t => {
     this.setState({
       placeType: t,
@@ -59,19 +65,19 @@ export default class ViewMap extends Component {
         arrayMarkers = [];
          photosArray=[];
         res.results.map((element, i) => {
+            arrayMarkers.push(
+              <Marker
+                key={i}
+                coordinate={{
+                  latitude: element.geometry.location.lat,
+                  longitude: element.geometry.location.lng,
+                }}>
+                <Callout>
+                  <Text>{element.name}</Text>
+                </Callout>
+              </Marker>,
+            );
           
-          arrayMarkers.push(
-            <Marker
-              key={i}
-              coordinate={{
-                latitude: element.geometry.location.lat,
-                longitude: element.geometry.location.lng,
-              }}>
-              <Callout>
-                <Text>{element.name}</Text>
-              </Callout>
-            </Marker>,
-          );
           if(element.photos){
             this.getPhotoPlace(element.photos,i); 
           }
@@ -99,10 +105,12 @@ export default class ViewMap extends Component {
   }
   componentDidMount() {
     this.getPlaces();
+    const res =  getPhoto()
+    console.log(res);
   }
   render() {
-    console.log(this.state.photoPlaceGallery)
-    console.log(this.state.placeType + ' range ' + this.state.radius);
+    // console.log(this.state.photoPlaceGallery)
+    // console.log(this.state.placeType + ' range ' + this.state.radius);
     return (
       <>
         <Block flex={2.5} style={{zIndex: -1}}>
@@ -139,15 +147,25 @@ export default class ViewMap extends Component {
             marginTop: -50,
           }}
         /> */}
-        <Block card color="gray2" flex={1}>
+        {
+          !this.state.isSetting ? (
+            <TouchableOpacity onPress={()=>this.setState({isSetting:true})} style={{padding:2,marginTop:-80}}>
+              {/* <Text style={{color:'red',zIndex:1}}>setting</Text> */}
+              <Image source={require('../../assets/nearby.png')} style={{width:80,height:80,borderColor:'black',borderWidth:1,borderRadius:10,shadowColor:'gray',shadowRadius:5}}/>
+              </TouchableOpacity>
+          ):(
+
+        <Block card color="gray" flex={1.5}>
           <NearBy
             radius={this.state.radius}
             gallery={this.state.photoPlaceGallery}
             changeRange={r => this.changeRange(r)}
             changeType={t => this.changeType(t)}
-
+            changeMarkerIcon={k=>this.changeMarkerIcon(k)}
           />
         </Block>
+          )
+        }
       </>
     );
   }
