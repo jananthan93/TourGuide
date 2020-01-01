@@ -18,7 +18,7 @@ import {
 } from 'react-native';
 import Block from '../../common/block';
 import NearBy from './NearBy';
-import {getUrlWithParameter, getPhotoPlace,API_Key, getPhoto} from './functions';
+import {getUrlWithParameter, getPhotoPlace,API_Key} from './functions';
 const {height, width} = Dimensions.get('window');
 let photosArray=[];
 export default class ViewMap extends Component {
@@ -82,16 +82,16 @@ export default class ViewMap extends Component {
             this.getPhotoPlace(element.photos,i); 
           }
         });
-
-        setTimeout(()=>{ this.setState({
-          places: arrayMarkers,
-        });
+        setTimeout(()=>{
+            this.setState({
+            places: arrayMarkers,
+          });
       },2000)
-       setTimeout(()=>{
-        this.setState({
-          photoPlaceGallery:photosArray
-      });
-       },2000) 
+        setTimeout(()=>{
+          this.setState({
+            photoPlaceGallery:photosArray
+            });
+        },2000) 
       });
   };
   getPhotoPlace = (photos,i)=>{
@@ -105,8 +105,6 @@ export default class ViewMap extends Component {
   }
   componentDidMount() {
     this.getPlaces();
-    const res =  getPhoto()
-    console.log(res);
   }
   render() {
     // console.log(this.state.photoPlaceGallery)
