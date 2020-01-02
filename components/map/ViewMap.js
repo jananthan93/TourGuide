@@ -24,12 +24,16 @@ let photosArray=[];
 export default class ViewMap extends Component {
   state = {
     places: [],
-    radius: 500,
+    radius: 1000,
     placeType: 'Restorants',
     photoPlaceGallery: [],
-    key:null,
+    key:0,
     isSetting:false,
   };
+  handleNavigation=(name)=>{
+    if(name==='The Palmyrah House')
+    {this.props.navigation.navigate('palmyrahhouse')}
+  }
   changeMarkerIcon=(k)=>{
     
     this.setState({
@@ -122,7 +126,9 @@ export default class ViewMap extends Component {
                       coordinate={{
                         latitude: element.geometry.location.lat,
                         longitude: element.geometry.location.lng,
-                      }}>
+                      }}
+                      onPress={()=>this.handleNavigation(element.name)}
+                      >
                       <Callout>
                         <Text>{element.name}</Text>
                       </Callout>

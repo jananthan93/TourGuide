@@ -99,7 +99,7 @@ export default class LoginMap extends Component {
   render() {
     return (
       <Block flex={1} style={styles.container}>
-        <ViewMap lat={this.state.lat} lng={this.state.lng}/>
+        <ViewMap lat={this.state.lat} lng={this.state.lng} navigation={this.props.navigation}/>
       </Block>
     );
   }
