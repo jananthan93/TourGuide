@@ -14,12 +14,13 @@ const styles = StyleSheet.create({
 });
 export default class CurrentLocationMap extends Component {
   state = {
-    isCurrent: false,
+    isCurrent: true,
     lastLat:9.096140, 
     lastLong: 79.737247,
     latitudeDelta:  0.3,
     longitudeDelta: 0.3, 
   };
+  
   requestLocationPermission = async () => {
     try {
       const granted = await PermissionsAndroid.request(
@@ -80,6 +81,9 @@ export default class CurrentLocationMap extends Component {
          });
     });
   }
+  componentDidMount(){
+    this.requestLocationPermission();
+  }
   handleMap = (status) => {
       if(!status){
           this.requestLocationPermission();
@@ -97,24 +101,24 @@ export default class CurrentLocationMap extends Component {
       }
   };
  
-  onPressZoomIn() {
-    let ltDelta= this.state.latitudeDelta / 2;
-    let lgDelta = this.state.longitudeDelta / 2;
-    this.setState({
-      latitudeDelta:ltDelta,
-      longitudeDelta:lgDelta
-    })
+  // onPressZoomIn() {
+  //   let ltDelta= this.state.latitudeDelta / 2;
+  //   let lgDelta = this.state.longitudeDelta / 2;
+  //   this.setState({
+  //     latitudeDelta:ltDelta,
+  //     longitudeDelta:lgDelta
+  //   })
     
-  }
+  // }
   
-  onPressZoomOut() {
-    let ltDelta= this.state.latitudeDelta * 2;
-    let lgDelta = this.state.longitudeDelta * 2;
-    this.setState({
-      latitudeDelta:ltDelta,
-      longitudeDelta:lgDelta
-    })
-  }
+  // onPressZoomOut() {
+  //   let ltDelta= this.state.latitudeDelta * 2;
+  //   let lgDelta = this.state.longitudeDelta * 2;
+  //   this.setState({
+  //     latitudeDelta:ltDelta,
+  //     longitudeDelta:lgDelta
+  //   })
+  // }
   
   render() {
     console.log('lt : ' + this.state.latitudeDelta + ' lg : ' + this.state.longitudeDelta);
@@ -134,7 +138,7 @@ export default class CurrentLocationMap extends Component {
           longitudeDelta:this.state.longitudeDelta,
         }}>
         </MapView>
-        <View style={{marginTop: 400,width:40,height:30}}>
+        {/* <View style={{marginTop: 400,width:40,height:30}}>
           <TouchableOpacity onPress={() => this.handleMap(this.state.isCurrent)}>
             <Icon name="locate" size={48} color="#444" />
           </TouchableOpacity>
@@ -152,7 +156,7 @@ export default class CurrentLocationMap extends Component {
             }}>
             <Icon name="remove-circle-outline" size={48} color="#444" />
           </TouchableOpacity>
-        </View>
+        </View> */}
       </View>
     );
   }
