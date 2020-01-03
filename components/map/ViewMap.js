@@ -105,7 +105,8 @@ export default class ViewMap extends Component {
     // console.log(this.state.placeType + ' range ' + this.state.radius);
     return (
       <>
-        <Block flex={2.5} style={{zIndex: -1}}>
+      <Block flex={1}>
+        <Block flex={4} style={{zIndex: -1}}>
           <MapView
             provider={PROVIDER_GOOGLE} // remove if not using Google Maps
             ref={map => (this._map = map)}
@@ -172,7 +173,7 @@ export default class ViewMap extends Component {
               </TouchableOpacity>
           ):(
 
-        <Block card color="gray" flex={2}>
+        <Block color="gray" flex={2.7}>
           <NearBy
             radius={this.state.radius}
             gallery={this.state.photoPlaceGallery}
@@ -183,6 +184,7 @@ export default class ViewMap extends Component {
         </Block>
           )
         }
+      </Block>
       </>
     );
   }

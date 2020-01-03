@@ -19,10 +19,10 @@ export default class PalmyrahHouse extends Component {
     // header: null,
     headerTitle: ()=><Text
     style={{
-      fontSize: 30,
+      fontSize: 26,
       textShadowOffset: {width: 4, height: 2},
       fontWeight: 'bold',
-      color: '#fcf4d4',
+      color: 'white',
     }}>
     Palmyrah House
   </Text>,

@@ -17,25 +17,25 @@ const array = [
   {
     id: 1,
     content: 'HISTORY',
-    imageSrc: require('../assets/about/history.png'),
+    imageSrc: require('../assets/detail/history.png'),
     route: 'history',
   },
   {
     id: 2,
     content: 'IMAGES',
-    imageSrc: require('../assets/about/image.png'),
+    imageSrc: require('../assets/detail/photo.png'),
     route: 'image',
   },
   {
     id: 2,
     content: 'AUDIO',
-    imageSrc: require('../assets/about/sound.png'),
+    imageSrc: require('../assets/detail/volume.png'),
     route: 'sound',
   },
   {
     id: 3,
     content: 'VEDIOS',
-    imageSrc: require('../assets/about/vedio.png'),
+    imageSrc: require('../assets/detail/video.png'),
     route: 'vedio',
   },
 ];
@@ -105,7 +105,7 @@ export default class CommonDetail extends Component {
               fontSize: 18,
               fontFamily: 'Georgia',
               fontWeight: 'bold',
-              color: '#b4816f',
+              color: '#00',
               textAlign: 'left',
               margin: 20,
               textShadowRadius: 2,
@@ -124,12 +124,12 @@ export default class CommonDetail extends Component {
                   <Block flex={false} row>
                     <Text
                       style={{
-                        fontSize: 20,
+                        fontSize: 18,
                         fontFamily: 'Georgia',
                         fontWeight: 'bold',
-                        color: '#b4816f',
+                        color: 'black',
                         textAlign: 'left',
-                        marginTop: 10,
+                        marginTop: 12,
                         width: 85,
                         textShadowRadius: 5,
                       }}>

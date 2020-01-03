@@ -26,9 +26,9 @@ export default class NearBy extends Component {
     return (
       <Block
         center
-        style={{height: 30,width:100, borderRadius:15 ,backgroundColor: '#fcf4d4',
+        style={{height: 40,width:150, borderRadius:15 ,backgroundColor: '#fcf4d4',
         borderColor:'#b4816f',borderWidth:1}}>
-        <Text style={{fontSize: 18, fontWeight: 'bold', color: '#ad1032'}}>
+        <Text style={{fontSize: 22, fontWeight: 'bold', color: '#ad1032'}}>
           {item}
         </Text>
       </Block>
@@ -45,18 +45,24 @@ export default class NearBy extends Component {
   };
   renderItem = ({item}) => {
     return (
-      <Block>
-        <Image
-          source={{uri:item.url}}
-          style={{
-            height: 130,
-            width: 200,
-            borderColor: 'dark-blue',
-            borderWidth: 0.8,
-            borderRadius: 10,
-          }}></Image>
-         <Text >{item.name}</Text>
-      </Block>
+      <View >
+      <View style={{backgroundColor:'#ffff',borderRadius: 15,height:130,width:250}}>
+        <TouchableOpacity>
+            <Image
+              source={{uri:item.url}}
+              style={{
+                height: 100,
+                width: 100,
+                borderRadius: 10,
+                marginLeft:10,
+                marginTop: -10,
+                marginLeft: 10,
+              }}> 
+            </Image>
+        </TouchableOpacity>
+        <Text style={{marginLeft:10,marginTop:10,fontSize:17}}>{item.name}</Text>
+      </View>
+      </View>
     );
   };
   changeMarkerIcon=(i)=>{
@@ -72,18 +78,20 @@ componentDidMount(){
     // console.log(this.props.gallery);
     return (
         <Block flex={1}>
-          <Block flex={0.5} >
+          <Block flex={1} >
             {!this.state.isRange ? (
               <Block
                 flex={false}
                 center
                 style={{
                   height: 25,
-                  width: 150,
-                  borderRadius: 15,
+                  width: 125,
+                  borderRadius: 10,
                   backgroundColor: '#fcf4d4',
                   borderColor:'#b4816f',
-                  borderWidth:1
+                  borderWidth:1,
+                  marginTop:10,
+                  marginBottom:10
                 }}>
                 <Text
                   style={
@@ -120,7 +128,7 @@ componentDidMount(){
             )}
           </Block>
 
-          <Block flex={0.5}  style={{ marginBottom: 5}}>
+          <Block flex={2}  style={{ marginBottom: 3}}>
             <Carousel
             loop={true}
               ref={c => {
@@ -131,14 +139,14 @@ componentDidMount(){
               data={searchOptions}
               renderItem={this.renderSearch}
               sliderWidth={width}
-              itemWidth={100}
+              itemWidth={150}
               onSnapToItem={index =>
                this.props.changeType(searchOptions[index])
               }
             />
           </Block>
 
-          <Block flex={2} style={{marginTop: 15, marginBottom: 5}}>
+          <Block flex={4} >
             <Carousel
               ref={c => {
                 this._carousel = c;
@@ -147,8 +155,7 @@ componentDidMount(){
               data={this.props.gallery}
               renderItem={this.renderItem}
               sliderWidth={width}
-              itemWidth={200}
-
+              itemWidth={250}
               // onSnapToItem={index =>this.changeMarkerIcon(index) }
             />
           </Block>
