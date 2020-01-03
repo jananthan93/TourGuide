@@ -60,7 +60,6 @@ export default class NearBy extends Component {
     );
   };
   changeMarkerIcon=(i)=>{
-    console.log(i)
     this.props.changeMarkerIcon(this.props.gallery[i].key)
   }
 componentDidMount(){
@@ -112,7 +111,7 @@ componentDidMount(){
                   style={{color: 'black', marginTop: 3}}
                   thumbTintColor={'#b4816f'}
                   minimumTrackTintColor={'#b4816f'}
-                  maximumValue={3000}
+                  maximumValue={5000}
                   onValueChange={this.sliderChange}
                   value={this.state.range}
                 />
@@ -149,7 +148,7 @@ componentDidMount(){
               sliderWidth={width}
               itemWidth={200}
 
-              // onSnapToItem={index =>this.changeMarkerIcon(index) }
+              onSnapToItem={index =>this.changeMarkerIcon(index) }
             />
           </Block>
           </Block>

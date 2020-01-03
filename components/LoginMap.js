@@ -60,9 +60,7 @@ export default class LoginMap extends Component {
   handleCurrentPosition=(position)=>{
     this.setState({
       lng: position.coords.longitude,
-      lat: position.coords.latitude,
-      latitudeDelta: 0.0922,
-      longitudeDelta: 0.0421,
+      lat: position.coords.latitude
     });
   }
   callLocation() {
@@ -80,9 +78,7 @@ export default class LoginMap extends Component {
       console.log(position);
       this.setState({
         lng: position.coords.longitude,
-        lat: position.coords.latitude,
-        latitudeDelta: 0.0922,
-        longitudeDelta: 0.0421,
+        lat: position.coords.latitude
       });
     });
   }
@@ -90,9 +86,7 @@ export default class LoginMap extends Component {
     // this.requestLocationPermission();
     this.setState({
       lng: 79.8481, 
-      lat: 9.0639,
-      latitudeDelta: 0.0922,
-      longitudeDelta: 0.0421,
+      lat: 9.0639
     });
   }
   

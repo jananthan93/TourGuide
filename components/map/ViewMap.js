@@ -27,7 +27,7 @@ export default class ViewMap extends Component {
     radius: 1000,
     placeType: 'Restorants',
     photoPlaceGallery: [],
-    key:0,
+    key:null,
     isSetting:false,
   };
   handleNavigation=(name)=>{
@@ -35,10 +35,21 @@ export default class ViewMap extends Component {
     {this.props.navigation.navigate('palmyrahhouse')}
   }
   changeMarkerIcon=(k)=>{
-    
     this.setState({
       key:k
     })
+    this._map.animateToRegion({
+      latitude: this.state.places[k].geometry.location.lat,
+      longitude: this.state.places[k].geometry.location.lng,
+      latitudeDelta: 0.0322,
+      longitudeDelta: 0.0021
+    },5000)
+    setTimeout(()=>{
+      this.setState({
+        key:k
+      })
+    },1000)
+    
     
   }
   changeType = t => {
@@ -53,38 +64,34 @@ export default class ViewMap extends Component {
     });
     this.getPlaces();
   };
-  getPlaces = () => {
+  getPlaces = async () => {
+    photosArray=[];
     const url = getUrlWithParameter(
       this.props.lat,
       this.props.lng,
       this.state.radius,
       this.state.placeType,
     );
-
-    fetch(url)
+    
+  await fetch(url)
       .then(data => data.json())
       .then(res => {
         console.log(res);
-       
-        setTimeout(()=>{
-          this.setState({
-            places:res.results
-        })
-        },2000)
-       
-
         res.results.map((element, i) => {
-           
           if(element.photos){
             this.getPhotoPlace(element.photos,i,element.name); 
           }
         });
-        
-        setTimeout(()=>{
+    setTimeout(()=>{
+          this.setState({
+            places:res.results
+        })
+        },1000)
+  setTimeout(()=>{
           this.setState({
             photoPlaceGallery:photosArray
             });
-        },2000) 
+        },3000) 
       });
   };
   getPhotoPlace = (photos,i,name)=>{
@@ -100,7 +107,7 @@ export default class ViewMap extends Component {
     this.getPlaces();
   }
   render() {
-    // console.log(this.state.key);
+    console.log(this.state.key);
     console.log(this.state.photoPlaceGallery)
     // console.log(this.state.placeType + ' range ' + this.state.radius);
     return (
@@ -116,34 +123,27 @@ export default class ViewMap extends Component {
             region={{
               latitude: this.props.lat,
               longitude: this.props.lng,
-              latitudeDelta: 0.0922,
-              longitudeDelta: 0.0421,
+              latitudeDelta: 0.0322,
+              longitudeDelta: 0.0021,
             }}>
             {
-            this.state.places.map((element, i) => (
+            this.state.places.map((element, i) =>(
                     <Marker
                       key={i}
                       coordinate={{
                         latitude: element.geometry.location.lat,
                         longitude: element.geometry.location.lng,
                       }}
+                      title={element.name}
                       onPress={()=>this.handleNavigation(element.name)}
+                      tracksViewChanges={true}
+                      image={ i === this.state.key ? require('../../assets/located.png'):null}
                       >
                       <Callout>
                         <Text>{element.name}</Text>
                       </Callout>
-                      {/* <View>
-                      <Image
-                        style={
-                          i === this.state.key
-                            ? styles.img_placesMarkerActive
-                            : styles.img_placesMarker
-                        }
-                        source={require('../../assets/located.png')}
-                      />
-                    </View> */}
-                    </Marker>
-            ))
+                    </Marker>)
+            )
             }
             <Circle
               center={{
@@ -155,15 +155,7 @@ export default class ViewMap extends Component {
              />
           </MapView>
         </Block>
-        {/* <Block
-          flex={false}
-          style={{
-            width: 30,
-            height: 50,
-            backgroundColor: 'red',
-            marginTop: -50,
-          }}
-        /> */}
+
         {
           !this.state.isSetting ? (
             <TouchableOpacity onPress={()=>this.setState({isSetting:true})} style={{padding:2,marginTop:-80}}>
