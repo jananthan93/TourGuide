@@ -137,7 +137,7 @@ export default class ViewMap extends Component {
                       title={element.name}
                       onPress={()=>this.handleNavigation(element.name)}
                       tracksViewChanges={true}
-                      image={ i === this.state.key ? require('../../assets/located.png'):null}
+                      icon={ i === this.state.key ? require('../../assets/located.png'):null}
                       >
                       <Callout>
                         <Text>{element.name}</Text>
