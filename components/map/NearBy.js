@@ -55,11 +55,12 @@ export default class NearBy extends Component {
             borderWidth: 0.8,
             borderRadius: 10,
           }}></Image>
+         <Text >{item.name}</Text>
       </Block>
     );
   };
   changeMarkerIcon=(i)=>{
-    // console.log(i)
+    console.log(i)
     this.props.changeMarkerIcon(this.props.gallery[i].key)
   }
 componentDidMount(){
@@ -68,6 +69,7 @@ componentDidMount(){
     })
 }
   render() {
+    // console.log(this.props.gallery);
     return (
         <Block flex={1}>
           <Block flex={0.5} >

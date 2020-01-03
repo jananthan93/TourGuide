@@ -24,16 +24,22 @@ let photosArray=[];
 export default class ViewMap extends Component {
   state = {
     places: [],
-    radius: 500,
+    radius: 1000,
     placeType: 'Restorants',
     photoPlaceGallery: [],
-    key:null,
+    key:0,
     isSetting:false,
   };
+  handleNavigation=(name)=>{
+    if(name==='The Palmyrah House')
+    {this.props.navigation.navigate('palmyrahhouse')}
+  }
   changeMarkerIcon=(k)=>{
+    
     this.setState({
       key:k
     })
+    
   }
   changeType = t => {
     this.setState({
@@ -54,39 +60,26 @@ export default class ViewMap extends Component {
       this.state.radius,
       this.state.placeType,
     );
-    let arrayMarkers = [];
+
     fetch(url)
       .then(data => data.json())
       .then(res => {
         console.log(res);
-        this.setState({
-            photoPlaceGallery:[]
+       
+        setTimeout(()=>{
+          this.setState({
+            places:res.results
         })
-        arrayMarkers = [];
-         photosArray=[];
+        },2000)
+       
+
         res.results.map((element, i) => {
-            arrayMarkers.push(
-              <Marker
-                key={i}
-                coordinate={{
-                  latitude: element.geometry.location.lat,
-                  longitude: element.geometry.location.lng,
-                }}>
-                <Callout>
-                  <Text>{element.name}</Text>
-                </Callout>
-              </Marker>,
-            );
-          
+           
           if(element.photos){
-            this.getPhotoPlace(element.photos,i); 
+            this.getPhotoPlace(element.photos,i,element.name); 
           }
         });
-        setTimeout(()=>{
-            this.setState({
-            places: arrayMarkers,
-          });
-      },2000)
+        
         setTimeout(()=>{
           this.setState({
             photoPlaceGallery:photosArray
@@ -94,12 +87,12 @@ export default class ViewMap extends Component {
         },2000) 
       });
   };
-  getPhotoPlace = (photos,i)=>{
+  getPhotoPlace = (photos,i,name)=>{
     ////https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=CnRtAAAATLZNl354RwP_9UKbQ_5Psy40texXePv4oAlgP4qNEkdIrkyse7rPXYGd9D_Uj1rVsQdWT4oRz4QrYAJNpFX7rzqqMlZw2h2E2y5IKMUZ7ouD_SlcHxYq1yL4KbKUv3qtWgTK0A6QbGh87GB3sscrHRIQiG2RrmU_jF4tENr9wGS_YxoUSSDrYjWmrNfeEHSGSc3FyhNLlBU&key=YOUR_API_KEY
      fetch(`https://maps.googleapis.com/maps/api/place/photo?maxwidth=600&photoreference=${photos[0].photo_reference}&key=${API_Key}`)
     .then(res=>{
       if(res.status==200){
-        photosArray.push({url:res.url,key:i})
+        photosArray.push({url:res.url,key:i,name:name})
       }
     })
   }
@@ -107,7 +100,8 @@ export default class ViewMap extends Component {
     this.getPlaces();
   }
   render() {
-    // console.log(this.state.photoPlaceGallery)
+    // console.log(this.state.key);
+    console.log(this.state.photoPlaceGallery)
     // console.log(this.state.placeType + ' range ' + this.state.radius);
     return (
       <>
@@ -125,7 +119,32 @@ export default class ViewMap extends Component {
               latitudeDelta: 0.0922,
               longitudeDelta: 0.0421,
             }}>
-            {this.state.places}
+            {
+            this.state.places.map((element, i) => (
+                    <Marker
+                      key={i}
+                      coordinate={{
+                        latitude: element.geometry.location.lat,
+                        longitude: element.geometry.location.lng,
+                      }}
+                      onPress={()=>this.handleNavigation(element.name)}
+                      >
+                      <Callout>
+                        <Text>{element.name}</Text>
+                      </Callout>
+                      {/* <View>
+                      <Image
+                        style={
+                          i === this.state.key
+                            ? styles.img_placesMarkerActive
+                            : styles.img_placesMarker
+                        }
+                        source={require('../../assets/located.png')}
+                      />
+                    </View> */}
+                    </Marker>
+            ))
+            }
             <Circle
               center={{
                 latitude: this.props.lat,
@@ -153,7 +172,7 @@ export default class ViewMap extends Component {
               </TouchableOpacity>
           ):(
 
-        <Block card color="gray" flex={1.5}>
+        <Block card color="gray" flex={2}>
           <NearBy
             radius={this.state.radius}
             gallery={this.state.photoPlaceGallery}
@@ -175,5 +194,20 @@ const styles = StyleSheet.create({
   },
   map: {
     ...StyleSheet.absoluteFillObject,
+  },
+  img_placesMarker: {
+    flex: 1,
+    width: 35,
+    marginRight: 10,
+    marginLeft: 10,
+    resizeMode: 'contain',
+  },
+  img_placesMarkerActive: {
+    flex: 1,
+    width: 35,
+    marginRight: 10,
+    marginLeft: 10,
+    tintColor: 'red',
+    resizeMode: 'contain',
   },
 });
