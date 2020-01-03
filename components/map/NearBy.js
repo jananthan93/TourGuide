@@ -26,8 +26,9 @@ export default class NearBy extends Component {
     return (
       <Block
         center
-        style={{height: 30,width:100, borderRadius:15,borderColor:'#2a0b7d',borderWidth:1}}>
-        <Text style={{fontSize: 18, fontWeight: 'bold', color: '#2a0b7d'}}>
+        style={{height: 30,width:100, borderRadius:15 ,backgroundColor: '#fcf4d4',
+        borderColor:'#b4816f',borderWidth:1}}>
+        <Text style={{fontSize: 18, fontWeight: 'bold', color: '#ad1032'}}>
           {item}
         </Text>
       </Block>
@@ -54,15 +55,21 @@ export default class NearBy extends Component {
             borderWidth: 0.8,
             borderRadius: 10,
           }}></Image>
+         <Text >{item.name}</Text>
       </Block>
     );
   };
+  changeMarkerIcon=(i)=>{
+    console.log(i)
+    this.props.changeMarkerIcon(this.props.gallery[i].key)
+  }
 componentDidMount(){
     this.setState({
         range:this.props.radius
     })
 }
   render() {
+    // console.log(this.props.gallery);
     return (
         <Block flex={1}>
           <Block flex={0.5} >
@@ -74,7 +81,9 @@ componentDidMount(){
                   height: 25,
                   width: 150,
                   borderRadius: 15,
-                  backgroundColor: '#2a0b7d',
+                  backgroundColor: '#fcf4d4',
+                  borderColor:'#b4816f',
+                  borderWidth:1
                 }}>
                 <Text
                   style={
@@ -82,7 +91,7 @@ componentDidMount(){
                     {
                       fontWeight: 'bold',
                       paddingTop: 2,
-                      color: '#bfaded',
+                      color: '#ad1032',
                       textAlign: 'left',
                     })
                   }
@@ -96,13 +105,13 @@ componentDidMount(){
                   height: 25,
                   borderRadius: 15,
                   borderWidth:1,
-                  backgroundColor: '#2a0b7d',
+                  backgroundColor: '#fcf4d4',
                 }}>
                 <Slider
                   step={500}
                   style={{color: 'black', marginTop: 3}}
-                  thumbTintColor={'#bfaded'}
-                  minimumTrackTintColor={'#bfaded'}
+                  thumbTintColor={'#b4816f'}
+                  minimumTrackTintColor={'#b4816f'}
                   maximumValue={3000}
                   onValueChange={this.sliderChange}
                   value={this.state.range}
@@ -111,12 +120,14 @@ componentDidMount(){
             )}
           </Block>
 
-          <Block flex={0.5}>
+          <Block flex={0.5}  style={{ marginBottom: 5}}>
             <Carousel
+            loop={true}
               ref={c => {
                 this._carousel = c;
               }}
               containerCustomStyle={{position: 'absolute', padding: 5}}
+              firstItem={1}
               data={searchOptions}
               renderItem={this.renderSearch}
               sliderWidth={width}
@@ -127,17 +138,18 @@ componentDidMount(){
             />
           </Block>
 
-          <Block flex={3} style={{marginTop: 15, marginBottom: 5}}>
+          <Block flex={2} style={{marginTop: 15, marginBottom: 5}}>
             <Carousel
               ref={c => {
                 this._carousel = c;
               }}
-              containerCustomStyle={{position: 'absolute'}}
+              // containerCustomStyle={{}}
               data={this.props.gallery}
               renderItem={this.renderItem}
               sliderWidth={width}
               itemWidth={200}
-            //   onSnapToItem={index => this.setState({index})}
+
+              // onSnapToItem={index =>this.changeMarkerIcon(index) }
             />
           </Block>
           </Block>

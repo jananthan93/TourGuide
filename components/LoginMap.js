@@ -12,12 +12,10 @@ import {
   Text,
 } from 'react-native';
 import Block from '../common/block';
-import NearBy from './map/NearBy';
 import ViewMap from './map/ViewMap'
 const styles = StyleSheet.create({
   container: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: '#1E88A2',
   },
   map: {
     ...StyleSheet.absoluteFillObject,
@@ -28,7 +26,7 @@ const {height, width} = Dimensions.get('window');
 export default class LoginMap extends Component {
   static navigationOptions = {
     // header: null,
-    headerStyle: {backgroundColor: '#1E88A2'},
+    headerStyle: {backgroundColor: '#fcf4d4'},
   };
   state = {
     lat: 0,
@@ -59,17 +57,20 @@ export default class LoginMap extends Component {
     }
     
   };
+  handleCurrentPosition=(position)=>{
+    this.setState({
+      lng: position.coords.longitude,
+      lat: position.coords.latitude,
+      latitudeDelta: 0.0922,
+      longitudeDelta: 0.0421,
+    });
+  }
   callLocation() {
     // alert("callLocation Called");
     Geolocation.getCurrentPosition(
       // Will give you the current location
       position => {
-        this.setState({
-          lng: position.coords.longitude,
-          lat: position.coords.latitude,
-          latitudeDelta: 0.0922,
-          longitudeDelta: 0.0421,
-        });
+       this.handleCurrentPosition(position)
       },
       error => alert(error.message),
       {enableHighAccuracy: true, timeout: 1000000, maximumAge: 1000},
@@ -86,13 +87,19 @@ export default class LoginMap extends Component {
     });
   }
   componentWillMount() {
-    this.requestLocationPermission();
+    // this.requestLocationPermission();
+    this.setState({
+      lng: 79.8481, 
+      lat: 9.0639,
+      latitudeDelta: 0.0922,
+      longitudeDelta: 0.0421,
+    });
   }
   
   render() {
     return (
       <Block flex={1} style={styles.container}>
-        <ViewMap lat={this.state.lat} lng={this.state.lng}/>
+        <ViewMap lat={this.state.lat} lng={this.state.lng} navigation={this.props.navigation}/>
       </Block>
     );
   }
