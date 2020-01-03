@@ -13,6 +13,8 @@ import ImageContainer from '../components/ImageContainer';
 import LoginMap from '../components/LoginMap';
 import HomeScreen from '../components/HomeScreen';
 import LoginScreen from '../components/LoginScreen';
+import AudioStream from '../components/audioStream'
+
 const MainNavigator = createStackNavigator({
   // splash:{screen:SplashScreen},
   welcome:{screen:HomeScreen},
@@ -24,6 +26,7 @@ const MainNavigator = createStackNavigator({
   vedio:{screen:VideoStream},
   image:{screen: ImageContainer},
   nearby:{screen: LoginMap},
+  sound:{screen:AudioStream}
 });
 
 const Home = createAppContainer(MainNavigator);

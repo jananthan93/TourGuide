@@ -13,9 +13,9 @@ export default class History extends Component {
     headerTitle: () => (
       <Text
       style={{
-        fontSize: 30,
+        fontSize: 30,fontFamily: 'Times New Roman',
         textShadowOffset: {width: 4, height: 2},
-        fontWeight: 'bold',
+        // fontWeight: 'bold',
         color: '#fcf4d4',
       }}>
         {title}

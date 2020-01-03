@@ -11,7 +11,7 @@ import Geolocation from '@react-native-community/geolocation';
 import MapView, {Marker} from 'react-native-maps';
 import _ from 'lodash';
 
-let YOUR_API_KEY = 'AIzaSyAf3iVpPkVee180_v_HL4XoWV18O0471Pc';
+let YOUR_API_KEY = 'AIzaSyDUqBfawG19eYuhCDntWQKosKy_Xxvlnzk';
 export default class MapSearch extends Component {
   constructor(props) {
     super(props);
@@ -24,26 +24,32 @@ export default class MapSearch extends Component {
       locationCoordinate: [],
       markerPlaces: null,
       searchPlace: null,
+      searchCoor:{
+        lat:0,lng:0,name:''
+      }
     };
     this.onChangeDestinationDebounced = _.debounce(
       this.onChangeDestination,
       1000,
     );
   }
+
   componentDidMount() {
-    Geolocation.getCurrentPosition(
-      position => {
-        this.setState({
-          latitude: position.coords.latitude,
-          longitude: position.coords.longitude,
-        });
-      },
-      error => this.setState({error: error.message}),
-      {enableHighAccuracy: true, maximumAge: 2000, timeout: 20000},
-    );
-    
+    this.getCurrentLocation();
   }
 
+getCurrentLocation(){
+  Geolocation.getCurrentPosition(
+    position => {
+      this.setState({
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude,
+      });
+    },
+    error => this.setState({error: error.message}),
+    {enableHighAccuracy: true, maximumAge: 2000, timeout: 20000},
+  );
+}
   async onChangeDestination(destination) {
     this.setState({destination});
     const apiURL = `https://maps.googleapis.com/maps/api/place/autocomplete/json?key=${YOUR_API_KEY}&input=${destination}&location=${this.state.latitude},${this.state.longitude}&radius=2000`;
@@ -52,13 +58,7 @@ export default class MapSearch extends Component {
     const jsonResult = await result.json();
     this.setState({locationPredictions: jsonResult.predictions});
 
-    // jsonResult.predictions.map(out=>{
-    //   console.log(out.id);
-    //   return out.id;
-    // })
-    // console.log(this.state.locationPredictions);
     this.getLocCoordinates();
-    // return jsonResult;
   }
 
   async getLocCoordinates() {
@@ -66,10 +66,6 @@ export default class MapSearch extends Component {
     const coordUrl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${this.state.latitude},${this.state.longitude}&radius=5000&type=restaurant&key=${YOUR_API_KEY}`;
     const result = await fetch(coordUrl);
     const jsonResult = await result.json();
-    // jsonResult.results.map(out=>{
-    //   console.log(out.place_id,out.name,out.geometry.location);
-    //   return out.id;
-    // })
     jsonResult.results.map((out, i) => {
       collectMarker.push(
         <Marker
@@ -101,20 +97,22 @@ export default class MapSearch extends Component {
   }
 
   async searchTextLocation() {
-    let searchUrl;
-    // setTimeout(() => {
-      // console.log(this.state.searchPlace);
-
-      // searchUrl = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${this.state.searchPlace}&key=${YOUR_API_KEY}`;
-      // console.log(searchUrl);
-       await fetch('https://maps.googleapis.com/maps/api/place/textsearch/json?query=Jaffna Airport, Palaly Road, Palali, Sri Lanka&key=AIzaSyAf3iVpPkVee180_v_HL4XoWV18O0471Pc')
-       .then(res=>res.json())
-       .then(data=>console.log(data))
-      // setTimeout(() => {
-      //   // const jsonResult = result.json();
-      //   console.log(out.results);
-      // }, 2000);
-    // }, 2000);
+    let searchMarker = [];
+    setTimeout(() => {
+      console.log('searchPlace  '+this.state.searchPlace);
+      fetch(
+        `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${this.state.searchPlace}&key=AIzaSyAf3iVpPkVee180_v_HL4XoWV18O0471Pc`,
+      )
+        .then(res => res.json())
+        .then(data => {
+          console.log(data.results);
+          console.log(data.results[0].geometry.location);
+          this.setState({searchCoor:{lat:data.results[0].geometry.location.lat,lng:data.results[0].geometry.location.lng,name:this.state.searchPlace}})
+          console.log(this.state.searchCoor.lat)
+          console.log(this.state.searchCoor.lng)
+          console.log(this.state.searchCoor.name)
+        });
+    }, 1000);
   }
 
   render() {
@@ -130,7 +128,7 @@ export default class MapSearch extends Component {
       ),
     );
     return (
-      <View style={styles.container}>
+      <View style={styles.container} accessible={true}>
         <MapView
           style={styles.map}
           region={{
@@ -142,15 +140,16 @@ export default class MapSearch extends Component {
           zoomEnabled={true}
           zoomControlEnabled={true}
           showsUserLocation={true}>
-          {this.state.markerPlaces}
-          {/* <Marker
-            coordinate={{latitude: 9.6863, longitude: 80.022}}
-            title={'title'}
-            description={'description'}
-          /> */}
+          {/* {this.state.markerPlaces} */}
+          <Marker
+            coordinate={{latitude: this.state.searchCoor.lat, longitude: this.state.searchCoor.lng}}
+            title={`${this.state.searchCoor.name}`}
+            pinColor="red"
+          />
         </MapView>
         <TextInput
           placeholder="Enter Your Destination"
+          inlineImageLeft="search_icon"
           style={styles.destinationInput}
           value={this.state.destination}
           onChangeText={destination => {
@@ -169,8 +168,11 @@ const styles = StyleSheet.create({
     ...StyleSheet.absoluteFillObject,
   },
   map: {
-    ...StyleSheet.absoluteFillObject,
-    // height: '100%'
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
   },
   destinationInput: {
     height: 40,

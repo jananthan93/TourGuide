@@ -19,9 +19,9 @@ export default class PalmyrahHouse extends Component {
     // header: null,
     headerTitle: ()=><Text
     style={{
-      fontSize: 30,
-      textShadowOffset: {width: 4, height: 2},
-      fontWeight: 'bold',
+      fontSize: 30,fontFamily: 'Times New Roman',
+      // textShadowOffset: {width: 4, height: 2},
+      // fontWeight: 'bold',
       color: '#fcf4d4',
     }}>
     Palmyrah House
@@ -36,11 +36,11 @@ headerStyle:{backgroundColor:"#b4816f"}
         <ScrollView>
           <Text
             style={{
-              color: '#b4816f',
-              fontFamily: 'Georgia',
+              color: '#C15C4E',
+              fontFamily: 'Times New Roman',
               textAlign: 'justify',
               margin: 15,
-              fontSize: 18,textShadowColor: 'black',textShadowRadius: 5,
+              fontSize: 18,textShadowColor: 'white',textShadowRadius: 5,
             }}>
             {'\t'}Mannar is a district located in the far north-west of Sri
             Lanka. Steeped in history, nature and culture, its amazing offerings

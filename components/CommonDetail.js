@@ -86,7 +86,16 @@ export default class CommonDetail extends Component {
         }
       }
       case 'sound': {
-        this.setState({isVisible: true});
+        // this.setState({isVisible: true});
+        if (this.props.name === 'Palmyra House') {
+          this.props.navigation.navigate(route, {titleAudio:'Palmyrah House',
+            audioSrc: require('../assets/Palmyrah/Video/palmyrah.mp4'),
+          });
+        } else {
+          this.props.navigation.navigate(route, {titleAudio:'Vayu Resort',
+            audioSrc: require('../assets/VayuResort/video/vayu.mp4'),
+          });
+        }
       }
     }
   };
@@ -103,11 +112,11 @@ export default class CommonDetail extends Component {
           <Text
             style={{
               fontSize: 18,
-              fontFamily: 'Georgia',
-              fontWeight: 'bold',
-              color: '#b4816f',
+              fontFamily: 'Times New Roman',
+              // fontWeight: 'bold',
+              color: '#C15C4E',
               textAlign: 'left',
-              margin: 20,
+              margin: 20,textShadowColor:"white",
               textShadowRadius: 2,
             }}>
             {this.props.children}
@@ -125,11 +134,11 @@ export default class CommonDetail extends Component {
                     <Text
                       style={{
                         fontSize: 20,
-                        fontFamily: 'Georgia',
-                        fontWeight: 'bold',
-                        color: '#b4816f',
+                        fontFamily: 'Times New Roman',
+                        // fontWeight: 'bold',
+                        color: '#C15C4E',
                         textAlign: 'left',
-                        marginTop: 10,
+                        marginTop: 10,textShadowColor:"white",
                         width: 85,
                         textShadowRadius: 5,
                       }}>
