@@ -8,12 +8,13 @@ import MapSearch from './components/search/mapSearch';
 import LoginScreen from './components/LoginScreen';
 import MannarFortScreen from './components/screens/MannarFortScreen'
 import Player from './components/screens/Player';
+import MannarFort from './components/MannarFort';
 export default class App extends Component {
   render() {
     return (
       <>
           {/* <SoundModal/> */}
-          {/* <Home/> */}
+          <Home/>
           {/* <HomeScreen/> */}
         {/* <LoginMap/> */}
         {/* <LoginScreen/> */}
@@ -21,7 +22,8 @@ export default class App extends Component {
           {/* <MapSearch></MapSearch> */}
           {/* <Seekbar></Seekbar> */}
           {/* <MannarFortScreen/> */}
-          <Player/>
+          {/* <Player/> */}
+          {/* <MannarFort/> */}
       </>
     )
   }

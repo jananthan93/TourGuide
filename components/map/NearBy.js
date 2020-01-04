@@ -148,8 +148,6 @@ componentDidMount(){
               </Block>
           
           </Block>
-
-          {/* <Block flex={2}  style={{ marginTop: 50}}> */}
           <Block flex={1.5}  style={{ marginTop: 0}}>
             <Carousel
             loop={true}
