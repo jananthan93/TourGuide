@@ -10,8 +10,6 @@ import {
 } from 'react-native';
 import PalmyrahImage from '../assets/Palmyrah/Image/2.jpg';
 import CommonDetail from './CommonDetail';
-import Block from '../common/block';
-import Footer from '../common/footer';
 
 
 export default class PalmyrahHouse extends Component {
@@ -21,7 +19,7 @@ export default class PalmyrahHouse extends Component {
     style={{
       fontSize: 26,
       textShadowOffset: {width: 4, height: 2},
-      fontWeight: 'bold',
+      // fontWeight: 'bold',
       color: 'white',
     }}>
     Palmyrah House
@@ -36,7 +34,7 @@ headerStyle:{backgroundColor:"#b4816f"}
         <ScrollView>
           <Text
             style={{
-              color: '#C15C4E',
+              color: 'black',
               fontFamily: 'Times New Roman',
               textAlign: 'justify',
               margin: 15,

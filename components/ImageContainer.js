@@ -45,7 +45,7 @@ export default class ImageContainer extends Component {
       style={{
         fontSize: 30,
         textShadowOffset: {width: 4, height: 2},
-        fontWeight: 'bold',
+        // fontWeight: 'bold',
         color: '#fcf4d4',
       }}>
         {title}

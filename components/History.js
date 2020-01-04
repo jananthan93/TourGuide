@@ -10,18 +10,18 @@ export default class History extends Component {
     title=this.props.navigation.getParam('titleHistory','error');
   }
   static navigationOptions = {
-    headerTitle: () => (
-      <Text
-      style={{
-        fontSize: 30,fontFamily: 'Times New Roman',
-        textShadowOffset: {width: 4, height: 2},
-        // fontWeight: 'bold',
-        color: '#fcf4d4',
-      }}>
-        {title}
-      </Text>
-    ),
-    headerStyle:{backgroundColor:"#b4816f"}  
+    // header: null,
+    headerTitle: ()=><Text
+    style={{
+      fontSize: 26,
+      textShadowOffset: {width: 4, height: 2},
+      // fontWeight: 'bold',
+      color: 'white',
+    }}>
+    {title}
+  </Text>,
+headerStyle:{backgroundColor:"#b4816f"}  
+
   };
   render() {
     // console.log(this.props.navigation.getParam('title','error'))

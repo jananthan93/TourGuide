@@ -28,7 +28,7 @@ export default class ViewMap extends Component {
     placeType: 'Restorants',
     photoPlaceGallery: [],
     key:null,
-    isSetting:false,
+    isSetting:true,
   };
   handleNavigation=(name)=>{
     if(name==='The Palmyrah House')
@@ -138,7 +138,7 @@ export default class ViewMap extends Component {
                       title={element.name}
                       onPress={()=>this.handleNavigation(element.name)}
                       tracksViewChanges={true}
-                      icon={ i === this.state.key ? require('../../assets/located.png'):null}
+                      image={ i === this.state.key ? require('../../assets/located.png'):null}
                       >
                       <Callout>
                         <Text>{element.name}</Text>

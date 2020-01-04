@@ -13,6 +13,7 @@ import {
 import Block from '../common/block';
 import Footer from '../common/footer';
 import SoundPalmyrah from './audio/audio';
+import { ScrollView } from 'react-native-gesture-handler';
 const array = [
   {
     id: 1,
@@ -23,13 +24,13 @@ const array = [
   {
     id: 2,
     content: 'IMAGES',
-    imageSrc: require('../assets/detail/photo.png'),
+    imageSrc: require('../assets/detail/image.png'),
     route: 'image',
   },
   {
     id: 2,
     content: 'AUDIO',
-    imageSrc: require('../assets/detail/volume.png'),
+    imageSrc: require('../assets/detail/sound.png'),
     route: 'sound',
   },
   {
@@ -109,6 +110,8 @@ export default class CommonDetail extends Component {
           </Image>
         </Block>
         <Block flex={1}>
+          <ScrollView>
+
           <Text
             style={{
               fontSize: 18,
@@ -121,6 +124,7 @@ export default class CommonDetail extends Component {
             }}>
             {this.props.children}
           </Text>
+          </ScrollView>
         </Block>
         <Block flex={1} row>
           <ImageBackground

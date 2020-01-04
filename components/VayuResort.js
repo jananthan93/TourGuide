@@ -48,7 +48,7 @@ export default class VayuResort extends Component {
         <ScrollView>
           <Text
             style={{
-              color: '#C15C4E',
+              color: 'black',
               textAlign: 'justify',fontFamily: 'Times New Roman',
               margin: 15,
               fontSize: 18,
