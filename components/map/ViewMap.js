@@ -35,20 +35,20 @@ export default class ViewMap extends Component {
     {this.props.navigation.navigate('palmyrahhouse')}
   }
   changeMarkerIcon=(k)=>{
-    this.setState({
-      key:k
-    })
+    // this.setState({
+    //   key:k
+    // })
     this._map.animateToRegion({
       latitude: this.state.places[k].geometry.location.lat,
       longitude: this.state.places[k].geometry.location.lng,
       latitudeDelta: 0.0922,
       longitudeDelta: 0.0421
     },5000)
-    setTimeout(()=>{
-      this.setState({
-        key:k
-      })
-    },1000)
+    // setTimeout(()=>{
+    //   this.setState({
+    //     key:k
+    //   })
+    // },1000)
     
     
   }
@@ -130,22 +130,22 @@ export default class ViewMap extends Component {
              
             {
             this.state.places.map((element, i) =>(
-                    <Marker
-                      key={i}
-                      coordinate={{
-                        latitude: element.geometry.location.lat,
-                        longitude: element.geometry.location.lng,
-                      }}
-                      pinColor={i === this.state.key ? 'red':null}
-                      title={element.name}
-                      onPress={()=>this.handleNavigation(element.name)}
-                      tracksViewChanges={true}
-                      image={ i === this.state.key ? require('../../assets/located.png'):null}
-                      >
-                      <Callout>
-                        <Text>{element.name}</Text>
-                      </Callout>
-                    </Marker>)
+            <Marker
+              key={i}
+              coordinate={{
+                latitude: element.geometry.location.lat,
+                longitude: element.geometry.location.lng,
+              }}
+              // pinColor={i === this.state.key ? 'red':null}
+              title={element.name}
+              onPress={()=>this.handleNavigation(element.name)}
+              tracksViewChanges={true}
+              image={ i === this.state.key ? require('../../assets/located.png'):null}
+              >
+              <Callout>
+                <Text>{element.name}</Text>
+              </Callout>
+            </Marker>)
             )
             }
             <Circle
@@ -175,7 +175,7 @@ export default class ViewMap extends Component {
               </TouchableOpacity>
           ):( 
 
-        <View style={styles.mapconfigcontainer} >
+        <Block flex={false} style={styles.mapconfigcontainer} >
           <NearBy
             radius={this.state.radius}
             gallery={this.state.photoPlaceGallery}
@@ -184,7 +184,7 @@ export default class ViewMap extends Component {
             changeMarkerIcon={k=>this.changeMarkerIcon(k)}
             handleNavigation={(name)=>this.handleNavigation(name)}
           />
-        </View>
+        </Block>
           )
         }
       </Block>
@@ -217,7 +217,7 @@ const styles = StyleSheet.create({
   },
   mapconfigcontainer: {
     position: "relative",
-    top: -150
+    top: -200
   },
 
   //external

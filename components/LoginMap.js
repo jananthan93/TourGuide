@@ -74,13 +74,13 @@ export default class LoginMap extends Component {
       {enableHighAccuracy: true, timeout: 1000000, maximumAge: 1000},
     );
 
-    this.watchID = Geolocation.watchPosition(position => {
-      console.log(position);
-      this.setState({
-        lng: position.coords.longitude,
-        lat: position.coords.latitude
-      });
-    });
+    // this.watchID = Geolocation.watchPosition(position => {
+    //   console.log(position);
+    //   this.setState({
+    //     lng: position.coords.longitude,
+    //     lat: position.coords.latitude
+    //   });
+    // });
   }
   componentWillMount() {
     this.requestLocationPermission();
