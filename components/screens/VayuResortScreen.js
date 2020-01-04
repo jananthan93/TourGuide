@@ -10,6 +10,9 @@ import source from '../../assets/VayuResort/video/vayu.mp4';
 // import {colors} from '../../styles';
 const {width} = Dimensions.get('window');
 export default class index extends Component {
+  static navigationOptions = {
+    header: null,
+  };
   constructor() {
     super();
     this.state = {

@@ -7,6 +7,7 @@ import HomeScreen from './components/HomeScreen'
 import MapSearch from './components/search/mapSearch';
 import LoginScreen from './components/LoginScreen';
 import MannarFortScreen from './components/screens/MannarFortScreen'
+import Player from './components/screens/Player';
 export default class App extends Component {
   render() {
     return (
@@ -19,7 +20,8 @@ export default class App extends Component {
         {/* <Test/> */}
           {/* <MapSearch></MapSearch> */}
           {/* <Seekbar></Seekbar> */}
-          <MannarFortScreen/>
+          {/* <MannarFortScreen/> */}
+          <Player/>
       </>
     )
   }

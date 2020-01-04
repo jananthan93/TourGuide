@@ -11,6 +11,9 @@ import sound from '../../assets/Palmyrah/Image/audio.png';
 // import {colors} from '../../styles';
 const {width} = Dimensions.get('window');
 export default class index extends Component {
+  static navigationOptions = {
+    header: null,
+  };
   constructor() {
     super();
     this.state = {

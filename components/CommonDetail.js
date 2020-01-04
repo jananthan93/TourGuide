@@ -86,13 +86,15 @@ export default class CommonDetail extends Component {
           });
         }
       }
+
       case 'sound': {
         // this.setState({isVisible: true});
-        // if (this.props.name === 'Palmyra House') {
-        //   this.props.navigation.navigate(route, {titleAudio:'Palmyrah House',
-        //     audioSrc: require('../assets/Palmyrah/Video/palmyrah.mp4'),
-        //   });
-        // } else {
+        if (this.props.name === 'Palmyra House') {
+          this.props.navigation.navigate(route, {titleAudio:'Palmyrah House',
+            audioSrc: require('../assets/audio/BirdWatching-01.mp3'),
+          });
+        }
+        //  else {
         //   this.props.navigation.navigate(route, {titleAudio:'Vayu Resort',
         //     audioSrc: require('../assets/VayuResort/video/vayu.mp4'),
         //   });
