@@ -46,7 +46,7 @@ export default class NearBy extends Component {
   renderItem = ({item}) => {
     return (
       <View >
-      <View style={{backgroundColor:'#ffff',borderRadius: 15,height:130,width:250}}>
+      <View style={{backgroundColor:'gray',borderRadius: 15,height:130,width:250}}>
         <TouchableOpacity  style={{
                 height: 100,
                 width: 100,
@@ -138,7 +138,7 @@ componentDidMount(){
             />
           </Block>
 
-          <Block flex={4} >
+          <Block flex={4}>
             <Carousel
               ref={c => {
                 this._carousel = c;

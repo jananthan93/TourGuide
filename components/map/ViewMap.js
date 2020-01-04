@@ -24,7 +24,7 @@ let photosArray=[];
 export default class ViewMap extends Component {
   state = {
     places: [],
-    radius: 100,
+    radius: 500,
     placeType: 'Restorants',
     photoPlaceGallery: [],
     key:null,
@@ -35,15 +35,15 @@ export default class ViewMap extends Component {
     {this.props.navigation.navigate('palmyrahhouse')}
   }
   changeMarkerIcon=(k)=>{
-    // this.setState({
-    //   key:k
-    // })
+    this.setState({
+      key:k
+    })
     this._map.animateToRegion({
       latitude: this.state.places[k].geometry.location.lat,
       longitude: this.state.places[k].geometry.location.lng,
       latitudeDelta: 0.0922,
       longitudeDelta: 0.0421
-    },5000)
+    },2000)
     // setTimeout(()=>{
     //   this.setState({
     //     key:k
@@ -148,12 +148,13 @@ export default class ViewMap extends Component {
             )
             }
             <Circle
+              fillColor={'rgba(75, 123, 236, 0.3)'}
+              strokeColor={'rgba(75, 123, 236)'}
               center={{
                 latitude: this.props.lat,
                 longitude: this.props.lng,
               }}
               radius={this.state.radius}
-              strokeColor={'blue'}
              />
           </MapView>
         </Block>
@@ -166,7 +167,7 @@ export default class ViewMap extends Component {
               </TouchableOpacity>
           ):(
 
-        <Block flex={2}>
+        <Block flex={1.5} style={{marginTop:-300}}>
           <NearBy
             radius={this.state.radius}
             gallery={this.state.photoPlaceGallery}
