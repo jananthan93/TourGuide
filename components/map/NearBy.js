@@ -162,7 +162,7 @@ componentDidMount(){
             />
           </Block>
 
-          <Block flex={4} >
+          <Block flex={4}>
             <Carousel
               ref={c => {
                 this._carousel = c;
