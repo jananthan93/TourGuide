@@ -22,15 +22,15 @@ export default class HomeScreen extends Component {
       <Block flex={1} style={{backgroundColor: '#fcf4d4'}}>
         <Block flex={1.3} >
           <ImageBackground 
-            source={require('../assets/img/lakecropped.jpg')}
+            source={require('../assets/img1/lakecropped.jpg')}
             style={Styles.lakecropped}
             imageStyle={{borderBottomLeftRadius: 50,borderColor:'blue',
             borderBottomRightRadius: 50}}
           >
             <Block flex={2} >
           <Image
-            source={require('../assets/img/palmyrah.png')}
-            style={Styles.logoImg}/>
+            source={require('../assets/img1/palmyrah.png')}
+            style={Styles.logoimg1}/>
             </Block>
           <Block flex={1} center>
             <Text style={Styles.logoText}>PALMYRAH HOUSE</Text>
@@ -47,7 +47,7 @@ export default class HomeScreen extends Component {
              }}
             >
               <Image
-                source={require('../assets/img/loginbtn1x.png')}
+                source={require('../assets/img1/loginbtn1x.png')}
                 style={Styles.btnView}
               />
             </TouchableOpacity>
@@ -59,7 +59,7 @@ export default class HomeScreen extends Component {
             //  }}
             >
               <Image
-                source={require('../assets/img/registerbtn1x.png')}
+                source={require('../assets/img1/registerbtn1x.png')}
                 style={Styles.btnView}
               />
             </TouchableOpacity>
@@ -71,7 +71,7 @@ export default class HomeScreen extends Component {
              }}
             >
               <Image
-                source={require('../assets/img/resortbtn1x.png')}
+                source={require('../assets/img1/resortbtn1x.png')}
                 style={Styles.btnView}
               />
             </TouchableOpacity>
@@ -83,7 +83,7 @@ export default class HomeScreen extends Component {
              }}
             >
               <Image
-                source={require('../assets/img/kitesurfingbtn1x.png')}
+                source={require('../assets/img1/kitesurfingbtn1x.png')}
                 style={Styles.btnView}
               />
             </TouchableOpacity>
@@ -98,7 +98,7 @@ export default class HomeScreen extends Component {
             >
             <Image
               title=""
-              source={require('../assets/img/mapbtn.png')}
+              source={require('../assets/img1/mapbtn.png')}
               style={Styles.footerMapBtn}
             />
           </TouchableOpacity>
@@ -123,7 +123,7 @@ const Styles = StyleSheet.create({
     backgroundColor: '#b4816f',
   },
 
-  logoImg: {
+  logoimg1: {
     position: 'absolute',
     top: 3,
     left: 2,
