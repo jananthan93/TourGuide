@@ -83,11 +83,11 @@ export default class LoginMap extends Component {
     });
   }
   componentWillMount() {
-    // this.requestLocationPermission();
-    this.setState({
-      lng: 79.8481, 
-      lat: 9.0639
-    });
+    this.requestLocationPermission();
+    // this.setState({
+    //   lng: 79.8481, 
+    //   lat: 9.0639
+    // });
   }
   
   render() {

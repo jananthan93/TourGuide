@@ -163,8 +163,8 @@ export default class CommonDetail extends Component {
                 ))}
               </Block>
             </Block>
-            <Block flex={3}>
-              {/* <Modal
+            {/* <Block flex={3}>
+              <Modal
                 animationType={'fade'}
                 transparent={true}
                 visible={this.state.isVisible}
@@ -180,8 +180,8 @@ export default class CommonDetail extends Component {
                     }}
                   />
                 </Block>
-              </Modal> */}
-            </Block>
+              </Modal>
+            </Block> */}
           </ImageBackground>
         </Block>
       </Block>

@@ -41,8 +41,8 @@ export default class ViewMap extends Component {
     this._map.animateToRegion({
       latitude: this.state.places[k].geometry.location.lat,
       longitude: this.state.places[k].geometry.location.lng,
-      latitudeDelta: 0.0322,
-      longitudeDelta: 0.0021
+      latitudeDelta: 0.0922,
+      longitudeDelta: 0.0421
     },5000)
     setTimeout(()=>{
       this.setState({
@@ -124,8 +124,8 @@ export default class ViewMap extends Component {
             region={{
               latitude: this.props.lat,
               longitude: this.props.lng,
-              latitudeDelta: 0.0322,
-              longitudeDelta: 0.0021,
+              latitudeDelta: 0.0922,
+              longitudeDelta: 0.0421,
             }}>
             {
             this.state.places.map((element, i) =>(
@@ -135,6 +135,7 @@ export default class ViewMap extends Component {
                         latitude: element.geometry.location.lat,
                         longitude: element.geometry.location.lng,
                       }}
+                      pinColor={i === this.state.key ? 'red':null}
                       title={element.name}
                       onPress={()=>this.handleNavigation(element.name)}
                       tracksViewChanges={true}
