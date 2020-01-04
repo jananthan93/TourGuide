@@ -5,6 +5,9 @@ import { View,Text, StyleSheet, Image, Dimensions, TouchableOpacity } from 'reac
 import React, { Component } from 'react';
 
 export default class HomeScreen extends Component {
+   static navigationOptions = {
+      header: null,
+    };
   render() {
   
     return (

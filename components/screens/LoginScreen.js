@@ -11,7 +11,7 @@ export default class LoginScreen extends Component {
     return (
    <View style={{flex: 1, backgroundColor: "#ffffff"}}>
             <View style={Styles.imageView}>
-                {/* <Image source={require("../../assets/img/login_bg.png")} style={Styles.lakecropped}/> */}
+                <Image source={require("../../assets/img/login.png")} style={Styles.lakecropped}/>
               
               
             </View>

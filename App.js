@@ -6,19 +6,20 @@ import HomeScreen from './components/HomeScreen'
 // import SoundModal from "./components/audio/soundModal"
 import MapSearch from './components/search/mapSearch';
 import LoginScreen from './components/LoginScreen';
-
+import MannarFortScreen from './components/screens/MannarFortScreen'
 export default class App extends Component {
   render() {
     return (
       <>
           {/* <SoundModal/> */}
-          <Home/>
+          {/* <Home/> */}
           {/* <HomeScreen/> */}
         {/* <LoginMap/> */}
         {/* <LoginScreen/> */}
         {/* <Test/> */}
           {/* <MapSearch></MapSearch> */}
           {/* <Seekbar></Seekbar> */}
+          <MannarFortScreen/>
       </>
     )
   }
