@@ -24,7 +24,7 @@ let photosArray=[];
 export default class ViewMap extends Component {
   state = {
     places: [],
-    radius: 1000,
+    radius: 500,
     placeType: 'Restorants',
     photoPlaceGallery: [],
     key:null,
@@ -124,8 +124,8 @@ export default class ViewMap extends Component {
             region={{
               latitude: this.props.lat,
               longitude: this.props.lng,
-              latitudeDelta: 0.0922,
-              longitudeDelta: 0.0421,
+              latitudeDelta: 0.3222,
+              longitudeDelta: 0.0221,
             }}>
             {
             this.state.places.map((element, i) =>(
@@ -148,12 +148,13 @@ export default class ViewMap extends Component {
             )
             }
             <Circle
+            fillColor={'rgba(75, 123, 236, 0.3)'}
+            strokeColor={'rgba(75, 123, 236)'}
               center={{
                 latitude: this.props.lat,
                 longitude: this.props.lng,
               }}
               radius={this.state.radius}
-              strokeColor={'blue'}
              />
           </MapView>
         </Block>
@@ -166,7 +167,7 @@ export default class ViewMap extends Component {
               </TouchableOpacity>
           ):(
 
-        <Block color="gray" flex={2.7}>
+        <Block flex={4}>
           <NearBy
             radius={this.state.radius}
             gallery={this.state.photoPlaceGallery}
