@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {View, Image, StyleSheet, Dimensions, ScrollView,Text} from 'react-native';
 // import {Text} from '../../components/CustomText';
-import kite from '../../assets/Palmyrah/Image/1.jpg';
+import kite from '../../assets/VayuResort/Image/1.jpg';
 import star from '../../assets/Palmyrah/Image/7.png';
 import Carousel from 'react-native-snap-carousel';
 // import Navigation from '../../components/navigation';
@@ -14,35 +14,35 @@ export default class index extends Component {
       types: [
         {
           id: 1,
-          photo: require('../../assets/Palmyrah/Image/1.jpg'),
+          photo: require('../../assets/VayuResort/Image/1.jpg'),
         },
         {
           id: 2,
-          photo: require('../../assets/Palmyrah/Image/1.jpg'),
+          photo: require('../../assets/VayuResort/Image/1.jpg'),
         },
         {
           id: 3,
-          photo: require('../../assets/Palmyrah/Image/1.jpg'),
+          photo: require('../../assets/VayuResort/Image/1.jpg'),
         },
         {
           id: 4,
-          photo: require('../../assets/Palmyrah/Image/1.jpg'),
+          photo: require('../../assets/VayuResort/Image/1.jpg'),
         },
         {
           id: 5,
-          photo: require('../../assets/Palmyrah/Image/1.jpg'),
+          photo: require('../../assets/VayuResort/Image/1.jpg'),
         },
         {
           id: 6,
-          photo: require('../../assets/Palmyrah/Image/1.jpg'),
+          photo: require('../../assets/VayuResort/Image/1.jpg'),
         },
         {
           id: 7,
-          photo: require('../../assets/Palmyrah/Image/1.jpg'),
+          photo: require('../../assets/VayuResort/Image/1.jpg'),
         },
         {
           id: 8,
-          photo: require('../../assets/Palmyrah/Image/1.jpg'),
+          photo: require('../../assets/VayuResort/Image/1.jpg'),
         },
       ],
     };
@@ -106,6 +106,48 @@ export default class index extends Component {
               publishing software like Aldus PageMaker including versions of
               Lorem Ipsum.
             </Text>
+            <Text
+              style={{
+                color: 'black',
+                marginLeft: 20,
+                marginBottom: 10,
+                marginTop:10
+              }}
+              size={22}>
+              Traveler's Photos
+            </Text>
+            <View style={styles.child2}>
+              <Carousel
+                ref={this.assignRef}
+                data={this.state.types}
+                renderItem={this._renderItem}
+                sliderWidth={width}
+                itemWidth={150}
+                activeSlideAlignment="start"
+                loop={true}
+              />
+            </View>
+            <Text
+              style={{
+                color: 'black',
+                marginLeft: 20,
+                marginBottom: 10,
+                marginTop:10
+              }}
+              size={22}>
+              Traveler's Video
+            </Text>
+            <View style={styles.child2}>
+              <Carousel
+                ref={this.assignRef}
+                data={this.state.types}
+                renderItem={this._renderItem}
+                sliderWidth={width}
+                itemWidth={150}
+                activeSlideAlignment="start"
+                loop={true}
+              />
+            </View>
             <Text
               style={{
                 color: 'black',

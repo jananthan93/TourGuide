@@ -127,6 +127,48 @@ export default class index extends Component {
                 loop={true}
               />
             </View>
+            <Text
+              style={{
+                color: 'black',
+                marginLeft: 20,
+                marginBottom: 10,
+                marginTop:10
+              }}
+              size={22}>
+              Traveler's Video
+            </Text>
+            <View style={styles.child2}>
+              <Carousel
+                ref={this.assignRef}
+                data={this.state.types}
+                renderItem={this._renderItem}
+                sliderWidth={width}
+                itemWidth={150}
+                activeSlideAlignment="start"
+                loop={true}
+              />
+            </View>
+            <Text
+              style={{
+                color: 'black',
+                marginLeft: 20,
+                marginBottom: 10,
+                marginTop:10
+              }}
+              size={22}>
+              Traveler's Audio
+            </Text>
+            <View style={styles.child2}>
+              <Carousel
+                ref={this.assignRef}
+                data={this.state.types}
+                renderItem={this._renderItem}
+                sliderWidth={width}
+                itemWidth={150}
+                activeSlideAlignment="start"
+                loop={true}
+              />
+            </View>
           </ScrollView>
         </View>
       </React.Fragment>
