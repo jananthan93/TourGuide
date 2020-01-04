@@ -46,7 +46,7 @@ export default class NearBy extends Component {
   renderItem = ({item}) => {
     return (
       <View >
-      <View style={{backgroundColor:'gray',borderRadius: 15,height:130,width:250}}>
+      <View style={{backgroundColor:'#fff',borderRadius: 15,height:130,width:250}}>
         <TouchableOpacity  style={{
                 height: 100,
                 width: 100,
@@ -106,10 +106,17 @@ componentDidMount(){
               </Block>
             
               <Block
-                flex={0.2}>
+                // style={{
+                //   height: 25,
+                //   borderRadius: 15,
+                //   borderWidth:1,
+                //   backgroundColor: '#fcf4d4',
+                //   top: -20
+                // }}
+                >
                 <Slider
                   step={100}
-                  style={{color: 'black', marginTop: 10}}
+                  style={{color: 'black', marginTop: 10,}}
                   thumbTintColor={'#b4816f'}
                   minimumTrackTintColor={'#b4816f'}
                   maximumValue={20000}
@@ -120,7 +127,8 @@ componentDidMount(){
           
           </Block>
 
-          <Block flex={1.5}  style={{ marginBottom: 3}}>
+          {/* <Block flex={2}  style={{ marginTop: 50}}> */}
+          <Block flex={1.5}  style={{ marginTop: 40}}>
             <Carousel
             loop={true}
               ref={c => {
