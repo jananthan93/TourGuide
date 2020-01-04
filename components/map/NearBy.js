@@ -45,8 +45,8 @@ export default class NearBy extends Component {
   };
   renderItem = ({item}) => {
     return (
-      <View >
-      <View style={{backgroundColor:'#fff',borderRadius: 15,height:130,width:250}}>
+      <View>
+      <View style={{backgroundColor:'#ffff',borderRadius: 15,height:130,width:250}}>
         <TouchableOpacity  style={{
                 height: 100,
                 width: 100,

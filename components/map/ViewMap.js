@@ -176,7 +176,7 @@ export default class ViewMap extends Component {
               </TouchableOpacity>
           ):( 
 
-        <Block flex={1.5} style={{marginTop:-300}}>
+        <Block flex={false} style={styles.mapconfigcontainer} >
           <NearBy
             radius={this.state.radius}
             gallery={this.state.photoPlaceGallery}
