@@ -16,7 +16,7 @@ import Block from '../../common/block';
 const {height, width} = Dimensions.get('window');
 const searchOptions = ['Historic', 'Attractions','Restaurants', 'Religious', 'Hotels'];
 
-export default class NearBy extends Component {
+export default class NearBy2 extends Component {
   
   state = {
     isRange:true,
@@ -46,15 +46,15 @@ export default class NearBy extends Component {
   };
   renderItem = ({item}) => {
     return (
-      <View style={{backgroundColor:'#ffff',borderRadius: 100, height:130, width:250}}>
-      <View>
-        <TouchableOpacity  style={{
+      <View style={{backgroundColor:'#a16355',borderRadius: 15,height:130,width:250, top: 12 }}>
+     
+        <TouchableOpacity style={{
                 height: 100,
                 width: 100,
                 borderRadius: 10,
                 marginLeft:10,
                 marginTop: -10,
-                marginLeft: 10,
+                
                 shadowOffset:{
                   height: 10,
                   width:30
@@ -83,8 +83,8 @@ export default class NearBy extends Component {
               }}> 
             </Image>
         </TouchableOpacity>
-        <Text style={{marginLeft:10,marginTop:10,fontSize:16, opacity: 0.55, shadowOffset:{height: 10, width: 10}}}>{item.name}</Text>
-      </View>
+        <Text style={{marginLeft:10,marginTop:10,fontSize:16, color: "#ffff"}}>{item.name}</Text>
+      
       </View>
     );
   };
@@ -99,11 +99,11 @@ componentDidMount(){
   render() {
     // console.log(this.props.gallery);
     return (
-        <Block flex={1}>
-          <Block flex={1.5} style={styles.nonAPIFlexContainer} >
-      
+        <Block flex={1} style={styles.flexContainer}>
+     
+         
             
-              <Block 
+              <Block flex={0.5}
                 style={{
                   height: 30,
                   borderRadius: 15,
@@ -131,8 +131,11 @@ componentDidMount(){
                   value={this.state.range}
                 />
               </Block>
+          
+      
 
-              <Block flex={1.5}  style={{ marginTop: 20}}>
+    
+          <Block flex={1}  style={{ marginTop: 10}}>
             <Carousel
             loop={true}
               ref={c => {
@@ -149,13 +152,20 @@ componentDidMount(){
               }
             />
           </Block>
-          
+
+          <Block flex={3}  style={{top: 10}}>
+            <Carousel
+              ref={c => {
+                this._carousel = c;
+              }}
+              // containerCustomStyle={{}}
+              data={this.props.gallery}
+              renderItem={this.renderItem}
+              sliderWidth={width}
+              itemWidth={250}
+              onSnapToItem={index =>this.changeMarkerIcon(index) }
+            />
           </Block>
-
-          
-       
-
-        
           </Block>
     );
   }
@@ -202,9 +212,7 @@ const styles = StyleSheet.create({
         width: 6
       }
     },
-    nonAPIFlexContainer: {
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "space-between"
+    flexContainer: {
+        display: "flex", flexDirection: "column", justifyContent: "space-evenly"
     }
   });

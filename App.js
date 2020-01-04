@@ -12,9 +12,9 @@ export default class App extends Component {
     return (
       <>
           {/* <SoundModal/> */}
-          {/* <Home/> */}
+          <Home/>
           {/* <HomeScreen/> */}
-        <LoginMap/>
+        {/* <LoginMap/> */}
         {/* <LoginScreen/> */}
         {/* <Test/> */}
           {/* <MapSearch></MapSearch> */}

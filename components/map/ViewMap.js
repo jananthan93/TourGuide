@@ -18,6 +18,7 @@ import {
 } from 'react-native';
 import Block from '../../common/block';
 import NearBy from './NearBy';
+import NearBy2 from './Nearby2';
 import {getUrlWithParameter, getPhotoPlace,API_Key} from './functions';
 const {height, width} = Dimensions.get('window');
 let photosArray=[];
@@ -168,16 +169,22 @@ export default class ViewMap extends Component {
           </TouchableOpacity>
         </Block>
 
-        {
-          !this.state.isSetting ? (
-            <TouchableOpacity onPress={()=>this.setState({isSetting:true})} style={{padding:2,marginTop:-80}}>
-              {/* <Text style={{color:'red',zIndex:1}}>setting</Text> */}
-              <Image source={require('../../assets/nearby.png')} style={{width:80,height:80,borderColor:'black',borderWidth:1,borderRadius:10,shadowColor:'gray',shadowRadius:5}}/>
-              </TouchableOpacity>
+        { this.state.photoPlaceGallery.length == 0 ? (
+           <Block flex={0.8}>
+           <NearBy
+             radius={this.state.radius}
+             navigation={this.props.navigation}
+             changeRange={r => this.changeRange(r)}
+             changeType={t => this.changeType(t)}
+             changeMarkerIcon={k=>this.changeMarkerIcon(k)}
+             handleNavigation={(name)=>this.handleNavigation(name)}
+           />
+         </Block>
           ):( 
 
-        <Block flex={1.2} style={{marginTop:-400}} >
-          <NearBy
+        <Block flex={2.4} >
+          <NearBy2
+            navigation={this.props.navigation}
             radius={this.state.radius}
             gallery={this.state.photoPlaceGallery}
             changeRange={r => this.changeRange(r)}
