@@ -4,6 +4,8 @@ import {View, Image, StyleSheet, Dimensions, ScrollView,Text} from 'react-native
 import kite from '../../assets/VayuResort/Image/6.jpg';
 import star from '../../assets/Palmyrah/Image/7.png';
 import Carousel from 'react-native-snap-carousel';
+import Video from 'react-native-video';
+import source from '../../assets/VayuResort/video/vayu.mp4';
 // import Navigation from '../../components/navigation';
 // import {colors} from '../../styles';
 const {width} = Dimensions.get('window');
@@ -88,6 +90,7 @@ export default class index extends Component {
         </View>
         <View style={{padding: 10, flex: 1}}>
           <ScrollView style={{flex: 1}}>
+            <View style={{flex: 1}}>
             <Text
               style={{
                 color: 'black',
@@ -102,6 +105,8 @@ export default class index extends Component {
                forget to say that the spot is just in front of the camp and you will be
                surrounded by nature sharing the elements of Earth, Wind, Water !
             </Text>
+            </View>
+            <View style={{flex: 1}}>
             <Text
               style={{
                 color: 'black',
@@ -124,6 +129,8 @@ export default class index extends Component {
                 loop={true}
               />
             </View>
+            </View>
+            <View style={{flex: 1}}>
             <Text
               style={{
                 color: 'black',
@@ -135,17 +142,30 @@ export default class index extends Component {
               size={22}>
               Video
             </Text>
-            <View style={styles.child2}>
-              <Carousel
-                ref={this.assignRef}
-                data={this.state.types}
-                renderItem={this._renderItem}
-                sliderWidth={width}
-                itemWidth={150}
-                activeSlideAlignment="start"
-                loop={true}
-              />
+            <View style={{flex: 1,height:200,width:width}}>
+            <Video
+              style={styles.backgroundVideo}
+              // fullscreenOrientation="all"
+              onBuffer={this.onBuffer} // Callback function
+              onError={this.videoError}
+              source={source}
+              resizeMode="contain"
+              rate={1}
+              volume={1}
+              paused={true}
+              muted={false}
+              ignoreSilentSwitch={null}
+              fullscreen={true}
+              // onLoad={(data) => { Alert.alert(' onLoad!') }}
+              //onBuffer={() => { Alert.alert(onBuffer!') }}
+              // onProgress={() => { Alert.alert('onProgress!') }}
+              // onEnd={() => { Alert.alert('onEnd!') }}
+              repeat={false}
+              controls={true}
+            />
             </View>
+            </View>
+            <View style={{flex: 1}}>
             <Text
               style={{
                 color: 'black',
@@ -157,16 +177,6 @@ export default class index extends Component {
               size={22}>
               Audio
             </Text>
-            <View style={styles.child2}>
-              <Carousel
-                ref={this.assignRef}
-                data={this.state.types}
-                renderItem={this._renderItem}
-                sliderWidth={width}
-                itemWidth={150}
-                activeSlideAlignment="start"
-                loop={true}
-              />
             </View>
           </ScrollView>
         </View>
@@ -182,6 +192,13 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
     elevation: 4,
+  },
+  backgroundVideo: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0,
   },
   cardView: {
     marginTop: -50,

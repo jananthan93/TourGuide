@@ -4,6 +4,9 @@ import {View, Image, StyleSheet, Dimensions, ScrollView,Text} from 'react-native
 import kite from '../../assets/Palmyrah/Image/6.jpg';
 import star from '../../assets/Palmyrah/Image/7.png';
 import Carousel from 'react-native-snap-carousel';
+import source from '../../assets/Palmyrah/Video/palmyrah.mp4';
+import Video from 'react-native-video';
+import sound from '../../assets/Palmyrah/Image/audio.png';
 // import Navigation from '../../components/navigation';
 // import {colors} from '../../styles';
 const {width} = Dimensions.get('window');
@@ -134,16 +137,27 @@ export default class index extends Component {
               size={22}>
               Video
             </Text>
-            <View style={styles.child2}>
-              <Carousel
-                ref={this.assignRef}
-                data={this.state.types}
-                renderItem={this._renderItem}
-                sliderWidth={width}
-                itemWidth={150}
-                activeSlideAlignment="start"
-                loop={true}
-              />
+            <View style={{flex: 1,height:200,width:width}}>
+            <Video
+              style={styles.backgroundVideo}
+              // fullscreenOrientation="all"
+              onBuffer={this.onBuffer} // Callback function
+              onError={this.videoError}
+              source={source}
+              resizeMode="contain"
+              rate={1}
+              volume={1}
+              paused={true}
+              muted={false}
+              ignoreSilentSwitch={null}
+              fullscreen={true}
+              // onLoad={(data) => { Alert.alert(' onLoad!') }}
+              //onBuffer={() => { Alert.alert(onBuffer!') }}
+              // onProgress={() => { Alert.alert('onProgress!') }}
+              // onEnd={() => { Alert.alert('onEnd!') }}
+              repeat={false}
+              controls={true}
+            />
             </View>
             <Text
               style={{
@@ -156,17 +170,6 @@ export default class index extends Component {
               size={22}>
               Audio
             </Text>
-            <View style={styles.child2}>
-              <Carousel
-                ref={this.assignRef}
-                data={this.state.types}
-                renderItem={this._renderItem}
-                sliderWidth={width}
-                itemWidth={150}
-                activeSlideAlignment="start"
-                loop={true}
-              />
-            </View>
           </ScrollView>
         </View>
       </React.Fragment>
@@ -181,6 +184,13 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
     elevation: 4,
+  },
+  backgroundVideo: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0,
   },
   cardView: {
     marginTop: -50,
