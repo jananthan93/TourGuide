@@ -65,14 +65,7 @@ export default class LoginScreen extends Component {
                 </TouchableOpacity>
                 
                 </View>
-               
                </View>
-               <View style={Styles.bottomTextView}>
-                      <Text style={Styles.BottomText1}>Don't Have an account?</Text>
-                        <TouchableOpacity style={Styles.SignUpTouch}>
-                            <Text style={Styles.SignUp}>Sign Up</Text>
-                        </TouchableOpacity>
-                </View>
             </View>
 
         
@@ -324,12 +317,12 @@ var Styles = StyleSheet.create({
      },
      logoText: {
         color: "#63030b",
-        fontSize: 24,
+        fontSize: 20,
         fontWeight: "100",
         letterSpacing: 2.5,
         //textShadowRadius: 1000,
         top: -230,
-        left:150,
+        left:140,
        // textShadowColor:"#484e35",
         textShadowOffset:{
             width: 10,
@@ -341,12 +334,12 @@ var Styles = StyleSheet.create({
      },
      logoText1: {
         color: "#63030b",
-        fontSize: 18,
+        fontSize: 15,
         fontWeight: "100",
         letterSpacing: 2.5,
         //textShadowRadius: 1000,
         top: -230,
-        left:190,
+        left:175,
        // textShadowColor:"#484e35",
         textShadowOffset:{
             width: 10,
@@ -361,7 +354,6 @@ var Styles = StyleSheet.create({
         letterSpacing: 2.5,
         //textShadowRadius: 1000,
         top: -210,
-        left:30,
        // textShadowColor:"#484e35",
         textShadowOffset:{
             width: 10,

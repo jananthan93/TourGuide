@@ -4,6 +4,9 @@ import { View,Text, StyleSheet, Image, Dimensions, TouchableOpacity } from 'reac
 
 import React, { Component } from 'react';
 
+const {width} = Dimensions.get('window');
+const {height} = Dimensions.get('window');
+
 export default class HomeScreen extends Component {
    static navigationOptions = {
       header: null,
@@ -50,7 +53,7 @@ export default class HomeScreen extends Component {
                    }}
                   >
                      <Image source={require("../../assets/img/b3.png")} style={Styles.B3}/>
-                     <Text style={Styles.kiteText}>KITE SURFING</Text>
+                     <Text style={Styles.kiteText}>KITE</Text>
                   </TouchableOpacity>
                 </View>
                 <View style={Styles.kiteSurfingBtnView}>
@@ -84,14 +87,14 @@ export default class HomeScreen extends Component {
 }
 
 
-const width = Dimensions.get('window').width;
+// const width = Dimensions.get('window').width;
 
 
 var Styles = StyleSheet.create({
     
     lakecropped: {
-        width: "100%",
-        height: "212%",
+        width: width,
+        height: height,
         borderBottomLeftRadius: 0,
         borderBottomRightRadius: 0,
         opacity: 1,
@@ -103,9 +106,9 @@ var Styles = StyleSheet.create({
      logoImg: {
          position: "absolute",
          top: 8,
-         left: 285,
+         left: 230,
          width: 130,
-         height:70
+         height:70,
      },
     
      logoText: {
@@ -159,7 +162,9 @@ var Styles = StyleSheet.create({
      B1: {
         width: "100%",
         height: "100%",
-       
+        position: "absolute",
+        left:-30,
+        top:10
       
      },
      
@@ -179,7 +184,9 @@ var Styles = StyleSheet.create({
      B2: {
         width: "100%",
         height: "100%",
-       
+        position: "absolute",
+        left:-30,
+        top:10
        
         
      },
@@ -193,8 +200,10 @@ var Styles = StyleSheet.create({
 
      B3: {
          width: "100%",
-         height: "100%"
-       
+         height: "100%",
+         position: "absolute",
+        left:-40,
+        top:5
      
      },
 
@@ -209,9 +218,9 @@ var Styles = StyleSheet.create({
      B4: {
          width: "100%",
          height: "100%",
-         
-         
-       
+         position: "absolute",
+        left:-30,
+        top:-3
      },
      LoginTouch: {
       width:"50%" ,
@@ -224,7 +233,9 @@ var Styles = StyleSheet.create({
    B5: {
        width: "100%",
        height: "100%",
-       
+       position: "absolute",
+        left:-20,
+        top:-6
        
      
    },
@@ -261,52 +272,57 @@ var Styles = StyleSheet.create({
        
      },
      mapText: {
+      position: "absolute",
+      left:50,
       color: "black",
       fontSize: 15,
       fontWeight: "100",
       letterSpacing: 1,
-      top: -34,
-      left:90,
+      top: 35,
       fontFamily: "Cochin", 
             fontWeight: 'bold', 
       },
       resortText: {
          color: "black",
+         position: "absolute",
+         left:50,
          fontSize: 15,
          fontWeight: "100",
          letterSpacing: 1,
-         top: -32,
-         left:100,
+         top: 35,
          fontFamily: "Cochin", 
             fontWeight: 'bold', 
          },
          kiteText: {
             color: "black",
-            fontSize: 13,
+            position: "absolute",
+            left:55,
+            fontSize: 15,
             fontWeight: "100",
             letterSpacing: 1,
-            top: -30,
-            left:85,
+            top: 32,
             fontFamily: "Cochin", 
             fontWeight: 'bold',
             },
             signinText: {
                color: "black",
+               position: "absolute",
+               left:50,
                fontSize: 15,
                fontWeight: "100",
                letterSpacing: 1,
-               top: -32,
-               left:105,
+               top: 22,
                fontFamily: "Cochin", 
                fontWeight: 'bold',
                },
                registerText: {
                   color: "black",
+                  position: "absolute",
+                  left:55,
                   fontSize: 15,
                   fontWeight: "100",
                   letterSpacing: 1,
-                  top: -32,
-                  left:90,
+                  top: 18,
                   fontFamily: "Cochin", 
                   fontWeight: 'bold',
                   },
