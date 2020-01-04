@@ -14,7 +14,7 @@ import {
 import Block from '../../common/block';
 
 const {height, width} = Dimensions.get('window');
-const searchOptions = ['Historic', 'Restorants', 'Atm', 'Temples', 'Hotels'];
+const searchOptions = ['Historic', 'Attractions','Restaurants', 'Religious', 'Hotels'];
 
 export default class NearBy extends Component {
   
@@ -26,13 +26,14 @@ export default class NearBy extends Component {
     return (
       <Block
         center
-        style={{height: 40,width:150, borderRadius:15 ,backgroundColor: '#fcf4d4',
-        borderColor:'#b4816f',borderWidth:1}}>
-        <Text style={{fontSize: 22, fontWeight: 'bold', color: '#ad1032'}}>
+        style={styles.filterStyle}>
+        <Text style={styles.filterStyleText}>
           {item}
         </Text>
       </Block>
     );
+  
+
   };
   sliderChange = range => {
     this.setState(() => {
@@ -46,7 +47,7 @@ export default class NearBy extends Component {
   renderItem = ({item}) => {
     return (
       <View>
-      <View style={{backgroundColor:'#ffff',borderRadius: 15,height:130,width:250}}>
+      <View style={{backgroundColor:'#ffff',borderRadius: 15,height:130,width:250, top: 12}}>
         <TouchableOpacity  style={{
                 height: 100,
                 width: 100,
@@ -54,6 +55,11 @@ export default class NearBy extends Component {
                 marginLeft:10,
                 marginTop: -10,
                 marginLeft: 10,
+                shadowOffset:{
+                  height: 10,
+                  width:30
+                },
+                elevation: 200
               }}
               onPress={()=>{
                 this.props.handleNavigation(item.name)
@@ -63,14 +69,21 @@ export default class NearBy extends Component {
               style={{
                 height: 100,
                 width: 100,
-                borderRadius: 10,
+                borderRadius: 25,
                 marginLeft:10,
                 marginTop: -10,
                 marginLeft: 10,
+                shadowColor: 'black',
+                shadowRadius: 10,
+                shadowOffset: {
+                  height: 20,
+                  width: 20
+                },
+              
               }}> 
             </Image>
         </TouchableOpacity>
-        <Text style={{marginLeft:10,marginTop:10,fontSize:17}}>{item.name}</Text>
+        <Text style={{marginLeft:10,marginTop:10,fontSize:16, opacity: 0.55, shadowOffset:{height: 10, width: 10}}}>{item.name}</Text>
       </View>
       </View>
     );
@@ -88,7 +101,7 @@ componentDidMount(){
     return (
         <Block flex={1}>
           <Block flex={1.5} >
-          <Block flex={0.3}>
+          {/* <Block flex={0.3}>
                 <Text
                   style={
                     (styles.text,
@@ -103,23 +116,32 @@ componentDidMount(){
                   >
                   Range : {String(this.state.range)} m
                 </Text>
-              </Block>
+              </Block> */}
             
-              <Block
-                // style={{
-                //   height: 25,
-                //   borderRadius: 15,
-                //   borderWidth:1,
-                //   backgroundColor: '#fcf4d4',
-                //   top: -20
-                // }}
+              <Block 
+                style={{
+                  height: 30,
+                  borderRadius: 15,
+                  backgroundColor: '#ffff',
+                  top: 16
+                }}
+                
                 >
+                    <Text
+                  style={
+                  styles.rangeText
+                  }
+                  // onPress={() => this.setState({isRange: true})}
+                  >
+                  Range : {String(this.state.range)} m
+                </Text>
                 <Slider
                   step={100}
-                  style={{color: 'black', marginTop: 10,}}
-                  thumbTintColor={'#b4816f'}
-                  minimumTrackTintColor={'#b4816f'}
+                  style={{backgroundColor: '#ffff',top: -20 ,left:60, borderRadius: 12, width: 240, alignSelf: "center"}}
+                  thumbTintColor={'#a16355'}
+                  minimumTrackTintColor={'#a16355'}
                   maximumValue={20000}
+                  
                   onValueChange={this.sliderChange}
                   value={this.state.range}
                 />
@@ -128,7 +150,7 @@ componentDidMount(){
           </Block>
 
           {/* <Block flex={2}  style={{ marginTop: 50}}> */}
-          <Block flex={1.5}  style={{ marginTop: 40}}>
+          <Block flex={1.5}  style={{ marginTop: 0}}>
             <Carousel
             loop={true}
               ref={c => {
@@ -171,4 +193,38 @@ const styles = StyleSheet.create({
     map: {
       ...StyleSheet.absoluteFillObject,
     },
+    //filter slider style
+    filterStyle:{
+      height: 45,
+      width:140, 
+      borderRadius: 20,
+      padding:5,
+      backgroundColor: '#ffff',
+      borderColor:'#b4816f',
+    },
+    filterStyleText: {
+      fontSize: 22,
+      fontWeight: '700', 
+      color: '#a16355',
+      textShadowColor: "black",
+      shadowOffset: {
+        height : 6,
+        width: 15
+      }
+    },
+    rangeText: {
+      fontSize: 14,
+      fontWeight: 'bold',
+      padding: 2,
+      color: '#a16355',
+      textAlign: 'left',
+      left: 15,
+      fontFamily: 'Georgia',
+      shadowOpacity: 0.9,
+      shadowRadius: 4,
+      shadowOffset: {
+        height: 3,
+        width: 6
+      }
+    }
   });

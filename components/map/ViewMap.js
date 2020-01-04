@@ -163,8 +163,8 @@ export default class ViewMap extends Component {
                 <View style={styles.gobackRect2}></View>
                 <View style={styles.gobackRect3}></View>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.searchIcon}>
-               
+          <TouchableOpacity style={styles.searchIconWrapper}>
+               <Image source={require('../../assets/map/navigation.png')} style={styles.searchIcon}/>
           </TouchableOpacity>
         </Block>
 
@@ -176,7 +176,7 @@ export default class ViewMap extends Component {
               </TouchableOpacity>
           ):( 
 
-        <Block flex={false} style={styles.mapconfigcontainer} >
+        <Block flex={1.2} style={{marginTop:-400}} >
           <NearBy
             radius={this.state.radius}
             gallery={this.state.photoPlaceGallery}
@@ -266,7 +266,7 @@ const styles = StyleSheet.create({
     top: 16,
     left: 22
   },
-  searchIcon: {
+  searchIconWrapper: {
     width: 46,
     height: 46,
     borderRadius: 12,
@@ -277,5 +277,11 @@ const styles = StyleSheet.create({
       height: 5,
       width: 7
     }
+  },
+  searchIcon: {
+    height: 24.9,
+    width: 24,
+    top: 10,
+    left: 10
   }
 });
