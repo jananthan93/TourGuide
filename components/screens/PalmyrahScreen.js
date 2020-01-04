@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {View, Image, StyleSheet, Dimensions, ScrollView,Text} from 'react-native';
 // import {Text} from '../../components/CustomText';
-import kite from '../../assets/Palmyrah/Image/1.jpg';
+import kite from '../../assets/Palmyrah/Image/6.jpg';
 import star from '../../assets/Palmyrah/Image/7.png';
 import Carousel from 'react-native-snap-carousel';
 // import Navigation from '../../components/navigation';
@@ -18,23 +18,23 @@ export default class index extends Component {
         },
         {
           id: 2,
-          photo: require('../../assets/Palmyrah/Image/1.jpg'),
+          photo: require('../../assets/Palmyrah/Image/2.jpg'),
         },
         {
           id: 3,
-          photo: require('../../assets/Palmyrah/Image/1.jpg'),
+          photo: require('../../assets/Palmyrah/Image/3.jpg'),
         },
         {
           id: 4,
-          photo: require('../../assets/Palmyrah/Image/1.jpg'),
+          photo: require('../../assets/Palmyrah/Image/4.jpg'),
         },
         {
           id: 5,
-          photo: require('../../assets/Palmyrah/Image/1.jpg'),
+          photo: require('../../assets/Palmyrah/Image/5.jpg'),
         },
         {
           id: 6,
-          photo: require('../../assets/Palmyrah/Image/1.jpg'),
+          photo: require('../../assets/Palmyrah/Image/6.jpg'),
         },
         {
           id: 7,
@@ -42,7 +42,7 @@ export default class index extends Component {
         },
         {
           id: 8,
-          photo: require('../../assets/Palmyrah/Image/1.jpg'),
+          photo: require('../../assets/Palmyrah/Image/2.jpg'),
         },
       ],
     };
@@ -68,12 +68,12 @@ export default class index extends Component {
       <React.Fragment>
         <Image style={styles.imageView} source={kite} />
         <View style={styles.cardView}>
-          <Text style={{color: 'black', marginLeft: 20}} size={25}>
-            Kite Surffing
+          <Text style={{color: 'black', marginLeft: 20,fontSize:20}}>
+            Palmyrah House
           </Text>
           <Image
             source={star}
-            style={{height: 24, width: 120, marginLeft: 18}}
+            style={{height: 24, width: 120, marginLeft: 18,marginTop:12}}
           />
           <Text
             style={{
@@ -93,28 +93,24 @@ export default class index extends Component {
                 color: 'black',
                 marginLeft: 20,
                 marginTop: 20,
+                fontSize:15
               }}
-              size={15}>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged. It was
-              popularised in the 1960s with the release of Letraset sheets
-              containing Lorem Ipsum passages, and more recently with desktop
-              publishing software like Aldus PageMaker including versions of
-              Lorem Ipsum.
+              size={18}>
+               Palmyrah House provides everything guests need to stay refreshed,
+               whether it be swimming pools, traditional well baths or trips to the
+               beach. Enjoy our delicious local cuisine, made from the freshest
+               local cuisine of land and sea.
             </Text>
             <Text
               style={{
                 color: 'black',
                 marginLeft: 20,
                 marginBottom: 10,
-                marginTop:10
+                marginTop:10,
+                fontSize:22
               }}
               size={22}>
-              Traveler's Photos
+              Photos
             </Text>
             <View style={styles.child2}>
               <Carousel
@@ -132,10 +128,11 @@ export default class index extends Component {
                 color: 'black',
                 marginLeft: 20,
                 marginBottom: 10,
-                marginTop:10
+                marginTop:10,
+                fontSize:22
               }}
               size={22}>
-              Traveler's Video
+              Video
             </Text>
             <View style={styles.child2}>
               <Carousel
@@ -153,10 +150,11 @@ export default class index extends Component {
                 color: 'black',
                 marginLeft: 20,
                 marginBottom: 10,
-                marginTop:10
+                marginTop:10,
+                fontSize:22
               }}
               size={22}>
-              Traveler's Audio
+              Audio
             </Text>
             <View style={styles.child2}>
               <Carousel
