@@ -4,7 +4,7 @@ import {
   View,
   Image,
   StyleSheet,
-  TouchableHighlight,
+  TouchableOpacity,
   ImageBackground,
   Alert,
   Modal,
@@ -15,12 +15,6 @@ import Footer from '../common/footer';
 import SoundPalmyrah from './audio/audio';
 import { ScrollView } from 'react-native-gesture-handler';
 const array = [
-  {
-    id: 1,
-    content: 'HISTORY',
-    imageSrc: require('../assets/detail/history.png'),
-    route: 'history',
-  },
   {
     id: 2,
     content: 'IMAGES',
@@ -54,6 +48,13 @@ const vayuResortImages = [
   {name: '', src: require('../assets/VayuResort/Image/4.jpg')},
   {name: '', src: require('../assets/VayuResort/Image/5.jpg')},
 ];
+const mannarFortImages = [
+  {name: '', src: require('../assets/MannarFort/Image/1.jpg')},
+  {name: '', src: require('../assets/MannarFort/Image/2.jpg')},
+  {name: '', src: require('../assets/MannarFort/Image/3.jpg')},
+  {name: '', src: require('../assets/MannarFort/Image/4.jpg')},
+  {name: '', src: require('../assets/MannarFort/Image/5.jpg')},
+]
 export default class CommonDetail extends Component {
   state = {
     isVisible: false, //state of modal default false
@@ -71,7 +72,11 @@ export default class CommonDetail extends Component {
       case 'image': {
         if (this.props.name === 'Palmyra House') {
           this.props.navigation.navigate(route, {titleImage:'Palmyrah House',images: PalmyrahImages});
-        } else {
+        } 
+        // else if (this.props.name === 'Mannar Fort'){
+        //   this.props.navigation.navigate(route, {titleImage:'Mannar Fort',images: mannarFortImages});
+        // }
+        else {
           this.props.navigation.navigate(route, {titleImage:'Vayu Resort',images: vayuResortImages});
         }
       }
@@ -86,56 +91,63 @@ export default class CommonDetail extends Component {
           });
         }
       }
+
       case 'sound': {
         // this.setState({isVisible: true});
-        // if (this.props.name === 'Palmyra House') {
-        //   this.props.navigation.navigate(route, {titleAudio:'Palmyrah House',
-        //     audioSrc: require('../assets/Palmyrah/Video/palmyrah.mp4'),
-        //   });
-        // } else {
-        //   this.props.navigation.navigate(route, {titleAudio:'Vayu Resort',
-        //     audioSrc: require('../assets/VayuResort/video/vayu.mp4'),
-        //   });
+        if (this.props.name === 'Palmyra House') {
+          this.props.navigation.navigate(route, {titleAudio:'Palmyrah House',
+            audioSrc: require('../assets/audio/PalmyrahHouse-01.mp3'),
+          });
+        }
+         else {
+          this.props.navigation.navigate(route, {titleAudio:'Vayu Resort',
+            audioSrc: require('../assets/audio/BirdWatching-01.mp3'),
+          });
         // }
       }
     }
   };
+}
   render() {
     return (
-      <Block flex={1} style={{backgroundColor: '#fcf4d4'}}>
-        <Block flex={1}>
+      <Block flex={1} style={{backgroundColor: '#ffffff'}}>
+        <Block flex={3}>
           <Image
             source={this.props.Image}
             style={styles.lakecropped}>
           </Image>
         </Block>
-        <Block flex={1}>
+        <Block flex={6}>
           <ScrollView>
 
           <Text
             style={{
-              fontSize: 18,
-              fontFamily: 'Georgia',
-              fontWeight: 'bold',
-              color: '#00',
-              textAlign: 'left',
-              margin: 20,textShadowColor:"white",
-              textShadowRadius: 2,
+              color: 'black',
+              marginLeft: 20,
+              marginBottom: 10,
+              marginTop:10,
+              fontSize:18
             }}>
             {this.props.children}
           </Text>
           </ScrollView>
         </Block>
-        <Block flex={1} row>
-          <ImageBackground
+        <Block flex={1} colum style={{justifyContent: 'flex-end',marginBottom:20,marginLeft:10}}>
+          {/* <ImageBackground
             source={this.props.Image}
             style={{width: '100%', height: '100%'}}
-            opacity={0.25}>
-            <Block flex={2}>
-              <Block flex={false} column style={{marginLeft: 20}}>
+            opacity={0.25}> */}
+            {/* <Block flex={2}> */}
+              <Block flex={false} row style={{marginLeft: 20}}>
                 {array.map(obj => (
                   <Block flex={false} row>
-                    <Text
+                    <TouchableOpacity
+                      style={{marginTop: 10,marginLeft:30}}
+                      // underlayColor={'transparent'}
+                      onPress={() => {
+                        this.handleNavigationParams(obj.route);
+                      }}>
+                      <Text
                       style={{
                         fontSize: 18,
                         fontFamily: 'Georgia',
@@ -148,21 +160,11 @@ export default class CommonDetail extends Component {
                       }}>
                       {obj.content}
                     </Text>
-                    <TouchableHighlight
-                      style={{marginTop: 10}}
-                      // underlayColor={'transparent'}
-                      onPress={() => {
-                        this.handleNavigationParams(obj.route);
-                      }}>
-                      <Image
-                        source={obj.imageSrc}
-                        style={{width: 30, height: 30}}
-                      />
-                    </TouchableHighlight>
+                    </TouchableOpacity>
                   </Block>
                 ))}
               </Block>
-            </Block>
+            {/* </Block> */}
             {/* <Block flex={3}>
               <Modal
                 animationType={'fade'}
@@ -182,7 +184,7 @@ export default class CommonDetail extends Component {
                 </Block>
               </Modal>
             </Block> */}
-          </ImageBackground>
+          {/* </ImageBackground> */}
         </Block>
       </Block>
     );
@@ -197,6 +199,6 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 50,
     opacity: 0.89,
     backgroundColor: '#b4816f',
-  },
+  }
 
 });

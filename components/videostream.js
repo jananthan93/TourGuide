@@ -14,13 +14,13 @@ export default class VideoStream extends Component {
       style={{
         fontSize: 30,
         textShadowOffset: {width: 4, height: 2},
-        fontWeight: 'bold',
-        color: '#fcf4d4',
+        // fontWeight: 'bold',
+        color: '#a16355',
       }}>
         {title}
       </Text>
     ),
-    headerStyle:{backgroundColor:"#b4816f"}  
+    headerStyle:{backgroundColor:"#ffff"}  
   };
 
   render() {
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     right: 0,
     // borderWidth: 2,
-    backgroundColor: '#fcf4d4',
+    backgroundColor: '#fff',
   },
   fooetrstyle:{
     position: 'absolute',

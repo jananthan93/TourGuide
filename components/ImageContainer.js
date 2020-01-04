@@ -46,18 +46,18 @@ export default class ImageContainer extends Component {
         fontSize: 30,
         textShadowOffset: {width: 4, height: 2},
         // fontWeight: 'bold',
-        color: '#fcf4d4',
+        color: '#a16355',
       }}>
         {title}
       </Text>
     ),
-    headerStyle:{backgroundColor:"#b4816f"}  
+    headerStyle:{backgroundColor:"#ffff"}  
   };
   render() {
     const images = this.props.navigation.getParam('images', []);
     
       return (
-      <SafeAreaView style={{flex: 1, backgroundColor: '#fcf4d4'}}>
+      <SafeAreaView style={{flex: 1, backgroundColor: '#ffff'}}>
         <Block flex={0.8} />
         <Block flex={2} style={{marginBottom:50}}>
           <Image

@@ -32,8 +32,12 @@ export default class ViewMap extends Component {
     isSetting:true,
   };
   handleNavigation=(name)=>{
-    if(name==='The Palmyrah House')
-    {this.props.navigation.navigate('palmyrahhouse')}
+    switch(name){
+      case 'The Palmyrah House':{this.props.navigation.navigate('palmyrahhouse')}
+      // case 'Mannar Fort':{this.props.navigation.navigate('mannarFort')}
+    }
+    
+    
   }
   changeMarkerIcon=(k)=>{
     this.setState({
@@ -42,7 +46,7 @@ export default class ViewMap extends Component {
     this._map.animateToRegion({
       latitude: this.state.places[k].geometry.location.lat,
       longitude: this.state.places[k].geometry.location.lng,
-      latitudeDelta: 0.0922,
+      latitudeDelta: 0.1922,
       longitudeDelta: 0.0421
     },2000)
     // setTimeout(()=>{
@@ -125,8 +129,8 @@ export default class ViewMap extends Component {
             region={{
               latitude: this.props.lat,
               longitude: this.props.lng,
-              latitudeDelta: 0.0922,
-              longitudeDelta: 0.0421,
+              latitudeDelta: 0.3922,
+              longitudeDelta: 0.0521,
             }}>
              
             {

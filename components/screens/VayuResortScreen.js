@@ -1,13 +1,18 @@
 import React, {Component} from 'react';
 import {View, Image, StyleSheet, Dimensions, ScrollView,Text} from 'react-native';
 // import {Text} from '../../components/CustomText';
-import kite from '../../assets/VayuResort/Image/1.jpg';
+import kite from '../../assets/VayuResort/Image/6.jpg';
 import star from '../../assets/Palmyrah/Image/7.png';
 import Carousel from 'react-native-snap-carousel';
+import Video from 'react-native-video';
+import source from '../../assets/VayuResort/video/vayu.mp4';
 // import Navigation from '../../components/navigation';
 // import {colors} from '../../styles';
 const {width} = Dimensions.get('window');
 export default class index extends Component {
+  static navigationOptions = {
+    header: null,
+  };
   constructor() {
     super();
     this.state = {
@@ -18,23 +23,23 @@ export default class index extends Component {
         },
         {
           id: 2,
-          photo: require('../../assets/VayuResort/Image/1.jpg'),
+          photo: require('../../assets/VayuResort/Image/2.jpg'),
         },
         {
           id: 3,
-          photo: require('../../assets/VayuResort/Image/1.jpg'),
+          photo: require('../../assets/VayuResort/Image/3.jpg'),
         },
         {
           id: 4,
-          photo: require('../../assets/VayuResort/Image/1.jpg'),
+          photo: require('../../assets/VayuResort/Image/4.jpg'),
         },
         {
           id: 5,
-          photo: require('../../assets/VayuResort/Image/1.jpg'),
+          photo: require('../../assets/VayuResort/Image/5.jpg'),
         },
         {
           id: 6,
-          photo: require('../../assets/VayuResort/Image/1.jpg'),
+          photo: require('../../assets/VayuResort/Image/6.jpg'),
         },
         {
           id: 7,
@@ -42,7 +47,7 @@ export default class index extends Component {
         },
         {
           id: 8,
-          photo: require('../../assets/VayuResort/Image/1.jpg'),
+          photo: require('../../assets/VayuResort/Image/2.jpg'),
         },
       ],
     };
@@ -68,12 +73,12 @@ export default class index extends Component {
       <React.Fragment>
         <Image style={styles.imageView} source={kite} />
         <View style={styles.cardView}>
-          <Text style={{color: 'black', marginLeft: 20}} size={25}>
-            Kite Surffing
+          <Text style={{color: 'black', marginLeft: 20,fontSize:20}}>
+            Vayu Resort
           </Text>
           <Image
             source={star}
-            style={{height: 24, width: 120, marginLeft: 18}}
+            style={{height: 24, width: 120, marginLeft: 18,marginTop:12}}
           />
           <Text
             style={{
@@ -88,33 +93,33 @@ export default class index extends Component {
         </View>
         <View style={{padding: 10, flex: 1}}>
           <ScrollView style={{flex: 1}}>
+            <View style={{flex: 1}}>
             <Text
               style={{
                 color: 'black',
                 marginLeft: 20,
                 marginTop: 20,
+                fontSize:15
               }}
-              size={15}>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged. It was
-              popularised in the 1960s with the release of Letraset sheets
-              containing Lorem Ipsum passages, and more recently with desktop
-              publishing software like Aldus PageMaker including versions of
-              Lorem Ipsum.
+              size={18}>
+               It is a dream location for us Kitesurfers: Pristine Conditions,
+               virtually the first kiters on the scene, 16 KM of flat water conditions
+               and the most stable, consistent winds Sri Lanka has to offer ! Did we
+               forget to say that the spot is just in front of the camp and you will be
+               surrounded by nature sharing the elements of Earth, Wind, Water !
             </Text>
+            </View>
+            <View style={{flex: 1}}>
             <Text
               style={{
                 color: 'black',
                 marginLeft: 20,
                 marginBottom: 10,
-                marginTop:10
+                marginTop:10,
+                fontSize:22
               }}
               size={22}>
-              Traveler's Photos
+              Photos
             </Text>
             <View style={styles.child2}>
               <Carousel
@@ -127,47 +132,54 @@ export default class index extends Component {
                 loop={true}
               />
             </View>
-            <Text
-              style={{
-                color: 'black',
-                marginLeft: 20,
-                marginBottom: 10,
-                marginTop:10
-              }}
-              size={22}>
-              Traveler's Video
-            </Text>
-            <View style={styles.child2}>
-              <Carousel
-                ref={this.assignRef}
-                data={this.state.types}
-                renderItem={this._renderItem}
-                sliderWidth={width}
-                itemWidth={150}
-                activeSlideAlignment="start"
-                loop={true}
-              />
             </View>
+            <View style={{flex: 1}}>
             <Text
               style={{
                 color: 'black',
                 marginLeft: 20,
                 marginBottom: 10,
-                marginTop:10
+                marginTop:10,
+                fontSize:22
               }}
               size={22}>
-              Traveler's Photos
+              Video
             </Text>
-            <View style={styles.child2}>
-              <Carousel
-                ref={this.assignRef}
-                data={this.state.types}
-                renderItem={this._renderItem}
-                sliderWidth={width}
-                itemWidth={150}
-                activeSlideAlignment="start"
-                loop={true}
-              />
+            <View style={{flex: 1,height:200,width:width}}>
+            <Video
+              style={styles.backgroundVideo}
+              // fullscreenOrientation="all"
+              onBuffer={this.onBuffer} // Callback function
+              onError={this.videoError}
+              source={source}
+              resizeMode="contain"
+              rate={1}
+              volume={1}
+              paused={true}
+              muted={false}
+              ignoreSilentSwitch={null}
+              fullscreen={true}
+              // onLoad={(data) => { Alert.alert(' onLoad!') }}
+              //onBuffer={() => { Alert.alert(onBuffer!') }}
+              // onProgress={() => { Alert.alert('onProgress!') }}
+              // onEnd={() => { Alert.alert('onEnd!') }}
+              repeat={false}
+              controls={true}
+            />
+            </View>
+            </View>
+            <View style={{flex: 1}}>
+            <Text
+              style={{
+                color: 'black',
+                marginLeft: 20,
+                marginBottom: 10,
+                marginTop:10,
+                fontSize:22
+              }}
+              size={22}>
+              Audio
+            </Text>
             </View>
           </ScrollView>
         </View>
@@ -183,6 +195,13 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
     elevation: 4,
+  },
+  backgroundVideo: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0,
   },
   cardView: {
     marginTop: -50,
