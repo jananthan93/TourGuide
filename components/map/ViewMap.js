@@ -24,7 +24,7 @@ let photosArray=[];
 export default class ViewMap extends Component {
   state = {
     places: [],
-    radius: 1000,
+    radius: 2000,
     placeType: 'Restorants',
     photoPlaceGallery: [],
     key:null,
@@ -127,6 +127,7 @@ export default class ViewMap extends Component {
               latitudeDelta: 0.0922,
               longitudeDelta: 0.0421,
             }}>
+             
             {
             this.state.places.map((element, i) =>(
                     <Marker
@@ -156,6 +157,14 @@ export default class ViewMap extends Component {
               strokeColor={'blue'}
              />
           </MapView>
+          <TouchableOpacity style={styles.goBackIcon}>
+                <View style={styles.gobackRect1}></View>
+                <View style={styles.gobackRect2}></View>
+                <View style={styles.gobackRect3}></View>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.searchIcon}>
+               
+          </TouchableOpacity>
         </Block>
 
         {
@@ -164,9 +173,9 @@ export default class ViewMap extends Component {
               {/* <Text style={{color:'red',zIndex:1}}>setting</Text> */}
               <Image source={require('../../assets/nearby.png')} style={{width:80,height:80,borderColor:'black',borderWidth:1,borderRadius:10,shadowColor:'gray',shadowRadius:5}}/>
               </TouchableOpacity>
-          ):(
+          ):( 
 
-        <Block color="gray" flex={2.7}>
+        <View style={styles.mapconfigcontainer} >
           <NearBy
             radius={this.state.radius}
             gallery={this.state.photoPlaceGallery}
@@ -175,7 +184,7 @@ export default class ViewMap extends Component {
             changeMarkerIcon={k=>this.changeMarkerIcon(k)}
             handleNavigation={(name)=>this.handleNavigation(name)}
           />
-        </Block>
+        </View>
           )
         }
       </Block>
@@ -206,4 +215,66 @@ const styles = StyleSheet.create({
     tintColor: 'red',
     resizeMode: 'contain',
   },
+  mapconfigcontainer: {
+    position: "relative",
+    top: -150
+  },
+
+  //external
+  goBackIcon: {
+    width: 46,
+    height: 46,
+    borderRadius: 12,
+    backgroundColor: "#ffffff",
+    top: 20,
+    left: 20,
+    shadowOffset:{
+      height: 5,
+      width: 7
+    }
+  },
+  gobackRect1: {
+    width: 16,
+    height: 6,
+    borderRadius: 5,
+    backgroundColor: "#a16355",
+    top: 10,
+    left: 10
+  },
+  gobackRect2: {
+    width: 28,
+    height: 6,
+    borderRadius: 5,
+    backgroundColor: "#a16355",
+    top: 15,
+    left: 10
+  },
+  gobackRect2: {
+    width: 28,
+    height: 6,
+    borderRadius: 5,
+    backgroundColor: "#a16355",
+    top: 13,
+    left: 10
+  },
+  gobackRect3: {
+    width: 15,
+    height: 6,
+    borderRadius: 5,
+    backgroundColor: "#a16355",
+    top: 16,
+    left: 22
+  },
+  searchIcon: {
+    width: 46,
+    height: 46,
+    borderRadius: 12,
+    backgroundColor: "#ffffff",
+    top: -25,
+    left: 330,
+    shadowOffset:{
+      height: 5,
+      width: 7
+    }
+  }
 });
