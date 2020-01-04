@@ -16,12 +16,6 @@ import SoundPalmyrah from './audio/audio';
 import { ScrollView } from 'react-native-gesture-handler';
 const array = [
   {
-    id: 1,
-    content: 'HISTORY',
-    imageSrc: require('../assets/detail/history.png'),
-    route: 'history',
-  },
-  {
     id: 2,
     content: 'IMAGES',
     imageSrc: require('../assets/detail/image.png'),
@@ -102,40 +96,44 @@ export default class CommonDetail extends Component {
   };
   render() {
     return (
-      <Block flex={1} style={{backgroundColor: '#fcf4d4'}}>
-        <Block flex={1}>
+      <Block flex={1} style={{backgroundColor: '#ffffff'}}>
+        <Block flex={3}>
           <Image
             source={this.props.Image}
             style={styles.lakecropped}>
           </Image>
         </Block>
-        <Block flex={1}>
+        <Block flex={6}>
           <ScrollView>
 
           <Text
             style={{
-              fontSize: 18,
-              fontFamily: 'Georgia',
-              fontWeight: 'bold',
-              color: '#00',
-              textAlign: 'left',
-              margin: 20,textShadowColor:"white",
-              textShadowRadius: 2,
+              color: 'black',
+              marginLeft: 20,
+              marginBottom: 10,
+              marginTop:10,
+              fontSize:18
             }}>
             {this.props.children}
           </Text>
           </ScrollView>
         </Block>
-        <Block flex={1} row>
-          <ImageBackground
+        <Block flex={1} colum style={{justifyContent: 'flex-end',marginBottom:20,marginLeft:10}}>
+          {/* <ImageBackground
             source={this.props.Image}
             style={{width: '100%', height: '100%'}}
-            opacity={0.25}>
-            <Block flex={2}>
-              <Block flex={false} column style={{marginLeft: 20}}>
+            opacity={0.25}> */}
+            {/* <Block flex={2}> */}
+              <Block flex={false} row style={{marginLeft: 20}}>
                 {array.map(obj => (
                   <Block flex={false} row>
-                    <Text
+                    <TouchableHighlight
+                      style={{marginTop: 10,marginLeft:30}}
+                      // underlayColor={'transparent'}
+                      onPress={() => {
+                        this.handleNavigationParams(obj.route);
+                      }}>
+                      <Text
                       style={{
                         fontSize: 18,
                         fontFamily: 'Georgia',
@@ -148,21 +146,11 @@ export default class CommonDetail extends Component {
                       }}>
                       {obj.content}
                     </Text>
-                    <TouchableHighlight
-                      style={{marginTop: 10}}
-                      // underlayColor={'transparent'}
-                      onPress={() => {
-                        this.handleNavigationParams(obj.route);
-                      }}>
-                      <Image
-                        source={obj.imageSrc}
-                        style={{width: 30, height: 30}}
-                      />
                     </TouchableHighlight>
                   </Block>
                 ))}
               </Block>
-            </Block>
+            {/* </Block> */}
             {/* <Block flex={3}>
               <Modal
                 animationType={'fade'}
@@ -182,7 +170,7 @@ export default class CommonDetail extends Component {
                 </Block>
               </Modal>
             </Block> */}
-          </ImageBackground>
+          {/* </ImageBackground> */}
         </Block>
       </Block>
     );

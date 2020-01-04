@@ -9,15 +9,17 @@ import AudioStream from '../components/audioStream'
 import VayuResortScreen from '../components/screens/VayuResortScreen';
 import PalmyrahScreen from '../components/screens/PalmyrahScreen';
 import HomeScreen from '../components/screens/HomeScreen';
-import LoginScreen from '../components/screens/LoginScreen'
+import LoginScreen from '../components/screens/LoginScreen';
+import PalmyrahHouse from '../components/PalmyrahHouse';
+import VayuResort from '../components/VayuResort';
 
 const MainNavigator = createStackNavigator({
   // splash:{screen:SplashScreen},
   welcome:{screen:HomeScreen},
   login: {screen: LoginScreen},
   location: {screen: CurrentLocationMap},
-  vayuresort:{screen: VayuResortScreen},
-  palmyrahhouse:{screen: PalmyrahScreen},
+  vayuresort:{screen: VayuResort},
+  palmyrahhouse:{screen: PalmyrahHouse},
   history:{screen: History},
   vedio:{screen:VideoStream},
   image:{screen: ImageContainer},
