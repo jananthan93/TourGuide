@@ -19,7 +19,7 @@ const searchOptions = ['Historic', 'Restorants', 'Atm', 'Temples', 'Hotels'];
 export default class NearBy extends Component {
   
   state = {
-    isRange:false,
+    isRange:true,
     range:0,
   };
   renderSearch = ({item}) => {
@@ -38,7 +38,7 @@ export default class NearBy extends Component {
     this.setState(() => {
       return {
         range: parseFloat(range),
-        isRange: false,
+        // isRange: false,
       };
     });
     this.props.changeRange(range)
@@ -87,57 +87,40 @@ componentDidMount(){
     // console.log(this.props.gallery);
     return (
         <Block flex={1}>
-          <Block flex={1} >
-            {!this.state.isRange ? (
-              <Block
-                flex={false}
-                center
-                style={{
-                  height: 25,
-                  width: 125,
-                  borderRadius: 10,
-                  backgroundColor: '#fcf4d4',
-                  borderColor:'#b4816f',
-                  borderWidth:1,
-                  marginTop:10,
-                  marginBottom:10
-                }}>
+          <Block flex={1.5} >
+          <Block flex={0.3}>
                 <Text
                   style={
                     (styles.text,
                     {
                       fontWeight: 'bold',
-                      paddingTop: 2,
+                      padding: 2,
                       color: '#ad1032',
                       textAlign: 'left',
                     })
                   }
-                  onPress={() => this.setState({isRange: true})}>
+                  // onPress={() => this.setState({isRange: true})}
+                  >
                   Range : {String(this.state.range)} m
                 </Text>
               </Block>
-            ) : (
+            
               <Block
-                style={{
-                  height: 25,
-                  borderRadius: 15,
-                  borderWidth:1,
-                  backgroundColor: '#fcf4d4',
-                }}>
+                flex={0.2}>
                 <Slider
-                  step={500}
-                  style={{color: 'black', marginTop: 3}}
+                  step={100}
+                  style={{color: 'black', marginTop: 10}}
                   thumbTintColor={'#b4816f'}
                   minimumTrackTintColor={'#b4816f'}
-                  maximumValue={5000}
+                  maximumValue={20000}
                   onValueChange={this.sliderChange}
                   value={this.state.range}
                 />
               </Block>
-            )}
+          
           </Block>
 
-          <Block flex={2}  style={{ marginBottom: 3}}>
+          <Block flex={1.5}  style={{ marginBottom: 3}}>
             <Carousel
             loop={true}
               ref={c => {

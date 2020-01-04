@@ -24,7 +24,7 @@ let photosArray=[];
 export default class ViewMap extends Component {
   state = {
     places: [],
-    radius: 1000,
+    radius: 100,
     placeType: 'Restorants',
     photoPlaceGallery: [],
     key:null,
@@ -35,20 +35,20 @@ export default class ViewMap extends Component {
     {this.props.navigation.navigate('palmyrahhouse')}
   }
   changeMarkerIcon=(k)=>{
-    this.setState({
-      key:k
-    })
+    // this.setState({
+    //   key:k
+    // })
     this._map.animateToRegion({
       latitude: this.state.places[k].geometry.location.lat,
       longitude: this.state.places[k].geometry.location.lng,
       latitudeDelta: 0.0922,
       longitudeDelta: 0.0421
     },5000)
-    setTimeout(()=>{
-      this.setState({
-        key:k
-      })
-    },1000)
+    // setTimeout(()=>{
+    //   this.setState({
+    //     key:k
+    //   })
+    // },1000)
     
     
   }
@@ -129,22 +129,22 @@ export default class ViewMap extends Component {
             }}>
             {
             this.state.places.map((element, i) =>(
-                    <Marker
-                      key={i}
-                      coordinate={{
-                        latitude: element.geometry.location.lat,
-                        longitude: element.geometry.location.lng,
-                      }}
-                      pinColor={i === this.state.key ? 'red':null}
-                      title={element.name}
-                      onPress={()=>this.handleNavigation(element.name)}
-                      tracksViewChanges={true}
-                      image={ i === this.state.key ? require('../../assets/located.png'):null}
-                      >
-                      <Callout>
-                        <Text>{element.name}</Text>
-                      </Callout>
-                    </Marker>)
+            <Marker
+              key={i}
+              coordinate={{
+                latitude: element.geometry.location.lat,
+                longitude: element.geometry.location.lng,
+              }}
+              // pinColor={i === this.state.key ? 'red':null}
+              title={element.name}
+              onPress={()=>this.handleNavigation(element.name)}
+              tracksViewChanges={true}
+              image={ i === this.state.key ? require('../../assets/located.png'):null}
+              >
+              <Callout>
+                <Text>{element.name}</Text>
+              </Callout>
+            </Marker>)
             )
             }
             <Circle
@@ -166,7 +166,7 @@ export default class ViewMap extends Component {
               </TouchableOpacity>
           ):(
 
-        <Block color="gray" flex={2.7}>
+        <Block flex={2}>
           <NearBy
             radius={this.state.radius}
             gallery={this.state.photoPlaceGallery}
