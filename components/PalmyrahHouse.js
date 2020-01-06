@@ -37,17 +37,18 @@ headerStyle:{backgroundColor:"#ffff"}
               color: 'black',
               fontFamily: 'Times New Roman',
               textAlign: 'justify',
-              margin: 15,
-              fontSize: 18,textShadowColor: 'white',textShadowRadius: 5,
+              margin: 12,
+              fontSize: 12,textShadowColor: 'white',textShadowRadius: 5,
             }}>
             {'\t'}Mannar is a district located in the far north-west of Sri
-            Lanka. Steeped in history, nature and culture, its amazing offerings
-            can now be truly explored in the post-war era. Located in Sri
-            Lanka’s Dry Zone, Mannar receives plenty of sun, as well as a
-            healthy breeze blowing throughout the land, particularly on Mannar
-            Island. Found at the border of two seas, the waters are abundant
-            with life; whilst on land, the district neighbors a vibrant national
-            park.{'\n'}
+            Lanka. Steeped in history, nature and culture,       its amazing 
+            offerings can now be truly explored in the post-war era.                
+            Located in SriLanka’s Dry Zone, Mannar receives plenty of sun, as 
+            well as a healthy breeze blowing throughout the land, 
+            particularly 
+            on Mannar Island. Found at the border of two seas, the waters are 
+            abundant with life; whilst on land, the district neighbors a vibrant
+             national park.{'\n'}
             {'\n'}
             {'\t'}Mannar was a center of maritime trade since ancient times, and
             is influenced by over four centuries of colonial influence. Mannar
@@ -92,15 +93,16 @@ headerStyle:{backgroundColor:"#ffff"}
               color: 'black',
               fontFamily: 'Times New Roman',
               textAlign: 'justify',
+              alignItems:'justify',
               margin: 15,
-              fontSize: 18,textShadowColor: 'white',textShadowRadius: 5,
+              fontSize: 15,textShadowColor: 'white',textShadowRadius: 5,
             }}>
             {'\t'}Mannar is a district located in the far north-west of Sri
-            Lanka. Steeped in history, nature and culture, its amazing offerings
+            Lanka. Steeped in history, nature and culture,its amazing offerings
             can now be truly explored in the post-war era. Located in Sri
             Lanka’s Dry Zone, Mannar receives plenty of sun, as well as a
             healthy breeze blowing throughout the land, particularly on Mannar
-            Island. Found at the border of two seas, the waters are abundant
+            Island. Found at the border of two seas,   the waters are abundant
             with life; whilst on land, the district neighbors a vibrant national
             park.{'\n'}
             {'\n'}
@@ -126,10 +128,10 @@ headerStyle:{backgroundColor:"#ffff"}
             since childhood. He joined the Royal Society for the Protection of
             Birds and the British Trust for Ornithology as a teenager, working
             as a voluntary warden on nature reserves and starting a life-long
-            habit of contributing to many BTO surveys. After leaving school he
+            habit of contributing to many BTO surveys. After leaving school   he
             studied biochemistry and microbiology before moving into ecology. He
             worked at several universities and research institutes on subjects
-            as diverse as monitoring atmospheric pollutants, rehabilitation of
+            as diverse as monitoring atmospheric pollutants, rehabilitation    of
             oiled seabirds, distribution of soil invertebrates, and the ecology
             of terrestrial molluscs, before becoming a nature reserve warden for
             the RSPB in 1981. He worked on more than a dozen reserves (mostly

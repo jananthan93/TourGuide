@@ -32,11 +32,13 @@ export default class ViewMap extends Component {
     isSetting:true,
   };
   handleNavigation=(name)=>{
-    switch(name){
-      case 'The Palmyrah House':{this.props.navigation.navigate('palmyrahhouse')}
-      // case 'Mannar Fort':{this.props.navigation.navigate('mannarFort')}
+    // switch(name){
+    //   case 'The Palmyrah House':{this.props.navigation.navigate('palmyrahhouse')}
+    //   // case 'Mannar Fort':{this.props.navigation.navigate('mannarFort')}
+    // }
+    if(name=== 'The Palmyrah House'){
+      this.props.navigation.navigate('palmyrahhouse')
     }
-    
     
   }
   changeMarkerIcon=(k)=>{

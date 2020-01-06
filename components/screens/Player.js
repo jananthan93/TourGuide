@@ -64,7 +64,7 @@ export default class Player extends React.Component{
         }else{
             // const filepath = this.props.navigation.state.params.filepath;
             // const filepath = require('../../../assets/Palmyrah/Audio/mp3.mp3');
-            const filepath = require('../../assets/audio/BirdWatching-01.mp3');
+            const filepath = this.props.navigation.getParam('audioSrc', '');
             console.log('[Play]', filepath);
     
             this.sound = new Sound(filepath, '', (error) => {

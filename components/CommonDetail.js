@@ -117,7 +117,7 @@ export default class CommonDetail extends Component {
             style={styles.lakecropped}>
           </Image>
         </Block>
-        <Block flex={6}>
+        <Block flex={6} style={{marginRight:5}}>
           <ScrollView>
 
           <Text
@@ -126,7 +126,7 @@ export default class CommonDetail extends Component {
               marginLeft: 20,
               marginBottom: 10,
               marginTop:10,
-              fontSize:18
+              fontSize:15
             }}>
             {this.props.children}
           </Text>
