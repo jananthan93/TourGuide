@@ -14,16 +14,23 @@ export default class HomeScreen extends Component {
   render() {
   
     return (
-   <View style={{flex: 1, backgroundColor: "#ffffff"}}>
+   <View style={{flex: 1}}>
             <View style={Styles.imageView}>
-                <Image source={require("../../assets/img/55555.gif")} style={Styles.lakecropped}/>
-                <Image source={require("../../assets/img/palmyrah.png")} style={Styles.logoImg}></Image>
+                <Image 
+                  source={require("../../assets/img/back2.png")} 
+                  style={Styles.lakecropped}
+                />
+                <Image 
+                  source={require("../../assets/img/palmyrah.png")} 
+                  style={Styles.logoImg}
+                />
+                <Image 
+                  source={require("../../assets/img/back1.png")} 
+                  style={Styles.lakecropped1}
+                />
                 
-                {/* <View style={Styles.logoView}>
-                    <Text style={Styles.logoText}>PALMYRAH HOUSE</Text>
-                    <Text style={Styles.logoTextSub}>Tourist Guide</Text>
-                </View> */}
             </View>
+            
             <View style={Styles.buttonView}>
                
                 <View style={Styles.loginBtnView}>
@@ -58,10 +65,10 @@ export default class HomeScreen extends Component {
                 </View>
                 <View style={Styles.kiteSurfingBtnView}>
                   <TouchableOpacity style={Styles.kiteSurfingTouch}
-                  onPress={() => {
-                     this.props.navigation.navigate('login');
-                   }}
-                  >
+                     onPress={() => {
+                        this.props.navigation.navigate('login');
+                     }}
+                     >
                      <Image source={require("../../assets/img/b4.png")} style={Styles.B4}/>
                      <Text style={Styles.signinText}>SIGNIN</Text>
                   </TouchableOpacity>
@@ -72,12 +79,7 @@ export default class HomeScreen extends Component {
                      <Text style={Styles.registerText}>REGISTER</Text>
                   </TouchableOpacity>
                 </View>
-               
             </View>
-           
-
-          
- 
    </View>
     
      
@@ -93,20 +95,26 @@ export default class HomeScreen extends Component {
 var Styles = StyleSheet.create({
     
     lakecropped: {
-        width: width,
-        height: height,
-        borderBottomLeftRadius: 0,
-        borderBottomRightRadius: 0,
-        opacity: 1,
-      // top: -10,
-        backgroundColor: "#ffffff",
-        
+      width: 350,
+      height: 600,
+      borderBottomLeftRadius: 0,
+      borderBottomRightRadius: 0,
+      opacity: 1,
+      backgroundColor: "#ffffff", 
+     },
+     lakecropped1: {
+      width: width,
+      height: height,
+      borderBottomLeftRadius: 0,
+      borderBottomRightRadius: 0,
+      opacity: 1, 
+      position: "absolute",
      },
     
      logoImg: {
          position: "absolute",
-         top: 8,
-         left: 230,
+         top: 15,
+         left: 270,
          width: 130,
          height:70,
      },
@@ -167,13 +175,6 @@ var Styles = StyleSheet.create({
         top:10
       
      },
-     
-
-
-     loginBtnView: {
-        
-     },
-
      registerTouch: {
       width:"50%" ,
       height: "40%",
@@ -252,9 +253,6 @@ var Styles = StyleSheet.create({
 
      buttonView: {
         flex: 3,
-      
-       
-
      },
 
      footerMapBtnTouch: {
