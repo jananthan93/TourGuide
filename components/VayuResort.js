@@ -4,16 +4,10 @@ import {
   View,
   Image,
   ScrollView,
-  StyleSheet,
-  TouchableHighlight,
-  ImageBackground,
-  Alert,
+  StyleSheet
 } from 'react-native';
 import VayuResortImage from '../assets/VayuResort/Image/1.jpg';
 import CommonDetail from './CommonDetail';
-// import {ScrollView} from 'react-native-gesture-handler';
-import Block from '../common/block';
-import Footer from '../common/footer';
 
 export default class VayuResort extends Component {
   static navigationOptions = {

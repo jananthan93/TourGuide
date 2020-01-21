@@ -5,9 +5,6 @@ import History from '../components/History';
 import VideoStream from '../components/videostream'
 import ImageContainer from '../components/ImageContainer';
 import LoginMap from '../components/LoginMap';
-import AudioStream from '../components/audioStream'
-import VayuResortScreen from '../components/screens/VayuResortScreen';
-import PalmyrahScreen from '../components/screens/PalmyrahScreen';
 import HomeScreen from '../components/screens/HomeScreen';
 import LoginScreen from '../components/screens/LoginScreen';
 import PalmyrahHouse from '../components/PalmyrahHouse';

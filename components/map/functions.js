@@ -1,4 +1,4 @@
-export const  API_Key ='AIzaSyDUqBfawG19eYuhCDntWQKosKy_Xxvlnzk';
+export const  API_Key ='AIzaSyAyxyBXixmv0OVZOqzne7m-NE_HibFwrr0';
 export const getUrlWithParameter = (lat, lng, radius, type) => {
     // //https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=1500&type=restaurant&keyword=cruise&key=API_Key
     const url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?';

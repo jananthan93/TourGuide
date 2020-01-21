@@ -3,7 +3,6 @@ import React, {Component} from 'react';
 import Geolocation from '@react-native-community/geolocation';
 
 import {View, StyleSheet, TouchableOpacity,PermissionsAndroid} from 'react-native';
-import Icon from 'react-native-ionicons';
 const styles = StyleSheet.create({
   container: {
     ...StyleSheet.absoluteFillObject,
@@ -64,22 +63,22 @@ export default class CurrentLocationMap extends Component {
       {enableHighAccuracy: true, timeout: 1000000, maximumAge: 1000},
       );
     
-      this.watchID = Geolocation.watchPosition(position => {
-      //Will give you the location on location change
-      console.log(position);
-      const currentLongitude = parseFloat(
-        JSON.stringify(position.coords.longitude) * 1,
-      );
-      const currentLatitude = parseFloat(
-        JSON.stringify(position.coords.latitude) * 1,
-      );
-      this.setState({
-          lastLong: currentLongitude,
-          lastLat: currentLatitude,
-          latitudeDelta:  0.0922,
-            longitudeDelta: 0.0421, 
-         });
-    });
+    //   this.watchID = Geolocation.watchPosition(position => {
+    //   //Will give you the location on location change
+    //   console.log(position);
+    //   const currentLongitude = parseFloat(
+    //     JSON.stringify(position.coords.longitude) * 1,
+    //   );
+    //   const currentLatitude = parseFloat(
+    //     JSON.stringify(position.coords.latitude) * 1,
+    //   );
+    //   this.setState({
+    //       lastLong: currentLongitude,
+    //       lastLat: currentLatitude,
+    //       latitudeDelta:  0.0922,
+    //         longitudeDelta: 0.0421, 
+    //      });
+    // });
   }
   componentDidMount(){
     this.requestLocationPermission();

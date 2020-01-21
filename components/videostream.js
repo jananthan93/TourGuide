@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import Video from 'react-native-video';
 import Block from '../common/block';
-import Footer from '../common/footer';
 
 export default class VideoStream extends Component {
   componentWillMount() {

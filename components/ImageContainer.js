@@ -13,7 +13,6 @@ import {
 } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import Block from '../common/block';
-import Footer from '../common/footer';
 const {height, width} = Dimensions.get('window');
 
 export default class ImageContainer extends Component {

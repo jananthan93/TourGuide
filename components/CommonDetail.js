@@ -11,8 +11,6 @@ import {
   Button,
 } from 'react-native';
 import Block from '../common/block';
-import Footer from '../common/footer';
-import SoundPalmyrah from './audio/audio';
 import { ScrollView } from 'react-native-gesture-handler';
 const array = [
   {
@@ -124,9 +122,11 @@ export default class CommonDetail extends Component {
             style={{
               color: 'black',
               marginLeft: 20,
+              marginRight: 20,
               marginBottom: 10,
               marginTop:10,
-              fontSize:15
+              fontSize:15,
+              textAlign: 'justify',
             }}>
             {this.props.children}
           </Text>
