@@ -29,6 +29,7 @@ export default class ViewMap extends Component {
     photoPlaceGallery: [],
     key:null,
     isSetting:true,
+    radiusmap: 5/600000,
   };
   handleNavigation=(name)=>{
     if(name==='The Palmyrah House')
@@ -106,9 +107,11 @@ export default class ViewMap extends Component {
   componentDidMount() {
     this.getPlaces();
   }
+
   render() {
     console.log(this.state.key);
     console.log(this.state.photoPlaceGallery)
+    console.log(this.state.radiusmap)
     // console.log(this.state.placeType + ' range ' + this.state.radius);
     return (
       <>
@@ -124,8 +127,8 @@ export default class ViewMap extends Component {
             region={{
               latitude: this.props.lat,
               longitude: this.props.lng,
-              latitudeDelta: 0.0922,
-              longitudeDelta: 0.0421,
+              latitudeDelta: 0.0922 ,
+              longitudeDelta: this.state.radiusmap += this.state.radiusmap,
             }}>
              
             {
