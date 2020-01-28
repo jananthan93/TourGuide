@@ -128,7 +128,7 @@ export default class ViewMap extends Component {
               latitude: this.props.lat,
               longitude: this.props.lng,
               latitudeDelta: 0.0922 ,
-              longitudeDelta: this.state.radiusmap += this.state.radiusmap,
+              longitudeDelta: this.state.radiusmap,
             }}>
              
             {
